@@ -3,7 +3,7 @@ from socket import AF_INET, SOCK_STREAM, SOL_SOCKET, SO_REUSEADDR, SHUT_RDWR, so
 from .state import State
 from Logger.logger import Logger
 
-logger = Logger('logs', 'server_logs')
+logger = Logger('logs', 'server_logs.txt')
 
 class TCPServer:
     def __init__(self, host, port):

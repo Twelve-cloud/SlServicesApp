@@ -1,5 +1,4 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import Session
 from .Entities.entities import Base, Account, BanList, Company, Service, Basket, PriceHistory
 from Logger.logger import Logger
 
@@ -31,9 +30,6 @@ class DbInitializer:
                         )
         except Exception as error:
             logger.write(f'Error with creating triggers: {error}')    
-
-    def create_session(self):
-        return Session(bind = DbInitializer.engine)
 
     def init_tables(self, log = False):
         try:
