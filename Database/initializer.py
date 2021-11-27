@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
-from .Entities.entities import Base
+from .Entities.entities import Base, Account, BanList, Company, Service, Basket, PriceHistory
 from Logger.logger import Logger
 
 logger = Logger('logs', 'DbInitializer_loger.txt')
@@ -12,19 +12,19 @@ class DbInitializer:
         self.Base = Base
 
     def create_tables(self):
-        self.Base.metadata.create_all(engine)
+        self.Base.metadata.create_all(DbInitializer.engine)
 
     def drop_tables(self):
-        self.Base.metadata.drop_all(engine)
+        self.Base.metadata.drop_all(DbInitializer.engine)
 
     def create_triggers(self):
         try:
-            engine.execute('''CREATE TRIGGER autoupdatePrice_2 AFTER UPDATE ON Service
+            DbInitializer.engine.execute('''CREATE TRIGGER autoupdatePrice_2 AFTER UPDATE ON Service
                                 FOR EACH ROW BEGIN
                                     INSERT INTO PriceHistory(ServiceName, CompanyName, Price) VALUES (NEW.ServiceName, NEW.CompanyName, NEW.ServicePrice);
                                 END'''
                         )
-            engine.execute('''CREATE TRIGGER autoupdatePrice AFTER INSERT ON Service
+            DbInitializer.engine.execute('''CREATE TRIGGER autoupdatePrice AFTER INSERT ON Service
                                 FOR EACH ROW BEGIN
                                     INSERT INTO PriceHistory(ServiceName, CompanyName, Price) VALUES (NEW.ServiceName, NEW.CompanyName, NEW.ServicePrice);
                                 END'''
@@ -33,7 +33,7 @@ class DbInitializer:
             logger.write(f'Error with creating triggers: {error}')    
 
     def create_session(self):
-        return Session(bind = engine)
+        return Session(bind = DbInitializer.engine)
 
     def init_tables(self, log = False):
         try:
@@ -62,5 +62,5 @@ class DbInitializer:
             session.query(Basket).delete()
             session.query(PriceHistory).delete()
             session.commit()
-        except Exception as e:
+        except Exception as error:
            logger.write(f'Error with clearing tables: {error}')  
