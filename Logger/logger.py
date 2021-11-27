@@ -1,5 +1,8 @@
 '''Contain only one class 'Logger', which writes logs to logfile'''
 from os import path
+from ..timer import Timer
+
+timer = Timer()
 
 class Logger:
     '''
@@ -21,8 +24,8 @@ class Logger:
             logger_file = open('logger.txt', 'a')
             logger_file.write(
                 f'Error with write log data into file "'
-                '{self.filename}" placed in "{self.path} "'
-                'at {timer.now()}'
+                f'{self.filename}" placed in "{self.path} "'
+                f'at {timer.now()}'
             )
             logger_file.close()
         finally:
