@@ -1,0 +1,1 @@
+Error with write log data into file "asdasd" placed in "tesadas" at Sat Nov 27 04:36:54 2021
