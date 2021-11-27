@@ -12,16 +12,15 @@ class Logger:
         try:
             file_with_path = path.join(self.path, self.filename)
             file = open(file_with_path, 'a')
-            file.write(f'{logdata} at {timer.now()}')
+            file.write(f'{logdata} at {timer.now()}\n')
+            file.close()
         except Exception:
             lfile_with_path = path.join('logs', 'logger.txt')
             logger_file = open(lfile_with_path, 'a')
             logger_file.write(
                 f'Error with write log data into file "'
                 f'{self.filename}" placed in "{self.path}" '
-                f'at {timer.now()}'
+                f'at {timer.now()}\n'
             )
             logger_file.close()
-        finally:
-            file.close()
 

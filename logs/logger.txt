@@ -1,0 +1,2 @@
+Error with write log data into file "logger.txt" placed in "logsasdsa" at Sat Nov 27 04:47:32 2021
+Test logger at Sat Nov 27 04:47:44 2021
