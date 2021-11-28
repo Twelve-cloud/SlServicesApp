@@ -59,3 +59,10 @@ Error with initializing tables: (pymysql.err.IntegrityError) (1062, "Duplicate e
 [SQL: INSERT INTO `Account` (`ID`, `AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`, `Rolename`) VALUES (%(ID)s, %(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s, %(Rolename)s)]
 [parameters: {'ID': 1000, 'AccountLogin': 'ur_god', 'AccountPassword': 'god_pass', 'MobileNumber': '+375(99)999-99-99', 'Email': 'godemail@god.ru', 'Rolename': 'BROKER'}]
 (Background on this error at: https://sqlalche.me/e/14/gkpj) at Sat Nov 27 05:55:34 2021
+Error with creating triggers: (pymysql.err.OperationalError) (1359, 'Trigger already exists')
+[SQL: CREATE TRIGGER autoupdatePrice_2 AFTER UPDATE ON Service
+                                FOR EACH ROW BEGIN
+                                    INSERT INTO PriceHistory(ServiceName, CompanyName, Price) VALUES (NEW.ServiceName, NEW.CompanyName, NEW.ServicePrice);
+                                END]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sat Nov 27 15:24:24 2021
+Error with initializing tables: 'DbInitializer' object has no attribute 'create_session' at Sat Nov 27 15:24:28 2021
