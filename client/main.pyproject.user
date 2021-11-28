@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.14.1, 2021-11-27T07:37:51. -->
+<!-- Written by QtCreator 4.14.1, 2021-11-28T03:25:42. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -91,7 +91,7 @@
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{dad39c42-85c1-443a-840e-e00396c181ee}</value>
    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">-1</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
-   <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
+   <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">3</value>
    <value type="int" key="ProjectExplorer.Target.BuildConfigurationCount">0</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.DeployConfiguration.0">
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
@@ -167,16 +167,16 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">main</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/bleeding_soul/coursework/client/main.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/bleeding_soul/coursework/client/main.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">authentification_widget2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/bleeding_soul/SlServicesApp/client/authentification_widget.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/bleeding_soul/SlServicesApp/client/authentification_widget.py</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{56489ce9-ee27-488a-85ba-5193034ba528}</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/bleeding_soul/coursework/client/main.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/bleeding_soul/SlServicesApp/client/authentification_widget.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/bleeding_soul/coursework/client</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/bleeding_soul/SlServicesApp/client</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.1">
     <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
@@ -239,16 +239,15 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">initial_widget</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/bleeding_soul/coursework/client/initial_widget.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/bleeding_soul/coursework/client/initial_widget.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{56489ce9-ee27-488a-85ba-5193034ba528}</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/bleeding_soul/coursework/client/initial_widget.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">registration_widget2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/bleeding_soul/SlServicesApp/client/registration_widget.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/bleeding_soul/SlServicesApp/client/registration_widget.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/bleeding_soul/SlServicesApp/client/registration_widget.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/bleeding_soul/coursework/client</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/bleeding_soul/SlServicesApp/client</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.2">
     <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
@@ -311,16 +310,15 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">authentification_widget</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/bleeding_soul/coursework/client/authentification_widget.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/bleeding_soul/coursework/client/authentification_widget.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{56489ce9-ee27-488a-85ba-5193034ba528}</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/bleeding_soul/coursework/client/authentification_widget.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">initial_widget2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/bleeding_soul/SlServicesApp/client/initial_widget.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/bleeding_soul/SlServicesApp/client/initial_widget.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/bleeding_soul/SlServicesApp/client/initial_widget.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/bleeding_soul/coursework/client</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/bleeding_soul/SlServicesApp/client</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.3">
     <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
@@ -383,16 +381,16 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">registration_widget</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/bleeding_soul/coursework/client/registration_widget.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/bleeding_soul/coursework/client/registration_widget.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">main2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/bleeding_soul/SlServicesApp/client/main.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/bleeding_soul/SlServicesApp/client/main.py</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{56489ce9-ee27-488a-85ba-5193034ba528}</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/bleeding_soul/coursework/client/registration_widget.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/bleeding_soul/SlServicesApp/client/main.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/bleeding_soul/coursework/client</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/bleeding_soul/SlServicesApp/client</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">4</value>
   </valuemap>
