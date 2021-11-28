@@ -5,7 +5,7 @@ from socket import *
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QApplication
 
-from initial_widget import InitialWidget
+from initial_widget_controller import InitialWidgetController
 from authentification_widget import AuthentificationWidget
 from registration_widget import RegistrationWidget
 
@@ -16,8 +16,8 @@ class MainWindow(QMainWindow):
         self.sock.connect(('localhost', 6606))
         uic.loadUi('form.ui', self)
 
-        self.init_wdg = InitialWidget()
-        self.init_wdg.startButtonClicked.connect(self.slotStartButtonClicked)
+        self.init_wdg = InitialWidgetController()
+        self.init_wdg.signalStartButtonClicked.connect(self.slotStartButtonClicked)
         self.init_wdg.show()
 
         self.auth_wdg = AuthentificationWidget()
