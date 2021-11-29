@@ -162,3 +162,40 @@ Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Dupl
 Cannot redo account info, error: name 'data' is not defined at Mon Nov 29 02:05:59 2021
 Cannot delete account, error: name 'session' is not defined at Mon Nov 29 04:05:13 2021
 Cannot select account from database, error: No row was found when one was required at Mon Nov 29 04:06:43 2021
+Cannot select account from database, error: No row was found when one was required at Mon Nov 29 15:35:40 2021
+Cannot select account from database, error: No row was found when one was required at Mon Nov 29 16:25:15 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`) VALUES (%(AccountLogin)s, %(AccountPassword)s)]
+[parameters: {'AccountLogin': '123123', 'AccountPassword': '123123'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Nov 29 16:26:21 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`) VALUES (%(AccountLogin)s, %(AccountPassword)s)]
+[parameters: {'AccountLogin': '1231234', 'AccountPassword': '123123'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Nov 29 16:26:22 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry '+999(99)999-99-99' for key 'Account.MobileNumber'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`) VALUES (%(AccountLogin)s, %(AccountPassword)s)]
+[parameters: {'AccountLogin': 'a231234', 'AccountPassword': '123123'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Nov 29 16:26:24 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry '+999(99)999-99-99' for key 'Account.MobileNumber'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`) VALUES (%(AccountLogin)s, %(AccountPassword)s)]
+[parameters: {'AccountLogin': 'asdasdasd', 'AccountPassword': '123123'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Nov 29 16:26:34 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry '+999(99)999-99-99' for key 'Account.MobileNumber'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`) VALUES (%(AccountLogin)s, %(AccountPassword)s)]
+[parameters: {'AccountLogin': 'asdasdsad', 'AccountPassword': '123123'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Nov 29 16:26:40 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry '+999(99)999-99-99' for key 'Account.MobileNumber'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`) VALUES (%(AccountLogin)s, %(AccountPassword)s)]
+[parameters: {'AccountLogin': 'ilyasavin2', 'AccountPassword': '123456'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Nov 29 16:27:01 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry '+999(99)999-99-99' for key 'Account.MobileNumber'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`) VALUES (%(AccountLogin)s, %(AccountPassword)s)]
+[parameters: {'AccountLogin': 'ilyasavinn', 'AccountPassword': '123456'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Nov 29 16:27:15 2021
+Cannot select account from database, error: No row was found when one was required at Mon Nov 29 16:29:20 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_email' is violated.")
+[SQL: UPDATE `Account` SET `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s, `Email`=%(Email)s WHERE `Account`.`ID` = %(Account_ID)s]
+[parameters: {'AccountPassword': '1234567', 'MobileNumber': 'None', 'Email': 'None', 'Account_ID': 1002}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Nov 29 16:30:59 2021
+Cannot select account from database, error: No row was found when one was required at Mon Nov 29 17:22:16 2021
+Cannot select account from database, error: No row was found when one was required at Mon Nov 29 17:53:20 2021

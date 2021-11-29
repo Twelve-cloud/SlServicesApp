@@ -3,6 +3,7 @@ import sys
 
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox
+from PyQt5.QtGui import QPixmap
 
 from client_socket import ClientSocket
 from stack_of_widgets import StackOfWidgets
@@ -23,8 +24,6 @@ class MainWindow(QMainWindow):
         self.init_wdg = InitialWidget()
         self.auth_wdg = AuthentificationWidget()
         self.regi_wdg = RegistrationWidget()
-        self.info_wdg = AccountInfoWidget()
-
 
         self.init_wdg.startButtonClicked.connect(self.slotInitStartButtonClicked)
 
@@ -33,10 +32,6 @@ class MainWindow(QMainWindow):
 
         self.regi_wdg.createButtonClicked.connect(self.slotCreateAccountButtonClicked)
         self.regi_wdg.backButtonClicked.connect(self.slotBackFromRegistrationButtonClicked)
-
-        self.info_wdg.backButtonClicked.connect(self.slotBackFromAccountButtonClicked)
-        self.info_wdg.saveButtonClicked.connect(self.slotSaveAccountInfoButtonClicked)
-        self.info_wdg.deleteAccountButtonClicked.connect(self.slotDeleteAccountButtonClicked)
 
         self.accInfo.triggered.connect(self.slotAccInfoButtonClicked)
         #
@@ -73,6 +68,10 @@ class MainWindow(QMainWindow):
         self.stack_of_widgets.push(self)
 
     def slotAccInfoButtonClicked(self):
+        self.info_wdg = AccountInfoWidget()
+        self.info_wdg.backButtonClicked.connect(self.slotBackFromAccountButtonClicked)
+        self.info_wdg.saveButtonClicked.connect(self.slotSaveAccountInfoButtonClicked)
+        self.info_wdg.deleteAccountButtonClicked.connect(self.slotDeleteAccountButtonClicked)
         self.client_socket.sendToServer('GET ACCOUNT INFO~!#$~login:' + self.auth_wdg.login + '~!#$~password:' + self.auth_wdg.passw)
         respond = self.client_socket.getRespond()
         self.info_wdg.setInfo(respond)
@@ -104,6 +103,7 @@ class MainWindow(QMainWindow):
         if command == 'REGISTRATION FAILED':
             self.regi_wdg.setError('Ошибка регистрации')
         elif command == 'REGISTRATION SUCCESSFUL':
+            self.regi_wdg.clearLines()
             self.stack_of_widgets.pop()
             self.stack_of_widgets.push(self.auth_wdg)
             QMessageBox.about(self, "Уведомление", "Регистрация успешна")

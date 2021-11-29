@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.14.1, 2021-11-29T04:07:26. -->
+<!-- Written by QtCreator 4.14.1, 2021-11-29T18:01:10. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -242,6 +242,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">client_socket</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/bleeding_soul/SlServicesApp/Client/Source/client_socket.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/bleeding_soul/SlServicesApp/Client/Source/client_socket.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{56489ce9-ee27-488a-85ba-5193034ba528}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/bleeding_soul/SlServicesApp/Client/Source/client_socket.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -313,6 +314,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">registration_widget</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/bleeding_soul/SlServicesApp/Client/Source/registration_widget.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/bleeding_soul/SlServicesApp/Client/Source/registration_widget.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{56489ce9-ee27-488a-85ba-5193034ba528}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/bleeding_soul/SlServicesApp/Client/Source/registration_widget.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -384,6 +386,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">account_info_widget</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/bleeding_soul/SlServicesApp/Client/Source/account_info_widget.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/bleeding_soul/SlServicesApp/Client/Source/account_info_widget.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{56489ce9-ee27-488a-85ba-5193034ba528}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/bleeding_soul/SlServicesApp/Client/Source/account_info_widget.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -455,6 +458,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">stack_of_widgets</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/bleeding_soul/SlServicesApp/Client/Source/stack_of_widgets.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/bleeding_soul/SlServicesApp/Client/Source/stack_of_widgets.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{56489ce9-ee27-488a-85ba-5193034ba528}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/bleeding_soul/SlServicesApp/Client/Source/stack_of_widgets.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -526,6 +530,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">authentification_widget</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/bleeding_soul/SlServicesApp/Client/Source/authentification_widget.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/bleeding_soul/SlServicesApp/Client/Source/authentification_widget.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{56489ce9-ee27-488a-85ba-5193034ba528}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/bleeding_soul/SlServicesApp/Client/Source/authentification_widget.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -670,6 +675,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">request_str_dialog</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/bleeding_soul/SlServicesApp/Client/Source/request_str_dialog.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/bleeding_soul/SlServicesApp/Client/Source/request_str_dialog.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{56489ce9-ee27-488a-85ba-5193034ba528}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/bleeding_soul/SlServicesApp/Client/Source/request_str_dialog.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
