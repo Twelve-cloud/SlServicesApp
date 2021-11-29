@@ -3,16 +3,14 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QWidget, QLineEdit
 from PyQt5.QtCore import pyqtSignal, Qt
-import string
 
 class RegistrationWidget(QWidget):
     createButtonClicked = pyqtSignal()
     backButtonClicked = pyqtSignal()
 
-    def __init__(self, client):
+    def __init__(self):
         super(RegistrationWidget, self).__init__()
-        uic.loadUi('registration_widget.ui', self)
-        self.client = client
+        uic.loadUi('Form/registration_widget.ui', self)
         self.createButton.clicked.connect(self.slotCreateButtonClicked)
         self.backButton.clicked.connect(self.slotBackButtonClicked)
         self.passwLineEdit.setEchoMode(QLineEdit.Password)
@@ -24,8 +22,16 @@ class RegistrationWidget(QWidget):
 
         if self.passw != self.againPasswLineEdit.text():
             self.setError('Пароли не совпадают')
-
-        self.createButtonClicked.emit()
+        elif len(self.login) < 6 or len(self.login) > 16:
+            self.setError('Логин должен содержать от 6 до 16 символов')
+        elif len(self.passw) < 6 or len(self.passw) > 32:
+            self.setError('Пароль должен содержать от 6 до 32 символов')
+        elif not self.login.isalnum() or not self.login.isalnum():
+            self.setError('Логин состоит из латанских символов, цифр')
+        elif not self.passw.isalnum() or not self.passw.isalnum():
+            self.setError('Пароль состоит из латанских символов, цифр')
+        else:
+            self.createButtonClicked.emit()
 
     def slotBackButtonClicked(self):
         self.clearLines()
@@ -36,7 +42,7 @@ class RegistrationWidget(QWidget):
         self.passwLineEdit.clear()
         self.againPasswLineEdit.clear()
         self.errorLabel.setText('Регистрация')
-        self.errorLabel.setStyleSheet('font-weight: 100; color: rgb(200, 200, 200);')
+        self.errorLabel.setStyleSheet('font-weight: 100; color: black;')
 
     def setError(self, error):
         self.errorLabel.setText(error)

@@ -66,3 +66,6 @@ Error with creating triggers: (pymysql.err.OperationalError) (1359, 'Trigger alr
                                 END]
 (Background on this error at: https://sqlalche.me/e/14/e3q8) at Sat Nov 27 15:24:24 2021
 Error with initializing tables: 'DbInitializer' object has no attribute 'create_session' at Sat Nov 27 15:24:28 2021
+Error with initializing tables: 'DbInitializer' object has no attribute 'create_session' at Mon Nov 29 01:41:23 2021
+Error with initializing tables: 'DbInitializer' object has no attribute 'create_session' at Mon Nov 29 01:41:47 2021
+Error with initializing tables: 'DbInitializer' object has no attribute 'create_session' at Mon Nov 29 01:42:03 2021

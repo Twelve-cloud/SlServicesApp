@@ -59,13 +59,22 @@ if __name__ == '__main__':
             db_initializer.create_tables()
             
         elif cmd == 'ctriggers':
-           db_initializer.create_triggers()
+            db_initializer.create_triggers()
            
         elif cmd == 'initables':
-           db_initializer.init_tables() 
+            db_initializer.init_tables() 
+
+        elif cmd == 'droptables':
+            db_initializer.drop_tables()
+
+        elif cmd == 'cltables':
+            db_initializer.clear_tables()
            
         elif cmd == 'help':
             print(help_str)
         
         else:
-            if cmd: sp.run(cmd.split())
+            try:
+                if cmd: sp.run(cmd.split())
+            except Exception:
+                print(help_str)

@@ -1,0 +1,164 @@
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:28:12 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:28:15 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:28:15 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:28:15 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:28:17 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:28:17 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:28:17 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:28:17 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:28:19 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:28:20 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:28:39 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:28:40 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:28:41 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:29:00 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:29:01 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:29:03 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:29:04 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:29:04 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:29:04 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:29:04 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 17:29:51 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 21:10:22 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 23:15:28 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 23:15:33 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 23:15:34 2021
+Cannot add account to database, error: 'login:123123' is an invalid keyword argument for Account at Sun Nov 28 23:15:38 2021
+Cannot add account to database, error: 'login:123123' is an invalid keyword argument for Account at Sun Nov 28 23:15:39 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:15:40 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:15:42 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:15:43 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:15:43 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:15:43 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:15:43 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:15:43 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:15:43 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:15:44 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 23:15:48 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 23:15:48 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 23:15:48 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:17:00 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 23:17:02 2021
+Cannot add account to database, error: 'login:123123' is an invalid keyword argument for Account at Sun Nov 28 23:17:06 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:17:43 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 23:17:49 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:29:07 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:29:39 2021
+Cannot add account to database, error: 'login:' is an invalid keyword argument for Account at Sun Nov 28 23:29:41 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:29:43 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:29:45 2021
+Cannot add account to database, error: 'login:asd' is an invalid keyword argument for Account at Sun Nov 28 23:29:49 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:30:50 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:34:16 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:35:47 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:36:06 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': '', 'AccountPassword': '', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Nov 28 23:36:42 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': '', 'AccountPassword': '', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Nov 28 23:36:43 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': '', 'AccountPassword': '', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Nov 28 23:36:43 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': '', 'AccountPassword': '', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Nov 28 23:36:44 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': '', 'AccountPassword': '', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Nov 28 23:36:44 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': '', 'AccountPassword': '', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Nov 28 23:36:44 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': '', 'AccountPassword': '', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Nov 28 23:36:45 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': '', 'AccountPassword': '', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Nov 28 23:36:45 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': '', 'AccountPassword': '', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Nov 28 23:36:45 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': '', 'AccountPassword': '', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Nov 28 23:36:45 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': '', 'AccountPassword': '', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Nov 28 23:36:45 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': '', 'AccountPassword': '', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Nov 28 23:36:46 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': '', 'AccountPassword': '', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Nov 28 23:36:46 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': '', 'AccountPassword': '', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Nov 28 23:36:46 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': '', 'AccountPassword': '', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Nov 28 23:36:46 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': '', 'AccountPassword': '', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Nov 28 23:37:51 2021
+Cannot select account from database, error: No row was found when one was required at Sun Nov 28 23:47:27 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': '123123', 'AccountPassword': '123123', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Nov 28 23:48:15 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'marinaborik' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': 'marinaborik', 'AccountPassword': '123123', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Nov 29 00:14:28 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'marinaborik' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': 'marinaborik', 'AccountPassword': '123123', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Nov 29 00:16:34 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'marinaborik' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s)]
+[parameters: {'AccountLogin': 'marinaborik', 'AccountPassword': '1231234', 'MobileNumber': None, 'Email': None}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Nov 29 00:28:58 2021
+Cannot select account from database, error: No row was found when one was required at Mon Nov 29 01:00:46 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_email' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`) VALUES (%(AccountLogin)s, %(AccountPassword)s)]
+[parameters: {'AccountLogin': 'ilyasavin', 'AccountPassword': '123456'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Nov 29 01:45:48 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_email' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`) VALUES (%(AccountLogin)s, %(AccountPassword)s)]
+[parameters: {'AccountLogin': 'ilyasavin', 'AccountPassword': '123456'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Nov 29 01:46:01 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_email' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`) VALUES (%(AccountLogin)s, %(AccountPassword)s)]
+[parameters: {'AccountLogin': 'ilyasavin', 'AccountPassword': '123456'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Nov 29 01:46:36 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_email' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`) VALUES (%(AccountLogin)s, %(AccountPassword)s)]
+[parameters: {'AccountLogin': 'ilyasavin', 'AccountPassword': '123456'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Nov 29 01:47:38 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_email' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`) VALUES (%(AccountLogin)s, %(AccountPassword)s)]
+[parameters: {'AccountLogin': 'ilyasavinn', 'AccountPassword': '123456'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Nov 29 01:47:40 2021
+Cannot redo account info, error: get() missing 1 required positional argument: 'ident' at Mon Nov 29 02:02:38 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'ilyasavin' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`) VALUES (%(AccountLogin)s, %(AccountPassword)s)]
+[parameters: {'AccountLogin': 'ilyasavin', 'AccountPassword': '1234567'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Nov 29 02:04:42 2021
+Cannot redo account info, error: name 'data' is not defined at Mon Nov 29 02:05:59 2021
+Cannot delete account, error: name 'session' is not defined at Mon Nov 29 04:05:13 2021
+Cannot select account from database, error: No row was found when one was required at Mon Nov 29 04:06:43 2021

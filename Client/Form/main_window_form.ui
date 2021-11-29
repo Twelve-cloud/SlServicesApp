@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(153, 193, 241)</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuAccount">
+    <property name="title">
+     <string>Аккаунт</string>
+    </property>
+    <addaction name="accInfo"/>
+    <addaction name="messages"/>
+    <addaction name="quit"/>
+   </widget>
+   <widget class="QMenu" name="menuServices">
+    <property name="title">
+     <string>Услуги</string>
+    </property>
+    <addaction name="get_consultation"/>
+    <addaction name="order_service"/>
+   </widget>
+   <addaction name="menuAccount"/>
+   <addaction name="menuServices"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="get_consultation">
+   <property name="text">
+    <string>Получить онлайн консультацию</string>
+   </property>
+  </action>
+  <action name="order_service">
+   <property name="text">
+    <string>Заказать страховую услугу</string>
+   </property>
+  </action>
+  <action name="accInfo">
+   <property name="text">
+    <string>Мой аккаунт</string>
+   </property>
+  </action>
+  <action name="messages">
+   <property name="text">
+    <string>Личные сообщения</string>
+   </property>
+  </action>
+  <action name="quit">
+   <property name="text">
+    <string>Выйти из аккаунта</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

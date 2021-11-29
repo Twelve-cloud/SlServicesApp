@@ -1,7 +1,11 @@
 {
-    "files": ["Views/initial_view.py", "Controllers/initial_controller.py", "Forms/initial_form.ui",
-              "Models/authentification_model.py", "Views/authentification_view.py", "Controllers/authentification_controller.py", "Forms/authentification_form.ui",
-              "Models/registration_model.py", "Views/registration_view.py", "Controllers/registration_controller.py", "Forms/registration_form.ui",
-              "Forms/account_info_form.ui",
-              "main.py","mainwindow.ui", "stack_of_controllers.py"]
+    "files": [
+    "Source/main_window.py",                "Form/main_window_form.ui",
+    "Source/initial_widget.py",             "Form/initial_widget.ui",
+    "Source/authentification_widget.py",    "Form/authentification_widget.ui",
+    "Source/registration_widget.py",        "Form/registration_widget.ui",
+    "Source/account_info_widget.py",        "Form/account_info_widget.ui",
+    "Source/stack_of_widgets.py",           "Source/client_socket.py",
+    "Source/request_str_dialog.py",         "Form/request_str_form.ui"
+    ]
 }

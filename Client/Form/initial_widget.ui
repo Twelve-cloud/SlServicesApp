@@ -142,7 +142,7 @@ font-weight: bold;</string>
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>logo/broker-logo.png</pixmap>
+        <pixmap>../Resource/broker-logo.png</pixmap>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>

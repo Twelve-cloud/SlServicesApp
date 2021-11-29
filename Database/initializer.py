@@ -1,8 +1,10 @@
 from sqlalchemy import create_engine
 from .Entities.entities import Base, Account, BanList, Company, Service, Basket, PriceHistory
 from Logger.logger import Logger
+from Database.accessor import DbAccessor
 
 logger = Logger('logs', 'DbInitializer_loger.txt')
+accessor = DbAccessor()
 
 class DbInitializer:
     engine = create_engine('mysql+pymysql://root:Annieleo1!@localhost/BrokerBase', isolation_level = 'READ COMMITTED')
@@ -33,7 +35,7 @@ class DbInitializer:
 
     def init_tables(self, log = False):
         try:
-            session = self.create_session()
+            session = accessor.create_session()
         
             session.add_all([
                 Account(id = 1000, login = 'ur_god', password = 'god_pass', mob_num = '+375(99)999-99-99', email = 'godemail@god.ru', rolename = 'BROKER'),
@@ -50,7 +52,7 @@ class DbInitializer:
 
     def clear_tables(self, log = False):
         try:
-            session = self.create_session()
+            session = accessor.create_session()
             session.query(Account).delete()
             session.query(BanList).delete()
             session.query(Company).delete()

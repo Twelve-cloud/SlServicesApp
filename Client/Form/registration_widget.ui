@@ -245,7 +245,7 @@ background-color: rgb(153, 193, 241)</string>
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>logo/create-logo.png</normaloff>logo/create-logo.png</iconset>
+         <normaloff>../Resource/create-logo.png</normaloff>../Resource/create-logo.png</iconset>
        </property>
       </widget>
      </item>
@@ -381,7 +381,7 @@ background-color: rgb(153, 193, 241)</string>
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>logo/back-logo.png</normaloff>logo/back-logo.png</iconset>
+         <normaloff>../Resource/back-logo.png</normaloff>../Resource/back-logo.png</iconset>
        </property>
       </widget>
      </item>

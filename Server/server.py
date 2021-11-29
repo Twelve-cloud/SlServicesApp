@@ -49,7 +49,7 @@ class TCPServer:
         while True:
             try:
                 client_socket, address = self.sock.accept()
-                logger.write('Server connected by' +  str(address));
+                logger.write('Server connected by' +  str(address))
                 self.add_socket(address, client_socket)
                 
                 thread_state = State(active = True)
@@ -68,7 +68,7 @@ class TCPServer:
             logger.write('Client ' + str(address) + ' has disconnected')
 
     def get_sockets(self):
-        return self.client_sockets;
+        return self.client_sockets
 
     def thread_on(self, thread, thread_state):
         self.threads[thread] = thread_state

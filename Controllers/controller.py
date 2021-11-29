@@ -10,18 +10,20 @@ class Controller:
             message_encoded = connection.recv(4096)
             message = message_encoded.decode()
             data_list = message.split('~!#$~')
+                
             command, data = data_list[0], data_list[1:]
 
             targetModel = None
             for model in Controller.models:
                 if command in Controller.models[model]:
-                    targetModel = model(data)
-
+                    targetModel = model
+            
             if targetModel:
-                result = eval('targetModel.' + Controller.models[targetModel][command]())
+                model = targetModel(data)
+                result = eval('model.' + Controller.models[targetModel][command] + '()')
                 connection.send(result.encode())
             else:
-               connection.send('UNKNOWN ERROR'.encode()) 
+                connection.send('UNKNOWN ERROR'.encode())
 
 '''
 class ControllerDispatcher:
