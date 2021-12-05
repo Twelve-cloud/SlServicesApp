@@ -66,7 +66,7 @@ class AccountInfoWidget(QWidget):
         QFile.remove(QDir.currentPath() + '/' + self.loginLineEdit.text() + '/background.jpg')
         QFile.copy(filename[0], QDir.currentPath() + '/' + self.loginLineEdit.text() + '/background.jpg')
         originalImage = QImage(QDir.currentPath() + '/' + self.loginLineEdit.text() + '/background.jpg')
-        scaledImage = originalImage.scaled(QSize(600, 800))
+        scaledImage = originalImage.scaled(QSize(self.frameGeometry().width(), self.frameGeometry().height()))
         palette = QPalette()
         palette.setBrush(QPalette.Window, QBrush(scaledImage))
         if not self.sourcePalette:
@@ -106,7 +106,7 @@ class AccountInfoWidget(QWidget):
         if QFile.exists(self.loginLineEdit.text() + '/background.jpg'):
             self.sourcePalette = self.palette()
             originalImage = QImage(QDir.currentPath() + '/' + self.loginLineEdit.text() + '/background.jpg')
-            scaledImage = originalImage.scaled(QSize(600, 800))
+            scaledImage = originalImage.scaled(QSize(self.frameGeometry().width(), self.frameGeometry().height()))
             palette = QPalette()
             palette.setBrush(QPalette.Window, QBrush(scaledImage))
             self.setPalette(palette)

@@ -24,3 +24,4 @@ class Logger:
             )
             logger_file.close()
 
+

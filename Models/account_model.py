@@ -23,7 +23,10 @@ class AccountModel:
     def sign_in(self):
         try:
             login, password = self.data
-            if (account := self.session.query(Account).filter(Account.login == self.data[login] and Account.password == self.data[password]).one()):
+            if (account := self.session.query(Account).filter(
+                                                            Account.login == self.data[login] and 
+                                                            Account.password == self.data[password]
+                                                        ).one()):
                 return 'AUTHENTIFICATION SUCCESSFUL~!#$~' + account.rolename
             else:
                 return 'AUTHENTIFICATION FAILED'
@@ -34,7 +37,10 @@ class AccountModel:
     def get_info(self):
         try:
             login, password = self.data
-            if (account := self.session.query(Account).filter(Account.login == self.data[login] and Account.password == self.data[password]).one()):
+            if (account := self.session.query(Account).filter(
+                                                            Account.login == self.data[login] and 
+                                                            Account.password == self.data[password]
+                                                        ).one()):
                 return f'{account.login}~!#$~{account.password}~!#$~{account.mob_num}~!#$~{account.email}'
             else:
                 return 'GETDATA FAILED'
@@ -46,7 +52,10 @@ class AccountModel:
         try:
             login, password, mob, email = self.data
             print(self.data)
-            if (account := self.session.query(Account).filter(Account.login == self.data[login] and Account.password == self.data[password]).first()):
+            if (account := self.session.query(Account).filter(
+                                                            Account.login == self.data[login] and 
+                                                            Account.password == self.data[password]
+                                                        ).first()):
                 account.login = self.data[login]
                 account.password = self.data[password]
                 account.mob_num = self.data[mob]
@@ -62,7 +71,10 @@ class AccountModel:
     def delete(self):
         try:
             login, password = self.data 
-            account = self.session.query(Account).filter(Account.login == self.data[login] and Account.password == self.data[password]).one()
+            account = self.session.query(Account).filter(
+                                                    Account.login == self.data[login] and 
+                                                    Account.password == self.data[password]
+                                                 ).one()
             self.session.delete(account)
             self.session.commit()
             return 'DELETING SUCCESSFUL'

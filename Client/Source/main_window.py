@@ -34,7 +34,7 @@ class MainWindow(QMainWindow):
         self.regi_wdg.backButtonClicked.connect(self.slotBackFromRegistrationButtonClicked)
 
         self.accInfo.triggered.connect(self.slotAccInfoButtonClicked)
-        #
+        self.quitAccount.triggered.connect(self.slotQuitAccountClicked)
         #
         #
         #
@@ -79,6 +79,11 @@ class MainWindow(QMainWindow):
         self.stack_of_widgets.pop()
         self.stack_of_widgets.push(self.info_wdg)
 
+    def slotQuitAccountClicked(self):
+        self.auth_wdg.clearLines()
+        self.stack_of_widgets.pop()
+        self.stack_of_widgets.push(self.auth_wdg)
+
     def slotSaveAccountInfoButtonClicked(self):
         self.client_socket.sendToServer('REDO ACCOUNT INFO~!#$~login:' + self.info_wdg.login + '~!#$~password:' + self.info_wdg.passw + '~!#$~mob_num:' + self.info_wdg.mobnum + '~!#$~email:' + self.info_wdg.email)
         respond = self.client_socket.getRespond()
@@ -91,6 +96,9 @@ class MainWindow(QMainWindow):
             self.handleRespond(respond)
         else:
             QMessageBox.about(self, "Уведомление", "Неверный пароль")
+
+    def closeEvent(self, event):
+        self.client_socket.sendToServer('EXIT')
 
     def handleRespond(self, respond):
         respond_list = respond.split('~!#$~')

@@ -1,15 +1,14 @@
-import threading, time, os
-from socket import AF_INET, SOCK_STREAM, SOL_SOCKET, SO_REUSEADDR, SHUT_RDWR, socket, inet_aton, gethostname
-from .state import State
+from threading import Thread
+from socket import AF_INET, SOCK_STREAM, \
+            SOL_SOCKET, SO_REUSEADDR,    \
+            SHUT_RDWR, socket, inet_aton
 from Logger.logger import Logger
 
 logger = Logger('logs', 'server_logs.txt')
 
 class TCPServer:
-    def __init__(self, host, port):
-        self.host = host
-        self.port = port
-        self.client_sockets = {}
+    def __init__(self):
+        self.clients = {}
         self.threads = {}
         self.active = False
 
@@ -23,66 +22,69 @@ class TCPServer:
         self.host = host
         self.port = port
 
+    def get_inet_info(self):
+        return (self.host, self.port)
+
+    def is_active(self):
+        return self.active
+
     def turn_on(self):
         self.sock = socket(AF_INET, SOCK_STREAM)
         self.sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
         self.sock.bind((self.host, self.port))
         self.sock.listen(100)
         self.active = True
-        logger.write('Server has been listening')
+        logger.write(
+            f'Server has been listening at '
+            f'address: {self.host}, port: {self.port}'
+        )
 
-    def turn_off(self):
-        for cl_sock in self.client_sockets.copy():
-            self.remove_socket(cl_sock)
-        
-        for thread in self.threads:
-            self.thread_off(thread)
+    def turn_off(self, dispatcher_thread):
+        for connection in self.clients:
+            connection.shutdown(SHUT_RDWR)
+            self.threads[connection].join()
+            connection.close()
         
         self.sock.shutdown(SHUT_RDWR)
         self.sock.close()
-        self.client_sockets = {}
+        self.clients = {}
         self.threads = {}
         self.active = False
+        dispatcher_thread.join()
         logger.write('Server has stoppped')
 
-    def dispatcher(self, handle_client):
+    def dispatcher(self, client_function):
         while True:
             try:
-                client_socket, address = self.sock.accept()
-                logger.write('Server connected by' +  str(address))
-                self.add_socket(address, client_socket)
+                connection, address = self.sock.accept()
+                self.add_client(connection, address)
                 
-                thread_state = State(active = True)
-                thread = threading.Thread(target = handle_client, args = (client_socket, thread_state))
-                self.thread_on(thread, thread_state)
-            except Exception: pass
+                thread = Thread(
+                    target = client_function,
+                    args = (connection, self)
+                )
+                self.add_thread(connection, thread)
+                thread.start()
+            except Exception:
+                logger.write('Accept function was inturrupted')
+                break
 
-    def add_socket(self, address, client_socket):
-        self.client_sockets[address] = client_socket
+    def add_client(self, connection, address):
+        self.clients[connection] = address
+        logger.write('Server connected by' +  str(address))
 
-    def remove_socket(self, address):
-        if not (client_socket := self.client_sockets.pop(address, False)):
-            logger.write('Cannot remove client socket ' + str(address) + ': not exist')
-        else:
-            client_socket.close()
-            logger.write('Client ' + str(address) + ' has disconnected')
+    def del_client(self, connection):
+        address = self.clients.pop(connection)
+        logger.write('Client ' + str(address) + ' has disconnected')
 
-    def get_sockets(self):
-        return self.client_sockets
-
-    def thread_on(self, thread, thread_state):
-        self.threads[thread] = thread_state
-        thread.start()
-
-    def thread_off(self, thread):
-        self.threads[thread].active = False
-        thread.join()
+    def get_clients(self):
+        return self.clients
+        
+    def add_thread(self, connection, thread):
+        self.threads[connection] = thread
+        
+    def del_thread(self, connection):
+        self.threads.pop(connection)
 
     def get_threads(self):
         return self.threads
-
-    def hostname(self):
-        return gethostname()
-
-    def inet_info(self):
-        return (self.host, self.port)

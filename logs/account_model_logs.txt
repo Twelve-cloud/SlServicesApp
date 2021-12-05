@@ -199,3 +199,7 @@ Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check co
 (Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Nov 29 16:30:59 2021
 Cannot select account from database, error: No row was found when one was required at Mon Nov 29 17:22:16 2021
 Cannot select account from database, error: No row was found when one was required at Mon Nov 29 17:53:20 2021
+Cannot select account from database, error: No row was found when one was required at Mon Nov 29 22:42:13 2021
+Cannot select account from database, error: No row was found when one was required at Mon Nov 29 22:42:15 2021
+Cannot select account from database, error: No row was found when one was required at Mon Nov 29 22:42:16 2021
+Cannot select account from database, error: No row was found when one was required at Mon Nov 29 22:42:16 2021

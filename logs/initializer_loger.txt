@@ -69,3 +69,9 @@ Error with initializing tables: 'DbInitializer' object has no attribute 'create_
 Error with initializing tables: 'DbInitializer' object has no attribute 'create_session' at Mon Nov 29 01:41:23 2021
 Error with initializing tables: 'DbInitializer' object has no attribute 'create_session' at Mon Nov 29 01:41:47 2021
 Error with initializing tables: 'DbInitializer' object has no attribute 'create_session' at Mon Nov 29 01:42:03 2021
+Error with creating triggers: (pymysql.err.OperationalError) (1359, 'Trigger already exists')
+[SQL: CREATE TRIGGER autoupdatePrice_2 AFTER UPDATE ON Service
+                                FOR EACH ROW BEGIN
+                                    INSERT INTO PriceHistory(ServiceName, CompanyName, Price) VALUES (NEW.ServiceName, NEW.CompanyName, NEW.ServicePrice);
+                                END]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Dec  5 10:24:05 2021

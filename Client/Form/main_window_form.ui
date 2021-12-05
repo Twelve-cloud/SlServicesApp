@@ -32,7 +32,7 @@
     </property>
     <addaction name="accInfo"/>
     <addaction name="messages"/>
-    <addaction name="quit"/>
+    <addaction name="quitAccount"/>
    </widget>
    <widget class="QMenu" name="menuServices">
     <property name="title">
@@ -65,7 +65,7 @@
     <string>Личные сообщения</string>
    </property>
   </action>
-  <action name="quit">
+  <action name="quitAccount">
    <property name="text">
     <string>Выйти из аккаунта</string>
    </property>
