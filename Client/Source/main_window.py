@@ -1,8 +1,8 @@
 # This Python file uses the following encoding: utf-8
 import sys
 
-from PyQt5 import uic
-from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox
+from PyQt5 import QtCore, uic
+from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QMdiArea
 from PyQt5.QtGui import QPixmap
 
 from client_socket import ClientSocket
@@ -35,9 +35,8 @@ class MainWindow(QMainWindow):
 
         self.accInfo.triggered.connect(self.slotAccInfoButtonClicked)
         self.quitAccount.triggered.connect(self.slotQuitAccountClicked)
-        #
-        #
-        #
+        self.mdiArea = QMdiArea()
+        self.setCentralWidget(self.mdiArea)
 
         self.stack_of_widgets.push(self.init_wdg)
 
@@ -63,21 +62,18 @@ class MainWindow(QMainWindow):
         self.stack_of_widgets.pop()
         self.stack_of_widgets.push(self.auth_wdg)
 
-    def slotBackFromAccountButtonClicked(self):
-        self.stack_of_widgets.pop()
-        self.stack_of_widgets.push(self)
-
     def slotAccInfoButtonClicked(self):
         self.info_wdg = AccountInfoWidget()
-        self.info_wdg.backButtonClicked.connect(self.slotBackFromAccountButtonClicked)
         self.info_wdg.saveButtonClicked.connect(self.slotSaveAccountInfoButtonClicked)
         self.info_wdg.deleteAccountButtonClicked.connect(self.slotDeleteAccountButtonClicked)
-        self.client_socket.sendToServer('GET ACCOUNT INFO~!#$~login:' + self.auth_wdg.login + '~!#$~password:' + self.auth_wdg.passw)
+        self.client_socket.sendToServer('GET ACCOUNT INFO~!#$~login:' + self.auth_wdg.login)
         respond = self.client_socket.getRespond()
         self.info_wdg.setInfo(respond)
         self.info_wdg.clearErrorMsg()
-        self.stack_of_widgets.pop()
-        self.stack_of_widgets.push(self.info_wdg)
+        wnd = self.mdiArea.addSubWindow(self.info_wdg)
+        wnd.setWindowTitle('Личная информация')
+        wnd.setWindowFlags(QtCore.Qt.Dialog);
+        wnd.showMaximized()
 
     def slotQuitAccountClicked(self):
         self.auth_wdg.clearLines()
@@ -91,7 +87,7 @@ class MainWindow(QMainWindow):
 
     def slotDeleteAccountButtonClicked(self):
         if self.info_wdg.passw == self.auth_wdg.passw:
-            self.client_socket.sendToServer('DELETE ACCOUNT~!#$~login:' + self.auth_wdg.login + '~!#$~password:' + self.auth_wdg.passw)
+            self.client_socket.sendToServer('DELETE ACCOUNT~!#$~login:' + self.auth_wdg.login)
             respond = self.client_socket.getRespond()
             self.handleRespond(respond)
         else:

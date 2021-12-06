@@ -1,7 +1,9 @@
+import os, pickle
 from sqlalchemy import create_engine
 from .Entities.entities import Base, Account, BanList, Company, Service, Basket, PriceHistory
 from Logger.logger import Logger
 from Database.accessor import DbAccessor
+from cryptography.fernet import Fernet
 
 logger = Logger('logs', 'initializer_loger.txt')
 accessor = DbAccessor()
@@ -43,11 +45,21 @@ class DbInitializer:
     def init_tables(self, log = False):
         try:
             session = accessor.create_session()
-        
+            
+            cipher_key = Fernet.generate_key()
+            path = os.path.join('Database', 'AccKeys', 'ur_god')
+            account_file = open(path, 'wb')
+            pickle.dump(cipher_key, account_file)
+            account_file.close()
+
+            cipher = Fernet(cipher_key)
+            encrypted_password = cipher.encrypt('god_pass'.encode())
+
             session.add_all([
                 Account(
-                    id = 1000, login = 'ur_god',
-                    password = 'god_pass', 
+                    id = 1000,
+                    login = 'ur_god',
+                    password = encrypted_password, 
                     mob_num = '+375(99)999-99-99',
                     email = 'godemail@god.ru',
                     rolename = 'BROKER'

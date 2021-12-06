@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.14.1, 2021-11-30T19:30:14. -->
+<!-- Written by QtCreator 4.14.1, 2021-12-06T02:19:22. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -602,7 +602,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">main_window</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/bleeding_soul/SlServicesApp/Client/Source/main_window.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/bleeding_soul/SlServicesApp/Client/Source/main_window.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{56489ce9-ee27-488a-85ba-5193034ba528}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{d099a5ba-e447-4b5e-a084-cd030d9249d4}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/bleeding_soul/SlServicesApp/Client/Source/main_window.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>

@@ -9,14 +9,12 @@ from request_str_dialog import RequestStrDialog
 
 class AccountInfoWidget(QWidget):
     saveButtonClicked = pyqtSignal()
-    backButtonClicked = pyqtSignal()
     deleteAccountButtonClicked = pyqtSignal()
 
     def __init__(self):
         super(AccountInfoWidget, self).__init__()
         uic.loadUi('Form/account_info_widget.ui', self)
         self.saveSettingsButton.clicked.connect(self.slotSaveButtonClicked)
-        self.backButton.clicked.connect(self.slotBackButtonClicked)
         self.deleteAccountButton.clicked.connect(self.slotDeleteAccountButtonClicked)
         self.uploadPhotoButton.clicked.connect(self.slotUploadPhotoClicked)
         self.deletePhotoButton.clicked.connect(self.slotDeletePhotoClicked)
@@ -24,9 +22,6 @@ class AccountInfoWidget(QWidget):
         self.backgroundDeleteButton.clicked.connect(self.slotDeleteThemeButtonClicked)
         self.passwLineEdit.setEchoMode(QLineEdit.Password)
         self.sourcePalette = None
-
-    def slotBackButtonClicked(self):
-        self.backButtonClicked.emit()
 
     def slotSaveButtonClicked(self):
         self.login = self.loginLineEdit.text()
@@ -95,6 +90,7 @@ class AccountInfoWidget(QWidget):
         self.errorLabel.setStyleSheet('font-weight: 100; color: black; background: rgba(255, 0, 0, 0);')
 
     def setInfo(self, data):
+        print(data)
         login, passw, mobnum, email = data.split('~!#$~')
         self.loginLineEdit.setText(login)
         self.passwLineEdit.setText(passw)

@@ -23,9 +23,9 @@ class Account(Base):
         ),
         unique = True
     )
-    password = Column('AccountPassword', String(50),
+    password = Column('AccountPassword', String(200),
         CheckConstraint(
-            sqltext = "AccountPassword REGEXP '^[:alnum:][[:alnum:]_]{4,30}[:alnum:]$'",
+            sqltext = "AccountPassword REGEXP '^[:print:][[:print:]_]{98,198}[:print:]$'",
             name = 'ch_password'
         )
     )

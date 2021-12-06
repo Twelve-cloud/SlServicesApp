@@ -75,3 +75,15 @@ Error with creating triggers: (pymysql.err.OperationalError) (1359, 'Trigger alr
                                     INSERT INTO PriceHistory(ServiceName, CompanyName, Price) VALUES (NEW.ServiceName, NEW.CompanyName, NEW.ServicePrice);
                                 END]
 (Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Dec  5 10:24:05 2021
+Error with clearing tables: (pymysql.err.ProgrammingError) (1146, "Table 'BrokerBase.Account' doesn't exist")
+[SQL: DELETE FROM `Account`]
+(Background on this error at: https://sqlalche.me/e/14/f405) at Sun Dec  5 21:15:11 2021
+Error with initializing tables: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_password' is violated.")
+[SQL: INSERT INTO `Account` (`ID`, `AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`, `Rolename`) VALUES (%(ID)s, %(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s, %(Rolename)s)]
+[parameters: {'ID': 1000, 'AccountLogin': 'ur_god', 'AccountPassword': 'god_pass', 'MobileNumber': '+375(99)999-99-99', 'Email': 'godemail@god.ru', 'Rolename': 'BROKER'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Dec  5 21:32:17 2021
+Error with initializing tables: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_password' is violated.")
+[SQL: INSERT INTO `Account` (`ID`, `AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`, `Rolename`) VALUES (%(ID)s, %(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s, %(Rolename)s)]
+[parameters: {'ID': 1000, 'AccountLogin': 'ur_god', 'AccountPassword': 'god_pass', 'MobileNumber': '+375(99)999-99-99', 'Email': 'godemail@god.ru', 'Rolename': 'BROKER'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Dec  5 21:32:38 2021
+Error with initializing tables: name 'os' is not defined at Sun Dec  5 21:35:39 2021

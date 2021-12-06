@@ -1,3 +1,4 @@
+import os
 from pymysql import connect, cursors
 from Logger.logger import Logger
 
@@ -15,6 +16,11 @@ try:
     cursor.execute('CREATE DATABASE IF NOT EXISTS BrokerBase')
     cursor.close()
     connection.close()
+
+    path = os.path.join('Database', 'AccKeys')
+    if not os.path.isdir(path):
+        os.mkdir(path)
+
 except Exception as error:
     logger.write(f'Cannot create database with error {error}')
 

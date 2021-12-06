@@ -203,3 +203,20 @@ Cannot select account from database, error: No row was found when one was requir
 Cannot select account from database, error: No row was found when one was required at Mon Nov 29 22:42:15 2021
 Cannot select account from database, error: No row was found when one was required at Mon Nov 29 22:42:16 2021
 Cannot select account from database, error: No row was found when one was required at Mon Nov 29 22:42:16 2021
+Cannot select account from database, error: [Errno 2] No such file or directory: 'Database/Accounts/login' at Sun Dec  5 21:16:11 2021
+Cannot add account to database, error: data must be bytes at Sun Dec  5 21:16:20 2021
+Cannot add account to database, error: data must be bytes at Sun Dec  5 21:18:38 2021
+Cannot add account to database, error: data must be bytes at Sun Dec  5 21:19:54 2021
+Cannot add account to database, error: (pymysql.err.DataError) (1406, "Data too long for column 'AccountPassword' at row 1")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`) VALUES (%(AccountLogin)s, %(AccountPassword)s)]
+[parameters: {'AccountLogin': 'login', 'AccountPassword': b'gAAAAABhrQNpjl--p0LL6hS9U3uyyh9aotvohv7KefXsKxegk7narAieoOcykuzJUPzbqtt_tTMiMRY45dDS_bwRlss18dX0oQ=='}]
+(Background on this error at: https://sqlalche.me/e/14/9h9h) at Sun Dec  5 21:22:33 2021
+Cannot select account from database, error: [Errno 2] No such file or directory: 'Database/Accounts/login' at Sun Dec  5 21:36:59 2021
+Cannot select account from database, error: [Errno 2] No such file or directory: 'Database/Accounts/login' at Sun Dec  5 21:39:09 2021
+Cannot select account from database, error: [Errno 2] No such file or directory: 'Database/Accounts/login' at Sun Dec  5 21:39:17 2021
+Cannot select account from database, error: name 'cipther_key' is not defined at Sun Dec  5 21:40:13 2021
+Cannot select account from database, error: name 'cipther_key' is not defined at Sun Dec  5 21:40:16 2021
+Cannot select account from database, error: pop expected at least 1 argument, got 0 at Mon Dec  6 00:32:57 2021
+Cannot select account from database, error: 0 at Mon Dec  6 00:34:06 2021
+Cannot select account from database, error: 0 at Mon Dec  6 00:34:57 2021
+Cannot select account from database, error: 'marina' at Mon Dec  6 00:37:15 2021

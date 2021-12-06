@@ -1,6 +1,8 @@
+import os, pickle
 from Database.Entities.entities import Account
 from Database.accessor import DbAccessor
 from Logger.logger import Logger
+from cryptography.fernet import Fernet
 
 logger = Logger('logs', 'account_model_logs.txt')
 
@@ -13,7 +15,23 @@ class AccountModel:
 
     def register(self):
         try:
-            self.session.add(Account(**self.data))
+            login = self.data['login']
+            password = self.data['password']
+            
+            cipher_key = Fernet.generate_key()
+            path = os.path.join('Database', 'AccKeys', login)
+            account_file = open(path, 'wb')
+            pickle.dump(cipher_key, account_file)
+            account_file.close()
+
+            cipher = Fernet(cipher_key)
+            encrypted_password = cipher.encrypt(password.encode())
+            print(password)
+
+            self.session.add(Account(
+                login = login, 
+                password = encrypted_password)
+            )
             self.session.commit()
             return 'REGISTRATION SUCCESSFUL'
         except Exception as error:
@@ -22,11 +40,22 @@ class AccountModel:
 
     def sign_in(self):
         try:
-            login, password = self.data
+            login = self.data['login']
+            password = self.data['password'] 
+            
+            path = os.path.join('Database', 'AccKeys', login)
+            account_file = open(path, 'rb')
+            cipher_key = pickle.load(account_file)
+            account_file.close()
+
+            cipher = Fernet(cipher_key)
+            encrypted_password = cipher.encrypt(password.encode())
+
             if (account := self.session.query(Account).filter(
-                                                            Account.login == self.data[login] and 
-                                                            Account.password == self.data[password]
-                                                        ).one()):
+                    Account.login == login and  
+                    Account.password == encrypted_password
+                ).one()
+            ):
                 return 'AUTHENTIFICATION SUCCESSFUL~!#$~' + account.rolename
             else:
                 return 'AUTHENTIFICATION FAILED'
@@ -36,12 +65,23 @@ class AccountModel:
 
     def get_info(self):
         try:
-            login, password = self.data
+            login = self.data['login']
+
             if (account := self.session.query(Account).filter(
-                                                            Account.login == self.data[login] and 
-                                                            Account.password == self.data[password]
-                                                        ).one()):
-                return f'{account.login}~!#$~{account.password}~!#$~{account.mob_num}~!#$~{account.email}'
+                    Account.login == login
+                ).one()
+            ):
+                path = os.path.join('Database', 'AccKeys', login)
+                account_file = open(path, 'rb')
+                cipher_key = pickle.load(account_file)
+                account_file.close()
+
+                cipher = Fernet(cipher_key)
+                decrypted_password = cipher.decrypt(account.password.encode())
+                print(account.password)
+                print(decrypted_password)
+                return f'{account.login}~!#$~{decrypted_password}~!#$~' \
+                       f'{account.mob_num}~!#$~{account.email}'
             else:
                 return 'GETDATA FAILED'
         except Exception as error:
@@ -50,16 +90,27 @@ class AccountModel:
 
     def redo_info(self):
         try:
-            login, password, mob, email = self.data
-            print(self.data)
+            login = self.data['login']
+            password = self.data['password']
+            mob_num = self.data['mob_num']
+            email = self.data['email']
+
+            path = os.path.join('Database', 'AccKeys', login)
+            account_file = open(path, 'rb')
+            cipher_key = pickle.load(account_file)
+            account_file.close()
+
+            cipher = Fernet(cipher_key)
+            encrypted_password = cipher.encrypt(password.encode())
+
             if (account := self.session.query(Account).filter(
-                                                            Account.login == self.data[login] and 
-                                                            Account.password == self.data[password]
-                                                        ).first()):
-                account.login = self.data[login]
-                account.password = self.data[password]
-                account.mob_num = self.data[mob]
-                account.email = self.data[email]
+                    Account.login == login
+                ).first()
+            ):
+                account.login = login
+                account.password = encrypted_password
+                account.mob_num = mob_num
+                account.email = email
                 self.session.commit()
                 return 'REDO ACC INFO SUCCESS'
             else:
@@ -70,11 +121,10 @@ class AccountModel:
 
     def delete(self):
         try:
-            login, password = self.data 
+            login = self.data['login']
             account = self.session.query(Account).filter(
-                                                    Account.login == self.data[login] and 
-                                                    Account.password == self.data[password]
-                                                 ).one()
+                Account.login == login
+            ).one()
             self.session.delete(account)
             self.session.commit()
             return 'DELETING SUCCESSFUL'

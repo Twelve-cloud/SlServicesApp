@@ -8,6 +8,8 @@ logger = Logger('logs', 'server_logs.txt')
 
 class TCPServer:
     def __init__(self):
+        self.host = None
+        self.port = None
         self.clients = {}
         self.threads = {}
         self.active = False
