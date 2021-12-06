@@ -1,6 +1,6 @@
 import os, pickle
 from Database.accessor import DbAccessor
-from cryptography.fernet import Fernet
+from cryptography.fernet import Fernet, InvalidToken
 from Database.Entities.entities import Account
 
 class AccountModel:
@@ -74,4 +74,5 @@ class AccountModel:
         cipher = Fernet(key)
         decrypted_password = cipher.decrypt(password.encode())
         return decrypted_password
+
 

@@ -1,9 +1,5 @@
 from Models.account_model import AccountModel
 from Logger.logger import Logger
-from Database.accessor import DbAccessor
-from cryptography.fernet import Fernet
-from Database.Entities.entities import Account
-import os, pickle
 
 logger = Logger('logs', 'account_controller_logs.txt')
 
@@ -13,7 +9,6 @@ class AccountController:
         values = [kv.split(':')[1] for kv in args]
         self.kwargs = dict(zip(keys, values))
         self.model = AccountModel()
-        self.session = DbAccessor().create_session()
 
     def register_account(self):
         try:
@@ -25,50 +20,34 @@ class AccountController:
 
     def sign_in(self):
         try:
-            login = self.kwargs['login']
-            password = self.kwargs['password'] 
+            accounts = self.model.read()
             
-            path = os.path.join('Database', 'AccKeys', login)
-            account_file = open(path, 'rb')
-            cipher_key = pickle.load(account_file)
-            account_file.close()
-
-            cipher = Fernet(cipher_key)
-            encrypted_password = cipher.encrypt(password.encode())
-
-            if (account := self.session.query(Account).filter(
-                    Account.login == login and  
-                    Account.password == encrypted_password
-                ).one()
-            ):
-                return 'AUTHENTIFICATION SUCCESSFUL~!#$~' + account.rolename
+            for account in accounts:
+                decrypted_password = self.model.decrypt_password(account.login, account.password)
+                if account.login == self.kwargs['login'] and \
+                decrypted_password.decode() == self.kwargs['password']:
+                    break
             else:
                 return 'AUTHENTIFICATION FAILED'
+            return 'AUTHENTIFICATION SUCCESSFUL~!#$~' + account.rolename
         except Exception as error:
             logger.write(f'Cannot select account from database, error: {error}')
             return 'AUTHENTIFICATION FAILED'
 
     def get_information(self):
         try:
-            login = self.kwargs['login']
+            accounts = self.model.read()
 
-            if (account := self.session.query(Account).filter(
-                    Account.login == login
-                ).one()
-            ):
-                path = os.path.join('Database', 'AccKeys', login)
-                account_file = open(path, 'rb')
-                cipher_key = pickle.load(account_file)
-                account_file.close()
-
-                cipher = Fernet(cipher_key)
-                decrypted_password = cipher.decrypt(account.password.encode())
-                print(account.password)
-                print(decrypted_password)
-                return f'{account.login}~!#$~{decrypted_password}~!#$~' \
-                       f'{account.mob_num}~!#$~{account.email}'
+            for account in accounts:
+                if account.login == self.kwargs['login']:
+                    break
             else:
                 return 'GETDATA FAILED'
+            decrypted_password = self.model.decrypt_password(
+                account.login, account.password
+            )
+            return f'{account.login}~!#$~{decrypted_password.decode()}~!#$~' \
+                   f'{account.mob_num}~!#$~{account.email}'
         except Exception as error:
             logger.write(f'Cannot select account from database, error: {error}')
             return 'GETDATA FAILED'
@@ -89,6 +68,8 @@ class AccountController:
         except Exception as error:
             logger.write(f'Cannot delete account, error: {error}')
             return 'DELETING FAILED'
+
+
 
 
 

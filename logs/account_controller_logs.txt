@@ -85,3 +85,10 @@ Cannot select account from database, error:  at Mon Dec  6 11:21:28 2021
 Cannot select account from database, error: name 'os' is not defined at Mon Dec  6 11:34:14 2021
 Cannot select account from database, error: invalid load key, 'O'. at Mon Dec  6 11:35:15 2021
 Cannot select account from database, error: 'AccountController' object has no attribute 'session' at Mon Dec  6 11:36:48 2021
+Cannot add account to database, error: name 'filename' is not defined at Mon Dec  6 12:35:37 2021
+Cannot select account from database, error: AccountModel.encrypt_password() missing 1 required positional argument: 'password' at Mon Dec  6 12:37:12 2021
+Cannot select account from database, error: No row was found when one was required at Mon Dec  6 12:44:28 2021
+Cannot select account from database, error: name 'account_login' is not defined at Mon Dec  6 14:20:16 2021
+Cannot select account from database, error: name 'account_login' is not defined at Mon Dec  6 14:21:29 2021
+Cannot select account from database, error: name 'account_login' is not defined at Mon Dec  6 14:22:43 2021
+Cannot select account from database, error: name 'account_login' is not defined at Mon Dec  6 14:23:13 2021
