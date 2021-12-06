@@ -3,15 +3,16 @@ import subprocess as sp
 from threading import Thread
 from Server.server import TCPServer
 from Database.initializer import DbInitializer
-from Controllers.controller import Controller
+from Controllers.dispatcher import ControllersDispatcher
+from Models.account_model import AccountModel
 from help import help
 
 
 if __name__ == '__main__':
     db_initializer = DbInitializer()
+    acc_model = AccountModel()
     server = TCPServer()
-
-    controller = Controller()
+    controllers_dispatcher = ControllersDispatcher()
     
     while (cmd := input('>> ')) != 'exit':
         if cmd == '': continue
@@ -32,7 +33,7 @@ if __name__ == '__main__':
                 
                         dispatcher_thread = Thread(
                             target = server.dispatcher, 
-                            args = (controller.perform, )
+                            args = (controllers_dispatcher.perform, )
                         )
                         dispatcher_thread.start()
                     except Exception as e:
@@ -66,6 +67,50 @@ if __name__ == '__main__':
                 db_initializer.drop_tables()
             case 'cltables':
                 db_initializer.clear_tables()
+            case 'create_acc':
+                try:
+                    login = input('login: ')
+                    password = input('password: ')
+                    rolename = input('rolename: ')
+                    acc_model.create(login, password, rolename)
+                except Exception:
+                    print('Invalid command. Type !help for getting help')
+            case 'delete_acc':
+                try:
+                    login = input('login: ')
+                    acc_model.delete(login)
+                except Exception:
+                    print('Invalid command. Type !help for getting help')
+            case 'update_acc':
+                try:
+                    login = input('login: ')
+                    password = input('password: ')
+                    mob_num = input('mob_number: ')
+                    email = input('email: ')
+                    acc_model.update(
+                        login = login,
+                        password = password,
+                        mob_num = mob_num,
+                        email = email
+                    )
+                except Exception:
+                    print('Invalid command. Type !help for getting help')
+            case 'read_accs':
+                try:
+                    accs = acc_model.read()
+                    print(
+                        '-' * 121, '|{:^6}|{:^20}|{:^20}|{:^20}|{:^33}|{:^16}|'.format(
+                            'ID', 'LOGIN', 'PASSWORD', 'MOBILE', 'EMAIL', 'ROLENAME'),
+                        '-' * 121, sep = '\n'
+                    )
+                    for acc in accs:
+                        print(
+                            '|{:^6}|{:^20}|{:^20}|{:^20}|{:^33}|{:^16}|'.format(
+                                acc[0], acc[1], '', acc[3], acc[4], acc[5])
+                        )
+                    print('-' * 121)
+                except Exception:
+                    print('Invalid command. Type !help for getting help')
             case 'help':
                 help()
             case _:
@@ -74,3 +119,4 @@ if __name__ == '__main__':
                         sp.run(cmd.split())
                 except Exception:
                     print('Invalid command. Type !help for getting help')
+

@@ -1,0 +1,87 @@
+Cannot add account to database, error: AccountModel.create() missing 1 required positional argument: 'rolename' at Mon Dec  6 06:45:28 2021
+Cannot add account to database, error: 'AccountModel' object has no attribute 'ecrypt_password' at Mon Dec  6 06:47:04 2021
+Cannot add account to database, error: 'AccountModel' object has no attribute 'ecrypt_password' at Mon Dec  6 06:47:54 2021
+Cannot select account from database, error: AccountModel.encrypt_password() missing 1 required positional argument: 'password' at Mon Dec  6 06:48:22 2021
+Cannot select account from database, error: name 'ecnrypted_password' is not defined at Mon Dec  6 06:50:48 2021
+Cannot add account to database, error: [Errno 2] No such file or directory: 'Database/AccKeys/marika' at Mon Dec  6 07:02:03 2021
+Cannot add account to database, error: [Errno 2] No such file or directory: 'Database/AccKeys/marika' at Mon Dec  6 07:02:09 2021
+Cannot add account to database, error: [Errno 2] No such file or directory: 'Database/AccKeys/mariba' at Mon Dec  6 07:02:16 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'marika' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'marika', 'AccountPassword': b'gAAAAABhrYuGj5G9FoLEZhz-iXxjRSp_cdfv6mYHA0Xq94ejTWPsRw_JL8cgNJ1zXc__S_DNb8ie-JQWdkm35wnWe18p5uS4Kw==', 'Rolename': 'USER'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Dec  6 07:03:18 2021
+Cannot add account to database, error: name 'cipther_key' is not defined at Mon Dec  6 07:07:15 2021
+Cannot select account from database, error: 'AccountModel' object has no attribute 'decrypt' at Mon Dec  6 07:16:46 2021
+Cannot select account from database, error: AccountModel.decrypt_password() missing 1 required positional argument: 'password' at Mon Dec  6 07:17:21 2021
+Cannot select account from database, error: [Errno 2] No such file or directory: 'Database/AccKeys/ur_god1' at Mon Dec  6 07:18:08 2021
+Cannot add account to database, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': '123123', 'AccountPassword': b'gAAAAABhrZBEZnztvjJav9ebl3u8FxbS3yx-iKbXb1jqH5QkVOWNeLbfc5_4fewcZgDV6yjMUFswFv1tI_CDIx02GWDG9qg91Q==', 'Rolename': 'USER'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 07:23:32 2021
+Cannot select account from database, error:  at Mon Dec  6 07:24:16 2021
+Cannot select account from database, error:  at Mon Dec  6 07:24:19 2021
+Cannot select account from database, error:  at Mon Dec  6 07:24:19 2021
+Cannot select account from database, error:  at Mon Dec  6 07:24:19 2021
+Cannot select account from database, error:  at Mon Dec  6 07:24:19 2021
+Cannot select account from database, error:  at Mon Dec  6 07:25:42 2021
+Cannot select account from database, error:  at Mon Dec  6 07:30:22 2021
+Cannot select account from database, error:  at Mon Dec  6 07:31:32 2021
+Cannot select account from database, error:  at Mon Dec  6 07:32:27 2021
+Cannot select account from database, error:  at Mon Dec  6 07:33:26 2021
+Cannot select account from database, error:  at Mon Dec  6 07:33:53 2021
+Cannot select account from database, error: token must be bytes at Mon Dec  6 07:35:54 2021
+Cannot select account from database, error:  at Mon Dec  6 07:37:42 2021
+Cannot select account from database, error: token must be bytes at Mon Dec  6 07:47:35 2021
+Cannot select account from database, error:  at Mon Dec  6 07:48:52 2021
+Cannot select account from database, error:  at Mon Dec  6 07:50:08 2021
+Cannot select account from database, error:  at Mon Dec  6 07:50:55 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'asdasd' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'asdasd', 'AccountPassword': b'gAAAAABhrZcfD7vgr-zmOzqs1z2gYxzq3Vm_KCsxFOLCXbHrSMFZ3JG7aH7gDyhQxedgR5ZBALPvQI5-C0uy7k8Oe-OObXaTYA==', 'Rolename': 'USER'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Dec  6 07:52:47 2021
+Cannot select account from database, error:  at Mon Dec  6 07:52:54 2021
+Cannot select account from database, error: token must be bytes at Mon Dec  6 07:53:51 2021
+Cannot select account from database, error: 'AccountController' object has no attribute 'encrypt_password' at Mon Dec  6 08:05:59 2021
+Cannot select account from database, error: 'AccountController' object has no attribute 'encrypt_password' at Mon Dec  6 08:07:19 2021
+Cannot add account to database, error: name 'ecrypted_password' is not defined at Mon Dec  6 08:08:03 2021
+Cannot add account to database, error: name 'ecrypted_password' is not defined at Mon Dec  6 08:08:08 2021
+Cannot add account to database, error: name 'ecrypted_password' is not defined at Mon Dec  6 08:08:20 2021
+Cannot add account to database, error: 'bytes' object has no attribute 'encode' at Mon Dec  6 08:10:00 2021
+Cannot select account from database, error: 'AccountController' object has no attribute 'encrypt_password' at Mon Dec  6 08:11:09 2021
+Cannot select account from database, error: 'AccountController' object has no attribute 'encrypt_password' at Mon Dec  6 08:12:41 2021
+Cannot select account from database, error: name 'DbAccessor' is not defined at Mon Dec  6 08:17:34 2021
+Cannot add account to database, error: name 'Fernet' is not defined at Mon Dec  6 08:34:21 2021
+Cannot add account to database, error: name 'Fernet' is not defined at Mon Dec  6 08:34:25 2021
+Cannot add account to database, error: name 'Account' is not defined at Mon Dec  6 08:35:40 2021
+Cannot add account to database, error: 'AccountController' object has no attribute 'data' at Mon Dec  6 08:38:28 2021
+Cannot add account to database, error: name 'os' is not defined at Mon Dec  6 08:39:11 2021
+Cannot add account to database, error: 'AccountController' object has no attribute 'session' at Mon Dec  6 08:39:43 2021
+Cannot add account to database, error: 'AccountModel' object has no attribute 'encrypted_password' at Mon Dec  6 08:41:37 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'ilyasavin' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`) VALUES (%(AccountLogin)s, %(AccountPassword)s)]
+[parameters: {'AccountLogin': 'ilyasavin', 'AccountPassword': b'gAAAAABhraKvTGoRJkrbPpNu2EM7hyhg1DV1U2UYN7ccPBP0klGPmMDFOMPbwOkVzajEI-_lQoUgXGE1-1Khcx0U6DJ46O1Gqg=='}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Dec  6 08:42:07 2021
+Cannot select account from database, error: local variable 'account' referenced before assignment at Mon Dec  6 08:50:27 2021
+Cannot select account from database, error: local variable 'account' referenced before assignment at Mon Dec  6 08:51:11 2021
+Cannot select account from database, error: name 'encrypt_password_by_key' is not defined at Mon Dec  6 08:52:42 2021
+Cannot select account from database, error: local variable 'account' referenced before assignment at Mon Dec  6 08:56:11 2021
+Cannot select account from database, error: 'AccountController' object has no attribute 'mode' at Mon Dec  6 09:02:22 2021
+Cannot select account from database, error: 'AccountController' object has no attribute 'mode' at Mon Dec  6 09:02:26 2021
+Cannot select account from database, error: 'AccountController' object has no attribute 'mode' at Mon Dec  6 09:02:26 2021
+Cannot select account from database, error: 'AccountController' object has no attribute 'mode' at Mon Dec  6 09:03:19 2021
+Cannot select account from database, error: token must be bytes at Mon Dec  6 09:04:11 2021
+Cannot select account from database, error: 'AccountController' object has no attribute 'data' at Mon Dec  6 09:05:24 2021
+Cannot select account from database, error:  at Mon Dec  6 09:06:12 2021
+Cannot select account from database, error: name 'password' is not defined at Mon Dec  6 09:07:46 2021
+Cannot select account from database, error: 'AccountModel' object has no attribute 'encrypt_password_by_key' at Mon Dec  6 10:23:13 2021
+Cannot select account from database, error: name 'account' is not defined at Mon Dec  6 11:02:40 2021
+Cannot select account from database, error: local variable 'account' referenced before assignment at Mon Dec  6 11:03:42 2021
+Cannot select account from database, error:  at Mon Dec  6 11:12:06 2021
+Cannot select account from database, error:  at Mon Dec  6 11:12:50 2021
+Cannot select account from database, error: local variable 'decrypted_password' referenced before assignment at Mon Dec  6 11:13:34 2021
+Cannot select account from database, error: local variable 'decrypted_password' referenced before assignment at Mon Dec  6 11:14:28 2021
+Cannot add account to database, error: write() argument must be str, not bytes at Mon Dec  6 11:18:46 2021
+Cannot select account from database, error:  at Mon Dec  6 11:21:28 2021
+Cannot select account from database, error: name 'os' is not defined at Mon Dec  6 11:34:14 2021
+Cannot select account from database, error: invalid load key, 'O'. at Mon Dec  6 11:35:15 2021
+Cannot select account from database, error: 'AccountController' object has no attribute 'session' at Mon Dec  6 11:36:48 2021

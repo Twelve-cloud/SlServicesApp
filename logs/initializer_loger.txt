@@ -87,3 +87,7 @@ Error with initializing tables: (pymysql.err.OperationalError) (3819, "Check con
 [parameters: {'ID': 1000, 'AccountLogin': 'ur_god', 'AccountPassword': 'god_pass', 'MobileNumber': '+375(99)999-99-99', 'Email': 'godemail@god.ru', 'Rolename': 'BROKER'}]
 (Background on this error at: https://sqlalche.me/e/14/e3q8) at Sun Dec  5 21:32:38 2021
 Error with initializing tables: name 'os' is not defined at Sun Dec  5 21:35:39 2021
+Error with initializing tables: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'Газпром' for key 'Company.CompanyName'")
+[SQL: INSERT INTO `Company` (`CompanyName`) VALUES (%(CompanyName)s)]
+[parameters: {'CompanyName': 'Газпром'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Dec  6 07:18:44 2021

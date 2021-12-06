@@ -1,13 +1,13 @@
-from Models.account_model import AccountModel
+from .account_controller import AccountController
 
-class Controller:
-    models = {
-        AccountModel: {
-            'REGISTRATION ACCOUNT': 'register', 
+class ControllersDispatcher:
+    controllers = {
+        AccountController: {
+            'REGISTRATION ACCOUNT': 'register_account', 
             'SIGN IN ACCOUNT': 'sign_in', 
-            'REDO ACCOUNT INFO': 'redo_info',
-            'GET ACCOUNT INFO': 'get_info',
-            'DELETE ACCOUNT':'delete'
+            'REDO ACCOUNT INFO': 'redo_information',
+            'GET ACCOUNT INFO': 'get_information',
+            'DELETE ACCOUNT':'delete_account'
         },
     }
 
@@ -28,16 +28,16 @@ class Controller:
             data_list = message.split('~!#$~')
             command, data = data_list[0], data_list[1:]
 
-            targetModel = None
-            for model in Controller.models:
-                if command in Controller.models[model]:
-                    targetModel = model
+            targetController = None
+            for controller in ControllersDispatcher.controllers:
+                if command in ControllersDispatcher.controllers[controller]:
+                    targetController = controller
             
-            if targetModel:
-                model = targetModel(data)
+            if targetController:
+                controller = targetController(data)
                 result = eval(
-                    'model.' + 
-                    Controller.models[targetModel][command] + 
+                    'controller.' + 
+                    ControllersDispatcher.controllers[targetController][command] + 
                     '()'
                 )
                 connection.send(result.encode())

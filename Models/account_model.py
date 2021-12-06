@@ -1,135 +1,77 @@
 import os, pickle
-from Database.Entities.entities import Account
 from Database.accessor import DbAccessor
-from Logger.logger import Logger
 from cryptography.fernet import Fernet
-
-logger = Logger('logs', 'account_model_logs.txt')
+from Database.Entities.entities import Account
 
 class AccountModel:
-    def __init__(self, data):
-        keys = [kv.split(':')[0] for kv in data]
-        values = [kv.split(':')[1] for kv in data]
-        self.data = dict(zip(keys, values))
+    def __init__(self):
         self.session = DbAccessor().create_session()
 
-    def register(self):
-        try:
-            login = self.data['login']
-            password = self.data['password']
-            
-            cipher_key = Fernet.generate_key()
-            path = os.path.join('Database', 'AccKeys', login)
-            account_file = open(path, 'wb')
-            pickle.dump(cipher_key, account_file)
-            account_file.close()
+    def create(self, login, password, rolename):
+        encrypted_password = self.encrypt_password(login, password)
+        self.session.add(Account(
+            login = login, 
+            password = encrypted_password,
+            rolename = rolename)
+        )
+        self.session.commit()
 
-            cipher = Fernet(cipher_key)
-            encrypted_password = cipher.encrypt(password.encode())
-            print(password)
+    def delete(self, login):
+        account = self.session.query(Account).filter(
+            Account.login == login
+        ).one()
+        self.session.delete(account)
+        self.session.commit()
 
-            self.session.add(Account(
-                login = login, 
-                password = encrypted_password)
-            )
-            self.session.commit()
-            return 'REGISTRATION SUCCESSFUL'
-        except Exception as error:
-            logger.write(f'Cannot add account to database, error: {error}')
-            return 'REGISTRATION FAILED'
+    def update(self, **kwargs):
+        encrypted_password = self.encrypt_password(
+            kwargs['login'],
+            kwargs['password']
+        )
+        kwargs['password'] = encrypted_password
+        account = self.session.query(Account).filter(
+            Account.login == kwargs['login']
+        ).update(kwargs)
+        self.session.commit()
 
-    def sign_in(self):
-        try:
-            login = self.data['login']
-            password = self.data['password'] 
-            
-            path = os.path.join('Database', 'AccKeys', login)
-            account_file = open(path, 'rb')
-            cipher_key = pickle.load(account_file)
-            account_file.close()
+    def read(self):
+        return self.session.query(
+            Account.id,
+            Account.login, 
+            Account.password,
+            Account.mob_num,
+            Account.email,
+            Account.rolename
+        ).all()
 
-            cipher = Fernet(cipher_key)
-            encrypted_password = cipher.encrypt(password.encode())
+    def dump_key(self, filename):
+        key = Fernet.generate_key()
+        file = open(filename, 'wb')
+        pickle.dump(key, file)
+        file.close()
+        return key
 
-            if (account := self.session.query(Account).filter(
-                    Account.login == login and  
-                    Account.password == encrypted_password
-                ).one()
-            ):
-                return 'AUTHENTIFICATION SUCCESSFUL~!#$~' + account.rolename
-            else:
-                return 'AUTHENTIFICATION FAILED'
-        except Exception as error:
-            logger.write(f'Cannot select account from database, error: {error}')
-            return 'AUTHENTIFICATION FAILED'
+    def load_key(self, filename):
+        file = open(filename, 'rb')
+        key = pickle.load(file)
+        file.close()
+        return key
 
-    def get_info(self):
-        try:
-            login = self.data['login']
+    def encrypt_password(self, login, password):
+        path = os.path.join('Database', 'AccKeys', login)
+        if os.path.exists(path):
+            key = self.load_key(path)
+        else:
+            key = self.dump_key(path)
 
-            if (account := self.session.query(Account).filter(
-                    Account.login == login
-                ).one()
-            ):
-                path = os.path.join('Database', 'AccKeys', login)
-                account_file = open(path, 'rb')
-                cipher_key = pickle.load(account_file)
-                account_file.close()
+        cipher = Fernet(key)
+        encrypted_password = cipher.encrypt(password.encode())
+        return encrypted_password
 
-                cipher = Fernet(cipher_key)
-                decrypted_password = cipher.decrypt(account.password.encode())
-                print(account.password)
-                print(decrypted_password)
-                return f'{account.login}~!#$~{decrypted_password}~!#$~' \
-                       f'{account.mob_num}~!#$~{account.email}'
-            else:
-                return 'GETDATA FAILED'
-        except Exception as error:
-            logger.write(f'Cannot select account from database, error: {error}')
-            return 'GETDATA FAILED'
-
-    def redo_info(self):
-        try:
-            login = self.data['login']
-            password = self.data['password']
-            mob_num = self.data['mob_num']
-            email = self.data['email']
-
-            path = os.path.join('Database', 'AccKeys', login)
-            account_file = open(path, 'rb')
-            cipher_key = pickle.load(account_file)
-            account_file.close()
-
-            cipher = Fernet(cipher_key)
-            encrypted_password = cipher.encrypt(password.encode())
-
-            if (account := self.session.query(Account).filter(
-                    Account.login == login
-                ).first()
-            ):
-                account.login = login
-                account.password = encrypted_password
-                account.mob_num = mob_num
-                account.email = email
-                self.session.commit()
-                return 'REDO ACC INFO SUCCESS'
-            else:
-                return 'REDO ACC INFO FAILED'
-        except Exception as error:
-            logger.write(f'Cannot redo account info, error: {error}')
-            return 'REDO ACC INFO FAILED'
-
-    def delete(self):
-        try:
-            login = self.data['login']
-            account = self.session.query(Account).filter(
-                Account.login == login
-            ).one()
-            self.session.delete(account)
-            self.session.commit()
-            return 'DELETING SUCCESSFUL'
-        except Exception as error:
-            logger.write(f'Cannot delete account, error: {error}')
-            return 'DELETING FAILED'
-
+    def decrypt_password(self, login, password):
+        path = os.path.join('Database', 'AccKeys', login)
+        key = self.load_key(path)
+        cipher = Fernet(key)
+        decrypted_password = cipher.decrypt(password.encode())
+        return decrypted_password
 
