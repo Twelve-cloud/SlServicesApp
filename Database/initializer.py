@@ -64,6 +64,12 @@ class DbInitializer:
                     email = 'godemail@god.ru',
                     rolename = 'BROKER'
                 ),
+                BanList(
+                    id = 1,
+                    acc_id = 1000,
+                    started = '1970-12-12 22:00:00',
+                    ended = '2098-12-12 22:00:00'
+                ),
                 Company(
                     company_name = 'Газпром'
                 ), 

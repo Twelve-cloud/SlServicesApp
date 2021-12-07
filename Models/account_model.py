@@ -8,31 +8,54 @@ class AccountModel:
         self.session = DbAccessor().create_session()
 
     def create(self, login, password, rolename):
-        encrypted_password = self.encrypt_password(login, password)
-        self.session.add(Account(
-            login = login, 
-            password = encrypted_password,
-            rolename = rolename)
+        encrypted_password = self.encrypt_password(
+            login,
+            password
         )
-        self.session.commit()
+        try:
+            self.session.add(
+                Account(
+                    login = login, 
+                    password = encrypted_password,
+                    rolename = rolename
+                )
+            )
+            self.session.commit()
+        except Exception as error:
+            self.session.rollback()
+            raise error
 
     def delete(self, login):
-        account = self.session.query(Account).filter(
-            Account.login == login
-        ).one()
-        self.session.delete(account)
-        self.session.commit()
+        try:
+            account = self.session.query(Account).filter(
+                Account.login == login
+            ).one()
+            self.session.delete(account)
+            self.session.commit()
+        except Exception as error:
+            self.session.rollback()
+            raise error
 
-    def update(self, **kwargs):
+    def update(self, login, password, mob_num, email):
         encrypted_password = self.encrypt_password(
-            kwargs['login'],
-            kwargs['password']
+            login,
+            password
         )
-        kwargs['password'] = encrypted_password
-        account = self.session.query(Account).filter(
-            Account.login == kwargs['login']
-        ).update(kwargs)
-        self.session.commit()
+        try:
+            if (account := self.session.query(Account).filter(
+                    Account.login == login
+                ).first()
+            ):
+                account.login = login
+                account.password = encrypted_password
+                account.mob_num = mob_num
+                account.email = email
+                self.session.commit()
+            else:
+                raise ValueError('account not found')
+        except Exception as error:
+            self.session.rollback()
+            raise error
 
     def read(self):
         return self.session.query(

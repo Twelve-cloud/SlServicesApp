@@ -19,7 +19,7 @@ class TCPServer:
             inet_aton(host)
             
         if port < 1023 or port > 49152:
-            raise 'Invalid port'
+            raise ValueError('Invalid port')
         
         self.host = host
         self.port = port

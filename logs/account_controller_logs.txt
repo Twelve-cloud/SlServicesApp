@@ -92,3 +92,151 @@ Cannot select account from database, error: name 'account_login' is not defined 
 Cannot select account from database, error: name 'account_login' is not defined at Mon Dec  6 14:21:29 2021
 Cannot select account from database, error: name 'account_login' is not defined at Mon Dec  6 14:22:43 2021
 Cannot select account from database, error: name 'account_login' is not defined at Mon Dec  6 14:23:13 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountLogin`=%(AccountLogin)s, `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s, `Email`=%(Email)s WHERE `Account`.`AccountLogin` = %(AccountLogin_1)s]
+[parameters: {'AccountLogin': 'marina', 'AccountPassword': b'gAAAAABhrkk9xQb_ZQaOPtcHmtBw4QG2suDxtEN-zfSCkMQJ6BFR-M3cRgwsRpniqVpSkynMYDABuNx_G_J7b4LsBi6aADYV0w==', 'MobileNumber': '+999(99)999-99-9', 'Email': 'myemail@domen.com', 'AccountLogin_1': 'marina'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 20:32:45 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (1205, 'Lock wait timeout exceeded; try restarting transaction')
+[SQL: UPDATE `Account` SET `AccountLogin`=%(AccountLogin)s, `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s, `Email`=%(Email)s WHERE `Account`.`AccountLogin` = %(AccountLogin_1)s]
+[parameters: {'AccountLogin': 'marina', 'AccountPassword': b'gAAAAABhrkk_vcF_vBGdMxqoESjBFnLo1l36Xpbdtg_QVMVHEAp-nMnI1yh0HKbey6OvgcHFS1zd7tTGMuZh1Ud5RGM6w8Tixw==', 'MobileNumber': '+999(99)999-99-98', 'Email': 'myemail@domen.com', 'AccountLogin_1': 'marina'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 20:33:38 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountLogin`=%(AccountLogin)s, `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s, `Email`=%(Email)s WHERE `Account`.`AccountLogin` = %(AccountLogin_1)s]
+[parameters: {'AccountLogin': 'marina', 'AccountPassword': b'gAAAAABhrkmauOsUKqieBYd3_53d9Lvu-tsdJb9bW4o6qOgQPDEsdxHyU8um9eK1rONJ7kK_SMrhTZL3Y45N6oHZcz0RALwUwA==', 'MobileNumber': '+999(99)999-99-9', 'Email': 'myemail@domen.com', 'AccountLogin_1': 'marina'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 20:34:18 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (1205, 'Lock wait timeout exceeded; try restarting transaction')
+[SQL: UPDATE `Account` SET `AccountLogin`=%(AccountLogin)s, `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s, `Email`=%(Email)s WHERE `Account`.`AccountLogin` = %(AccountLogin_1)s]
+[parameters: {'AccountLogin': 'marina', 'AccountPassword': b'gAAAAABhrkmg-b1iEKEiQaMhfoVvKlL6Rfc7JQFfSwkFmJO4a4MBAWbSQVZHb3jf5wuqNoD6ZP7WdI2vVC6qnW6ePzo5fPo-Ig==', 'MobileNumber': '+999(99)999-99-99', 'Email': 'myemail@domen.com', 'AccountLogin_1': 'marina'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 20:35:15 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountLogin`=%(AccountLogin)s, `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s, `Email`=%(Email)s WHERE `Account`.`AccountLogin` = %(AccountLogin_1)s]
+[parameters: {'AccountLogin': 'marina', 'AccountPassword': b'gAAAAABhrkoWhDly6CBzaKvAaPTYWSrg8s72bidjeAdeutEhrPvLSxcT2KDDdWYZR4Ijhsy4wJNCft_CvfR5BBbr9VS_xMcA6g==', 'MobileNumber': '+999(99)999-99-9', 'Email': 'myemail@domen.com', 'AccountLogin_1': 'marina'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 20:36:22 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountLogin`=%(AccountLogin)s, `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s, `Email`=%(Email)s WHERE `Account`.`AccountLogin` = %(AccountLogin_1)s]
+[parameters: {'AccountLogin': 'marina', 'AccountPassword': b'gAAAAABhrkqki3LTkPFIU6YVqpYR-obXlAnt4_Z2SI5UTQQqiqPaTqeHGZoywTfVMZHzBZkXE_FMUL1bjowdJQyPlI7ivNPS8g==', 'MobileNumber': '+999(99)999-99-9', 'Email': 'myemail@domen.com', 'AccountLogin_1': 'marina'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 20:38:44 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountLogin`=%(AccountLogin)s, `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s, `Email`=%(Email)s WHERE `Account`.`AccountLogin` = %(AccountLogin_1)s]
+[parameters: {'AccountLogin': 'marina', 'AccountPassword': b'gAAAAABhrkr20Fp4AswjdpOaWewxpzRFlRtkOa3G4ui5cUu8jVEZf0VECpu-EUEu7UxIUozqvByq4oJZFFmOUMP7MKcXrpATXw==', 'MobileNumber': '+999(99)999-99-9', 'Email': 'myemail@domen.com', 'AccountLogin_1': 'marina'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 20:40:06 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountLogin`=%(AccountLogin)s, `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s, `Email`=%(Email)s WHERE `Account`.`AccountLogin` = %(AccountLogin_1)s]
+[parameters: {'AccountLogin': 'marina', 'AccountPassword': b'gAAAAABhrktDEjAaCpTV0cdKnCT8HvXnNim-ZIATsoZoUTzaNzzycVHX4QvEL2ULcqeKHC5sscEkSqObIgO0lOYv_cumjXpdrw==', 'MobileNumber': '+999(99)999-99-9', 'Email': 'myemail@domen.com', 'AccountLogin_1': 'marina'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 20:41:23 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountLogin`=%(AccountLogin)s, `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s, `Email`=%(Email)s WHERE `Account`.`AccountLogin` = %(AccountLogin_1)s]
+[parameters: {'AccountLogin': 'marina', 'AccountPassword': b'gAAAAABhrkujy_cfrbosSfi5Xxm4W0pswaf6YhcL8eF60cFYMDVR0-ACqxzeYAsPg9bMvEzq3dH0JkBTLtjRB8xIptrBCCWqSg==', 'MobileNumber': '+999(99)999-99-9', 'Email': 'myemail@domen.com', 'AccountLogin_1': 'marina'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 20:42:59 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountLogin`=%(AccountLogin)s, `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s, `Email`=%(Email)s WHERE `Account`.`AccountLogin` = %(AccountLogin_1)s]
+[parameters: {'AccountLogin': 'marina', 'AccountPassword': b'gAAAAABhrkwirEah6WTToVRyOdG16Co-RMHLi3QBsDFR6k7xd79TygQQeJB0QmvLTWZRZBJPi_GiGq6gVMwtEYs-39iu9-zAtA==', 'MobileNumber': '+999(99)999-99-9', 'Email': 'myemail@domen.com', 'AccountLogin_1': 'marina'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 20:45:06 2021
+Cannot redo account info, error: name 'throw' is not defined at Mon Dec  6 20:46:12 2021
+Cannot redo account info, error: name 'throw' is not defined at Mon Dec  6 20:46:21 2021
+Cannot redo account info, error: name 'throw' is not defined at Mon Dec  6 20:46:26 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'asdasd' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'asdasd', 'AccountPassword': b'gAAAAABhrky51RnQH92qYNDWZL9YkodyGZKgPim8GV0TDAfRFj-ntw-4DNtH5DRREa-1yu0-Mo5OdJMl0b2BtOclOF5oxGt5_A==', 'Rolename': 'USER'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Dec  6 20:47:37 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'asdasd' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'asdasd', 'AccountPassword': b'gAAAAABhrkzCupBas5ag9EjZT0ArdHvwamQuNGxbwQMMrj_qEY9dIaBcNq7TbANHWhWo-5tePkoW2c3KF93QQYFQtA6HWSzfVQ==', 'Rolename': 'USER'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Dec  6 20:47:46 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s, `Email`=%(Email)s WHERE `Account`.`AccountLogin` = %(AccountLogin_1)s]
+[parameters: {'AccountPassword': b'gAAAAABhrk2W4rI_StgFzHburbuX1K0EHrNS_X-F0zy8up89h2RlGE_d6UJT739k6oIQh4I7Vl8zmMDcclRBSLESv0CxBbkjUw==', 'MobileNumber': '+999(99)999-99-9', 'Email': 'myemail@domen.com', 'AccountLogin_1': 'marina'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 20:51:18 2021
+Cannot redo account info, error: 'AccountModel' object has no attribute 'kwargs' at Mon Dec  6 20:58:06 2021
+Cannot redo account info, error: 'AccountModel' object has no attribute 'kwargs' at Mon Dec  6 20:58:11 2021
+Cannot redo account info, error: 'AccountModel' object has no attribute 'kwargs' at Mon Dec  6 20:58:13 2021
+Cannot redo account info, error: name 'login' is not defined at Mon Dec  6 20:58:46 2021
+Cannot redo account info, error: name 'login' is not defined at Mon Dec  6 20:58:51 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s WHERE `Account`.`ID` = %(Account_ID)s]
+[parameters: {'AccountPassword': b'gAAAAABhrk915AzW-HckUfT1WtoB1e9vxXC-wECLYveFwhwI_FlxbvuQJRrXBGFYhlIZyFhrsPLS0pEWbkeObeyExzeZO4xLxw==', 'MobileNumber': '+999(99)999-99-9', 'Account_ID': 1008}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 20:59:17 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s WHERE `Account`.`ID` = %(Account_ID)s]
+[parameters: {'AccountPassword': b'gAAAAABhrk-DrIoMGIYxwxqrHBVxPOnaOI723n_za-SNrH7DilpOVRB7968aVAe3dl4eO695KV-od_rMzM5xrdEVykuVsXwHsw==', 'MobileNumber': '+999(99)999-99-', 'Account_ID': 1008}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 20:59:31 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s WHERE `Account`.`ID` = %(Account_ID)s]
+[parameters: {'AccountPassword': b'gAAAAABhrk-N383JMoIcoF5EkXBORJCRWEFZvjMYv0wcEtrGf1A5BucirfxWpbrBh8NXomW5l-Zu42HbQexhg4aYD2ZxlAITGQ==', 'MobileNumber': '+999(99)999-99-9', 'Account_ID': 1008}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 20:59:41 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s WHERE `Account`.`ID` = %(Account_ID)s]
+[parameters: {'AccountPassword': b'gAAAAABhrlErHFQdWZRkz1iHS7ZFydnocjPC3ycnH9_1biqCGY6pinoiWVdwNQE5-jhI75C0-Y7ruf49BSYNclhw9-zAVDqO9w==', 'MobileNumber': '+375(44)444-44-4', 'Account_ID': 1008}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 21:06:35 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s WHERE `Account`.`ID` = %(Account_ID)s]
+[parameters: {'AccountPassword': b'gAAAAABhrlEv_h_ehmJ-5kNWxN7e6aQ7g8Zpcz5pnJms3IvSZsreRwNpkqLTRK25IwFN_ovXPeJcQilzO9aPcXvM5lOrPJ1Vlw==', 'MobileNumber': '+375(44)444-44-', 'Account_ID': 1008}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 21:06:39 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s WHERE `Account`.`ID` = %(Account_ID)s]
+[parameters: {'AccountPassword': b'gAAAAABhrlEx0BKQr58HFciRCXufS_kkJMACrAVy7nqx3nBU9QEcA6NrYj4NJjQPOFzvIxwQZZ4e81vB2xcc_ppbn_ye0QggWw==', 'MobileNumber': '+375(44)444-44', 'Account_ID': 1008}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 21:06:41 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s WHERE `Account`.`ID` = %(Account_ID)s]
+[parameters: {'AccountPassword': b'gAAAAABhrlZjlnrdGkaAiNU6lGGJO_ZSpC6Yd5qab9GAWk1OitjdkeM5HNQ-EIoOjiSdGJgOVx_Xwi8nfeErVf3d9MVsIqgp4w==', 'MobileNumber': '+999(99)999-99-', 'Account_ID': 1025}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 21:28:51 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'marina' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'marina', 'AccountPassword': b'gAAAAABhrlfdu4Ze9U1uMHerAK6qtBzL1ArHL6Qv4AL3ImycwoRgLwbtgdQZn9ZqSHxg5ZJ-cBi_I-CuK1gs5_3jXA3kztuA4A==', 'Rolename': 'USER'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Dec  6 21:35:09 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'gordey' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'gordey', 'AccountPassword': b'gAAAAABhrlh4VMNDB9Ebda5Aip8bDd1y5IwDZtGO_iFOVmh_9Ml3jeUBHsd9o-aw8AhmCqWTGmDQz9rOu5PDXuQY8d0FaoHSZw==', 'Rolename': 'USER'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Dec  6 21:37:44 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'gordey' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'gordey', 'AccountPassword': b'gAAAAABhrliVHg3PUPZi3QF79VAUlG8OozeqeGwgYhT_knHe0u5iLfbwiSaw-UJpRtt42-AzWwnzDY8WqFu44RO-Gy8YWqy7ZA==', 'Rolename': 'USER'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Dec  6 21:38:13 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'gordey' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'gordey', 'AccountPassword': b'gAAAAABhrli0mWKthUAAv82w_m7JHNTrxuPkH-U84_MMP6NwCZ2FR_cmZVS81RdGFyYO-xwkQH6vURWJii9PgQJzror2R6zh2A==', 'Rolename': 'USER'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Dec  6 21:38:44 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s WHERE `Account`.`ID` = %(Account_ID)s]
+[parameters: {'AccountPassword': b'gAAAAABhrljOR4Z_5rtmLMg6WodYvliUqmE60j-TVxNQIzq08eOdFbZjCWSiDEbk00HeDDZLXg854S9tHahu_hhTynIEwNNjOQ==', 'MobileNumber': '+999(99)999-99-', 'Account_ID': 1035}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 21:39:10 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_mobnum' is violated.")
+[SQL: UPDATE `Account` SET `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s WHERE `Account`.`ID` = %(Account_ID)s]
+[parameters: {'AccountPassword': b'gAAAAABhrljYxlb2FwLB1tQCdewUE2c16OJKv93KxKvfcURDKC9TRE79F2tv0ouktdNPYeer9CxPMu-V4Y79vcblI5Yiff0g4w==', 'MobileNumber': '+999(99)999-99-7', 'Account_ID': 1035}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Mon Dec  6 21:39:20 2021
+Cannot add account to database, error: 'login' is an invalid keyword argument for print() at Mon Dec  6 21:41:11 2021
+Cannot add account to database, error: 'login' is an invalid keyword argument for print() at Mon Dec  6 21:41:25 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'gordey' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'gordey', 'AccountPassword': b'gAAAAABhrlrlYdhw5IlJVIzJQLwFNxjkDzlp_SbT61rMVOSV6OfVOBfMivtMgkdd9CpjgJ-Iyg7u4AVY8Oe79xggBd7lnLEp4Q==', 'Rolename': 'USER'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Dec  6 21:48:05 2021
+Cannot add account to database, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'gordey' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'gordey', 'AccountPassword': b'gAAAAABhrlrz9EFC89YI_O-J7vlD_xMcmcepHeYhQNgA99fim1eFQcdKCgQAFC8MWAuh-CLhZWqblsjNOndICzy-pLB5SdMSLg==', 'Rolename': 'USER'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Mon Dec  6 21:48:19 2021
+Cannot delete account, error: No row was found when one was required at Tue Dec  7 01:24:13 2021
+Cannot create account, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_rolename' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'gordey', 'AccountPassword': b'gAAAAABhro3AXWAmMXTgwb1TAu07wWlotj3Y8476JZ7u7Tvor1-Yczhu-IduQ9UbVHA_ADP6UgJwTPpTS9mfvkysPL1Bge9Qtw==', 'Rolename': 'asdad'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Tue Dec  7 01:25:04 2021
+Cannot select account from database, error: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_rolename' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'gordey', 'AccountPassword': b'gAAAAABhro3AXWAmMXTgwb1TAu07wWlotj3Y8476JZ7u7Tvor1-Yczhu-IduQ9UbVHA_ADP6UgJwTPpTS9mfvkysPL1Bge9Qtw==', 'Rolename': 'asdad'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) (Background on this error at: https://sqlalche.me/e/14/7s2a) at Tue Dec  7 01:25:09 2021
+Cannot delete account, error: No row was found when one was required at Tue Dec  7 01:30:22 2021
+Cannot create account, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'gordey' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'gordey', 'AccountPassword': b'gAAAAABhro8rUfodbiFxy916poCG9K2XyIsHsKGdy1yXhbOr5BS6HI5zwXPxfZ9OmgPuPe3lAXFka10GsK7cv6_JWWxOiXT1Og==', 'Rolename': 'CONSULTANT'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Tue Dec  7 01:31:07 2021
+Cannot create account, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_rolename' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'ilyasavin', 'AccountPassword': b'gAAAAABhro9C-_KmdLkuDh4R1Cqi4fwrfHL69aC7qTlyvREYg_vK4pTpssLK7TnpwqTavx579OSy7ZBVJXiCKknlrrKPm6gHYQ==', 'Rolename': 'KRUTOY'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Tue Dec  7 01:31:30 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_email' is violated.")
+[SQL: UPDATE `Account` SET `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s, `Email`=%(Email)s WHERE `Account`.`ID` = %(Account_ID)s]
+[parameters: {'AccountPassword': b'gAAAAABhro9uwcvP-Y_nk35FZOTliQ7-isGNsjTZpci7WSRzga5foBZOKEX2E3ZU7Lh5sJF0bLjHuGElcE-qEuFyTE8SAipVUg==', 'MobileNumber': '+375(44)444-44-44', 'Email': 'asdsa@mail.ru', 'Account_ID': 1005}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Tue Dec  7 01:32:14 2021
+Cannot redo account info, error: exceptions must derive from BaseException at Tue Dec  7 01:34:57 2021
+Cannot redo account info, error: exceptions must derive from BaseException at Tue Dec  7 01:36:22 2021
+Cannot redo account info, error: exceptions must derive from BaseException at Tue Dec  7 01:36:56 2021
+Cannot redo account info, error: not found at Tue Dec  7 01:38:57 2021

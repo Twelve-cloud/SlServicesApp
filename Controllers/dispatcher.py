@@ -5,7 +5,7 @@ class ControllersDispatcher:
         AccountController: {
             'REGISTRATION ACCOUNT': 'register_account', 
             'SIGN IN ACCOUNT': 'sign_in', 
-            'REDO ACCOUNT INFO': 'redo_information',
+            'REDO ACCOUNT INFO': 'edit_information',
             'GET ACCOUNT INFO': 'get_information',
             'DELETE ACCOUNT':'delete_account'
         },

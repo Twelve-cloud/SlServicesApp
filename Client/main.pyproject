@@ -6,6 +6,7 @@
     "Source/registration_widget.py",        "Form/registration_widget.ui",
     "Source/account_info_widget.py",        "Form/account_info_widget.ui",
     "Source/stack_of_widgets.py",           "Source/client_socket.py",
-    "Source/request_str_dialog.py",         "Form/request_str_form.ui"
+    "Source/request_str_dialog.py",         "Form/request_str_form.ui",
+    "Form/user_menu_form.ui", "Form/consultant_menu_form.ui"
     ]
 }

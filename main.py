@@ -1,18 +1,40 @@
 import Database.Config.config
-import subprocess as sp
+import subprocess as sp, sys
 from threading import Thread
 from Server.server import TCPServer
 from Database.initializer import DbInitializer
 from Controllers.dispatcher import ControllersDispatcher
-from Models.account_model import AccountModel
+from Controllers.account_controller import AccountController
+from Controllers.banlist_controller import BanListController
 from help import help
 
 
 if __name__ == '__main__':
     db_initializer = DbInitializer()
-    acc_model = AccountModel()
-    server = TCPServer()
+    acc_controller = AccountController()
+    banlist_controller = BanListController()
     controllers_dispatcher = ControllersDispatcher()
+    server = TCPServer()
+    
+    mode = len(sys.argv)
+    if mode == 1:
+        pass
+    elif mode == 2 or mode == 3:
+        try:
+            if mode == 2:
+                server.set_inet_info(sys.argv[1], 6606)
+            else:
+                server.set_inet_info(sys.argv[1], int(sys.argv[2])) 
+            server.turn_on()          
+            dispatcher_thread = Thread(
+                target = server.dispatcher, 
+                args = (controllers_dispatcher.perform, )
+            )
+            dispatcher_thread.start()
+        except Exception as error:
+            print(error) 
+    else:
+        print('Invalid arguments from command line. Type !help for getting help')
     
     while (cmd := input('>> ')) != 'exit':
         if cmd == '': continue
@@ -68,49 +90,44 @@ if __name__ == '__main__':
             case 'cltables':
                 db_initializer.clear_tables()
             case 'create_acc':
-                try:
-                    login = input('login: ')
-                    password = input('password: ')
-                    rolename = input('rolename: ')
-                    acc_model.create(login, password, rolename)
-                except Exception:
-                    print('Invalid command. Type !help for getting help')
+                login = input('login: ')
+                password = input('password: ')
+                rolename = input('rolename: ')
+                acc_controller.set_kwargs(
+                    login = login, 
+                    password = password,
+                    rolename = rolename
+                )
+                result = acc_controller.add_stuff_account()
+                print(result)
             case 'delete_acc':
-                try:
-                    login = input('login: ')
-                    acc_model.delete(login)
-                except Exception:
-                    print('Invalid command. Type !help for getting help')
+                login = input('login: ')
+                acc_controller.set_kwargs(login = login)
+                result = acc_controller.delete_account()
+                print(result)
             case 'update_acc':
-                try:
-                    login = input('login: ')
-                    password = input('password: ')
-                    mob_num = input('mob_number: ')
-                    email = input('email: ')
-                    acc_model.update(
-                        login = login,
-                        password = password,
-                        mob_num = mob_num,
-                        email = email
-                    )
-                except Exception:
-                    print('Invalid command. Type !help for getting help')
+                login = input('login: ')
+                password = input('password: ')
+                mob_num = input('mob_number: ')
+                email = input('email: ')
+                acc_controller.set_kwargs(
+                    login = login,
+                    password = password,
+                    mob_num = mob_num,
+                    email = email
+                )
+                result = acc_controller.edit_information()
+                print(result)
             case 'read_accs':
-                try:
-                    accs = acc_model.read()
-                    print(
-                        '-' * 121, '|{:^6}|{:^20}|{:^20}|{:^20}|{:^33}|{:^16}|'.format(
-                            'ID', 'LOGIN', 'PASSWORD', 'MOBILE', 'EMAIL', 'ROLENAME'),
-                        '-' * 121, sep = '\n'
-                    )
-                    for acc in accs:
-                        print(
-                            '|{:^6}|{:^20}|{:^20}|{:^20}|{:^33}|{:^16}|'.format(
-                                acc[0], acc[1], '', acc[3], acc[4], acc[5])
-                        )
-                    print('-' * 121)
-                except Exception:
-                    print('Invalid command. Type !help for getting help')
+                acc_controller.view_all_accounts()
+            case 'ban_user':
+                pass
+            case 'unban_user':
+                pass
+            case 'change_ban':
+                pass
+            case 'view_bans':
+                banlist_controller.view_all_bans()
             case 'help':
                 help()
             case _:
@@ -119,4 +136,5 @@ if __name__ == '__main__':
                         sp.run(cmd.split())
                 except Exception:
                     print('Invalid command. Type !help for getting help')
+
 

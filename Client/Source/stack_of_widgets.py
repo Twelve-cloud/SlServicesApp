@@ -9,5 +9,5 @@ class StackOfWidgets:
         self.widgets[-1].show()
 
     def pop(self):
-        self.widgets[-1].close()
+        self.widgets[-1].hide()
         self.widgets.pop()

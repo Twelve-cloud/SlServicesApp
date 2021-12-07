@@ -2,8 +2,9 @@
 import sys
 
 from PyQt5 import QtCore, uic
-from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QMdiArea
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QMdiArea, QWidget, QLineEdit, QFileDialog
+from PyQt5.QtCore import pyqtSignal, Qt, QFile, QDir, QSize
+from PyQt5.QtGui import QPixmap, QPalette, QImage, QBrush
 
 from client_socket import ClientSocket
 from stack_of_widgets import StackOfWidgets
@@ -38,7 +39,17 @@ class MainWindow(QMainWindow):
         self.mdiArea = QMdiArea()
         self.setCentralWidget(self.mdiArea)
 
+        self.setWindowTitle('')
         self.stack_of_widgets.push(self.init_wdg)
+        self.sourcePalette = None
+
+        if QFile.exists(self.auth_wdg.loginLineEdit.text() + '/background.jpg'):
+            self.sourcePalette = self.palette()
+            originalImage = QImage(QDir.currentPath() + '/' + self.auth_wdg.loginLineEdit.text() + '/background.jpg')
+            scaledImage = originalImage.scaled(QSize(self.frameGeometry().width(), self.frameGeometry().height()))
+            palette = QPalette()
+            palette.setBrush(QPalette.Window, QBrush(scaledImage))
+            self.mdiArea.setBackground(QBrush(scaledImage))
 
     def slotInitStartButtonClicked(self):
         self.stack_of_widgets.pop()
@@ -66,6 +77,8 @@ class MainWindow(QMainWindow):
         self.info_wdg = AccountInfoWidget()
         self.info_wdg.saveButtonClicked.connect(self.slotSaveAccountInfoButtonClicked)
         self.info_wdg.deleteAccountButtonClicked.connect(self.slotDeleteAccountButtonClicked)
+        self.info_wdg.uploadThemeButtonClicked.connect(self.slotUploadThemeButtonClicked)
+        self.info_wdg.deleteThemeButtonClicked.connect(self.slotDeleteThemeButtonClicked)
         self.client_socket.sendToServer('GET ACCOUNT INFO~!#$~login:' + self.auth_wdg.login)
         respond = self.client_socket.getRespond()
         self.info_wdg.setInfo(respond)
@@ -74,6 +87,33 @@ class MainWindow(QMainWindow):
         wnd.setWindowTitle('Личная информация')
         wnd.setWindowFlags(QtCore.Qt.Dialog);
         wnd.showMaximized()
+
+    def slotUploadThemeButtonClicked(self):
+        filename = QFileDialog.getOpenFileName(self, "Выберите файл", QDir.homePath())
+        currentDir = QDir(QDir.currentPath())
+        currentDir.mkdir(self.info_wdg.loginLineEdit.text())
+        QFile.remove(QDir.currentPath() + '/' + self.info_wdg.loginLineEdit.text() + '/background.jpg')
+        QFile.copy(filename[0], QDir.currentPath() + '/' + self.info_wdg.loginLineEdit.text() + '/background.jpg')
+        originalImage = QImage(QDir.currentPath() + '/' + self.info_wdg.loginLineEdit.text() + '/background.jpg')
+        scaledImage = originalImage.scaled(QSize(self.frameGeometry().width(), self.frameGeometry().height()))
+        palette = QPalette()
+        palette.setBrush(QPalette.Window, QBrush(scaledImage))
+        if not self.sourcePalette:
+            self.sourcePalette = self.palette()
+        self.setPalette(palette)
+
+    def slotDeleteThemeButtonClicked(self):
+        if QFile.exists(self.info_wdg.loginLineEdit.text() + '/background.jpg'):
+            QFile.remove(QDir.currentPath() + '/' + self.info_wdg.loginLineEdit.text() + '/background.jpg')
+            self.setPalette(self.sourcePalette)
+
+    def resizeEvent(self, event):
+        if QFile.exists(self.auth_wdg.loginLineEdit.text() + '/background.jpg'):
+            palette = QPalette()
+            img = QImage(QDir.currentPath() + '/' + self.auth_wdg.loginLineEdit.text() + '/background.jpg')
+            scaled = img.scaled(self.size(), Qt.KeepAspectRatioByExpanding, transformMode = Qt.SmoothTransformation)
+            palette.setBrush(QPalette.Window, QBrush(scaled))
+            self.setPalette(palette)
 
     def slotQuitAccountClicked(self):
         self.auth_wdg.clearLines()
@@ -116,8 +156,16 @@ class MainWindow(QMainWindow):
         elif command == 'AUTHENTIFICATION SUCCESSFUL' and role == 'USER':
             self.stack_of_widgets.pop()
             self.stack_of_widgets.push(self)
+        elif command == 'AUTHENTIFICATION SUCCESSFUL' and role == 'CONSULTANT':
+            self.stack_of_widgets.pop()
+            self.stack_of_widgets.push(self)
+        elif command == 'AUTHENTIFICATION SUCCESSFUL' and role == 'BROKER':
+            self.stack_of_widgets.pop()
+            self.stack_of_widgets.push(self)
         elif command == 'REDO ACC INFO SUCCESS':
+            self.auth_wdg.passw = self.info_wdg.passw
             QMessageBox.about(self, "Уведомление", "Данные изменены успешно")
+            self.info_wdg.setError('')
         elif command == 'REDO ACC INFO FAILED':
             self.info_wdg.setError('Ошибка. Некорректные данные')
         elif command == 'DELETING SUCCESSFUL':

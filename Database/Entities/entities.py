@@ -1,8 +1,9 @@
 from sqlalchemy import Column, Integer,       \
-                       String, Date,          \
+                       String, DateTime,      \
                        CheckConstraint,       \
                        ForeignKeyConstraint,  \
-                       PrimaryKeyConstraint
+                       PrimaryKeyConstraint,  \
+                       func
 from sqlalchemy.dialects.mysql import FLOAT
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -63,10 +64,11 @@ class BanList(Base):
         nullable = False,
         unique = True
     )
-    started = Column('started', Date,
-        nullable = False
+    started = Column('started', DateTime,
+        nullable = False,
+        server_default = func.now()
     )
-    ended = Column('ended', Date,
+    ended = Column('ended', DateTime,
         nullable = False
     )
 
