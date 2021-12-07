@@ -5,43 +5,47 @@ from Database.Entities.entities import BanList
 class BanListModel:
     def __init__(self):
         self.session = DbAccessor().create_session()
+        self.bans = []
 
-    def create(self, acc_id, ended, started = None):
-        if started:
-            self.session.add(
-                BanList(
+    def create(self, acc_id, started, ended):
+        try:
+            ban = BanList(
                     acc_id = acc_id, 
                     started = started,
                     ended = ended
                 )
-            )
-        else:
-           self.session.add(
-                BanList(
-                    acc_id = acc_id, 
-                    ended = ended
-                )
-            ) 
-        self.session.commit()
+            self.session.add(ban)
+            self.bans.append(ban)
+            self.session.commit()
+        except Exception as error:
+            self.session.rollback()
+            raise error
 
     def delete(self, acc_id):
-        ban = self.session.query(BanList).filter(
-            BanList.acc_id == acc_id
-        ).one()
-        self.session.delete(ban)
-        self.session.commit()
-
-    def update(self, acc_id, ended, started = None):
-        if (ban := self.session.query(BanList).filter(
+        try:
+            ban = self.session.query(BanList).filter(
                 BanList.acc_id == acc_id
-            ).first()
-        ):
-            if started:
+            ).one()
+            self.session.delete(ban)
+            self.session.commit()
+        except Exception as error:
+            self.session.rollback()
+            raise error
+
+    def update(self, acc_id, started, ended):
+        try:
+            if (ban := self.session.query(BanList).filter(
+                    BanList.acc_id == acc_id
+                ).first()
+            ):
                 ban.started = started
+                ban.ended = ended
+                self.session.commit()
             else:
-                ban.started = time.strftime('%Y-%m-%d %H:%M:%S')
-            ban.ended = ended
-        self.session.commit()
+                raise ValueError('account not found')
+        except Exception as error:
+            self.session.rollback()
+            raise error
 
     def read(self):
         return self.session.query(
@@ -50,3 +54,6 @@ class BanListModel:
             BanList.started,
             BanList.ended
         ).all()
+
+    def get_bans(self):
+        return self.bans

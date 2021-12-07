@@ -1,5 +1,7 @@
+import time
 from Models.account_model import AccountModel
 from Logger.logger import Logger
+from Models.banlist_model import BanListModel
 
 logger = Logger('logs', 'account_controller_logs.txt')
 
@@ -10,6 +12,7 @@ class AccountController:
             values = [kv.split(':')[1] for kv in args]
             self.kwargs = dict(zip(keys, values))
         self.model = AccountModel()
+        self.ban_model = BanListModel()
 
     def set_kwargs(self, **kwargs):
         self.kwargs = kwargs
@@ -35,11 +38,24 @@ class AccountController:
                 decrypted_password.decode() == self.kwargs['password']:
                     break
             else:
-                return 'AUTHENTIFICATION FAILED'
-            return 'AUTHENTIFICATION SUCCESSFUL~!#$~' + account.rolename
+                return 'AUTHENTIFICATION FAILED~!#$~Неверный логин или пароль'
+
+            bans = self.ban_model.read()
+
+            for ban in bans:
+                if ban.acc_id == account.id:
+                    break
+            else:
+                return 'AUTHENTIFICATION SUCCESSFUL~!#$~' + account.rolename
+            
+            if str(ban.ended) > time.strftime('%Y-%m-%d %H:%M:%S'):
+                return 'AUTHENTIFICATION FAILED~!#$~Вы забанены до ' + str(ban.ended)
+            else:
+                self.ban_model.delete(account.id)
+                return 'AUTHENTIFICATION SUCCESSFUL~!#$~' + account.rolename
         except Exception as error:
             logger.write(f'Cannot select account from database, error: {error}')
-            return 'AUTHENTIFICATION FAILED'
+            return 'AUTHENTIFICATION FAILED~!#$~Неверный логин или пароль'
 
     def get_information(self):
         try:
@@ -89,16 +105,16 @@ class AccountController:
         try:
             accs = self.model.read()
             print(
-                '-' * 121, '|{:^6}|{:^20}|{:^20}|{:^20}|{:^33}|{:^16}|'.format(
+                '-' * 122, '|{:^6}|{:^20}|{:^20}|{:^20}|{:^33}|{:^16}|'.format(
                     'ID', 'LOGIN', 'PASSWORD', 'MOBILE', 'EMAIL', 'ROLENAME'),
-                '-' * 121, sep = '\n'
+                '-' * 122, sep = '\n'
             )
             for acc in accs:
                 print(
                     '|{:^6}|{:^20}|{:^20}|{:^20}|{:^33}|{:^16}|'.format(
-                        acc[0], acc[1], '', acc[3], acc[4], acc[5])
+                        acc.id, acc.login, '', acc.mob_num, acc.email, acc.rolename)
                 )
-            print('-' * 121)
+            print('-' * 122)
         except Exception as error:
             logger.write(f'Cannot select account from database, error: {error}')
             print('CANNOT READ DATA FROM DATABASE') 
@@ -114,7 +130,16 @@ class AccountController:
             logger.write(f'Cannot get id account by login from database, error: {error}')
             return 'ACCOUNT NOT EXIST'
 
-
+    def get_login_by_id(self):
+        try:
+            accs = self.model.read()
+            for acc in accs:
+                if acc.id == self.kwargs['id']:
+                    return acc.login
+            return 'ACCOUNT NOT EXIST'
+        except Exception as error:
+            logger.write(f'Cannot get login account by id from database, error: {error}')
+            return 'ACCOUNT NOT EXIST'
 
 
 

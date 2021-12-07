@@ -4,6 +4,7 @@ from sqlalchemy import Column, Integer,       \
                        ForeignKeyConstraint,  \
                        PrimaryKeyConstraint,  \
                        func
+from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.mysql import FLOAT
 from sqlalchemy.ext.declarative import declarative_base
 

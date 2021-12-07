@@ -580,3 +580,47 @@ Server connected by('127.0.0.1', 43632) at Tue Dec  7 02:44:52 2021
 Client ('127.0.0.1', 43632) has disconnected at Tue Dec  7 02:45:00 2021
 Server connected by('127.0.0.1', 43636) at Tue Dec  7 02:45:58 2021
 Client ('127.0.0.1', 43636) has disconnected at Tue Dec  7 02:46:04 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 04:44:41 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 04:46:33 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 04:48:11 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 04:49:04 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 04:54:35 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 05:02:31 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 05:03:27 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 05:03:59 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 05:04:37 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 05:05:57 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 05:06:27 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 05:06:31 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 05:06:35 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 05:14:10 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 05:16:18 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 05:17:38 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 05:18:54 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 05:20:39 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 05:21:32 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 05:22:22 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 06:15:26 2021
+Server connected by('127.0.0.1', 43650) at Tue Dec  7 06:15:37 2021
+Server connected by('127.0.0.1', 43652) at Tue Dec  7 06:16:46 2021
+Server connected by('127.0.0.1', 43654) at Tue Dec  7 06:17:31 2021
+Server connected by('127.0.0.1', 43656) at Tue Dec  7 06:19:25 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 06:20:29 2021
+Server connected by('127.0.0.1', 43658) at Tue Dec  7 06:20:31 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 06:21:03 2021
+Server connected by('127.0.0.1', 43660) at Tue Dec  7 06:21:03 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 06:21:20 2021
+Server connected by('127.0.0.1', 43662) at Tue Dec  7 06:21:23 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 06:21:59 2021
+Server connected by('127.0.0.1', 43664) at Tue Dec  7 06:22:03 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 06:22:24 2021
+Server connected by('127.0.0.1', 43666) at Tue Dec  7 06:22:26 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 06:22:45 2021
+Server connected by('127.0.0.1', 43670) at Tue Dec  7 06:22:48 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 06:24:20 2021
+Server connected by('127.0.0.1', 43672) at Tue Dec  7 06:24:22 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 06:24:52 2021
+Server connected by('127.0.0.1', 43674) at Tue Dec  7 06:24:53 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 06:27:43 2021
+Server connected by('127.0.0.1', 43676) at Tue Dec  7 06:27:50 2021
+Client ('127.0.0.1', 43676) has disconnected at Tue Dec  7 06:29:12 2021

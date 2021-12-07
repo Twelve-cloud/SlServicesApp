@@ -104,12 +104,13 @@ class DbInitializer:
     def clear_tables(self, log = False):
         try:
             session = accessor.create_session()
-            session.query(Account).delete()
-            session.query(BanList).delete()
-            session.query(Company).delete()
-            session.query(Service).delete()
+            session.query(PriceHistory).delete() 
             session.query(Basket).delete()
-            session.query(PriceHistory).delete()
+            session.query(Service).delete()
+            session.query(Company).delete() 
+            session.query(BanList).delete()
+            session.query(Account).delete()
+            
             session.commit()
         except Exception as error:
            logger.write(f'Error with clearing tables: {error}')  

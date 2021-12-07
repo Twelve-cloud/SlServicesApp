@@ -28,7 +28,8 @@ if __name__ == '__main__':
             server.turn_on()          
             dispatcher_thread = Thread(
                 target = server.dispatcher, 
-                args = (controllers_dispatcher.perform, )
+                args = (controllers_dispatcher.perform, ),
+                daemon = True
             )
             dispatcher_thread.start()
         except Exception as error:
@@ -120,12 +121,33 @@ if __name__ == '__main__':
                 print(result)
             case 'read_accs':
                 acc_controller.view_all_accounts()
-            case 'ban_user':
-                pass
-            case 'unban_user':
-                pass
+            case 'ban_acc':
+               login = input('login: ')
+               started = input('started: ')
+               ended = input('ended: ')
+               banlist_controller.set_kwargs(
+                    login = login,
+                    started = started,
+                    ended = ended
+                )
+               result = banlist_controller.ban_account()
+               print(result)
+            case 'unban_acc':
+                login = input('login: ')
+                banlist_controller.set_kwargs(login = login)
+                result = banlist_controller.unban_account()
+                print(result)
             case 'change_ban':
-                pass
+                login = input('login: ')
+                started = input('started: ')
+                ended = input('ended: ')
+                banlist_controller.set_kwargs(
+                    login = login,
+                    started = started,
+                    ended = ended
+                )
+                result = banlist_controller.change_account_ban()
+                print(result)
             case 'view_bans':
                 banlist_controller.view_all_bans()
             case 'help':

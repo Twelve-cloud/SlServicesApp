@@ -142,7 +142,7 @@ class MainWindow(QMainWindow):
         if len(respond_list) == 1:
             command = respond_list[0]
         elif len(respond_list) == 2:
-            command, role = respond_list
+            command, args = respond_list
 
         if command == 'REGISTRATION FAILED':
             self.regi_wdg.setError('Ошибка регистрации')
@@ -152,14 +152,14 @@ class MainWindow(QMainWindow):
             self.stack_of_widgets.push(self.auth_wdg)
             QMessageBox.about(self, "Уведомление", "Регистрация успешна")
         elif command == 'AUTHENTIFICATION FAILED':
-            self.auth_wdg.setError('Ошибка аутентификации')
-        elif command == 'AUTHENTIFICATION SUCCESSFUL' and role == 'USER':
+            self.auth_wdg.setError(args)
+        elif command == 'AUTHENTIFICATION SUCCESSFUL' and args == 'USER':
             self.stack_of_widgets.pop()
             self.stack_of_widgets.push(self)
-        elif command == 'AUTHENTIFICATION SUCCESSFUL' and role == 'CONSULTANT':
+        elif command == 'AUTHENTIFICATION SUCCESSFUL' and args == 'CONSULTANT':
             self.stack_of_widgets.pop()
             self.stack_of_widgets.push(self)
-        elif command == 'AUTHENTIFICATION SUCCESSFUL' and role == 'BROKER':
+        elif command == 'AUTHENTIFICATION SUCCESSFUL' and args == 'BROKER':
             self.stack_of_widgets.pop()
             self.stack_of_widgets.push(self)
         elif command == 'REDO ACC INFO SUCCESS':
