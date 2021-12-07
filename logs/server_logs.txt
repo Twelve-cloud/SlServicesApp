@@ -624,3 +624,101 @@ Server connected by('127.0.0.1', 43674) at Tue Dec  7 06:24:53 2021
 Server has been listening at address: localhost, port: 6606 at Tue Dec  7 06:27:43 2021
 Server connected by('127.0.0.1', 43676) at Tue Dec  7 06:27:50 2021
 Client ('127.0.0.1', 43676) has disconnected at Tue Dec  7 06:29:12 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 06:40:01 2021
+Server connected by('127.0.0.1', 43678) at Tue Dec  7 06:41:29 2021
+Client ('127.0.0.1', 43678) has disconnected at Tue Dec  7 06:41:47 2021
+Server connected by('127.0.0.1', 43680) at Tue Dec  7 06:42:06 2021
+Client ('127.0.0.1', 43680) has disconnected at Tue Dec  7 06:42:42 2021
+Server connected by('127.0.0.1', 43684) at Tue Dec  7 06:42:44 2021
+Client ('127.0.0.1', 43684) has disconnected at Tue Dec  7 06:42:57 2021
+Server connected by('127.0.0.1', 43686) at Tue Dec  7 06:45:03 2021
+Server connected by('127.0.0.1', 43688) at Tue Dec  7 06:49:45 2021
+Server connected by('127.0.0.1', 43690) at Tue Dec  7 06:50:15 2021
+Client ('127.0.0.1', 43690) has disconnected at Tue Dec  7 06:50:59 2021
+Server connected by('127.0.0.1', 43692) at Tue Dec  7 06:57:16 2021
+Client ('127.0.0.1', 43692) has disconnected at Tue Dec  7 06:57:39 2021
+Server connected by('127.0.0.1', 43694) at Tue Dec  7 06:57:56 2021
+Server connected by('127.0.0.1', 43696) at Tue Dec  7 06:58:41 2021
+Client ('127.0.0.1', 43696) has disconnected at Tue Dec  7 06:59:15 2021
+Server connected by('127.0.0.1', 43698) at Tue Dec  7 06:59:18 2021
+Client ('127.0.0.1', 43698) has disconnected at Tue Dec  7 06:59:34 2021
+Server connected by('127.0.0.1', 43700) at Tue Dec  7 06:59:34 2021
+Client ('127.0.0.1', 43700) has disconnected at Tue Dec  7 07:00:02 2021
+Server connected by('127.0.0.1', 43702) at Tue Dec  7 07:00:04 2021
+Client ('127.0.0.1', 43702) has disconnected at Tue Dec  7 07:00:38 2021
+Server connected by('127.0.0.1', 43704) at Tue Dec  7 07:00:39 2021
+Client ('127.0.0.1', 43694) has disconnected at Tue Dec  7 07:00:48 2021
+Server connected by('127.0.0.1', 43706) at Tue Dec  7 07:00:55 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 07:01:09 2021
+Server connected by('127.0.0.1', 43708) at Tue Dec  7 07:01:11 2021
+Client ('127.0.0.1', 43708) has disconnected at Tue Dec  7 07:01:49 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 07:03:18 2021
+Server connected by('127.0.0.1', 43712) at Tue Dec  7 07:03:19 2021
+Client ('127.0.0.1', 43712) has disconnected at Tue Dec  7 07:03:47 2021
+Server connected by('127.0.0.1', 43714) at Tue Dec  7 07:03:57 2021
+Client ('127.0.0.1', 43714) has disconnected at Tue Dec  7 07:04:05 2021
+Server connected by('127.0.0.1', 43716) at Tue Dec  7 07:04:18 2021
+Client ('127.0.0.1', 43716) has disconnected at Tue Dec  7 07:04:25 2021
+Server connected by('127.0.0.1', 43718) at Tue Dec  7 07:04:32 2021
+Client ('127.0.0.1', 43718) has disconnected at Tue Dec  7 07:05:03 2021
+Server connected by('127.0.0.1', 43720) at Tue Dec  7 07:19:10 2021
+Client ('127.0.0.1', 43720) has disconnected at Tue Dec  7 07:19:20 2021
+Server connected by('127.0.0.1', 43722) at Tue Dec  7 07:25:07 2021
+Server connected by('127.0.0.1', 43724) at Tue Dec  7 07:25:31 2021
+Client ('127.0.0.1', 43724) has disconnected at Tue Dec  7 07:27:05 2021
+Server connected by('127.0.0.1', 43726) at Tue Dec  7 07:27:29 2021
+Client ('127.0.0.1', 43726) has disconnected at Tue Dec  7 07:27:43 2021
+Server connected by('127.0.0.1', 43728) at Tue Dec  7 07:28:43 2021
+Client ('127.0.0.1', 43728) has disconnected at Tue Dec  7 07:29:26 2021
+Server connected by('127.0.0.1', 43730) at Tue Dec  7 07:29:48 2021
+Client ('127.0.0.1', 43730) has disconnected at Tue Dec  7 07:30:31 2021
+Server connected by('127.0.0.1', 43734) at Tue Dec  7 07:43:32 2021
+Client ('127.0.0.1', 43734) has disconnected at Tue Dec  7 07:43:38 2021
+Server connected by('127.0.0.1', 43736) at Tue Dec  7 07:43:46 2021
+Server connected by('127.0.0.1', 43738) at Tue Dec  7 07:45:28 2021
+Server connected by('127.0.0.1', 43740) at Tue Dec  7 07:49:04 2021
+Client ('127.0.0.1', 43740) has disconnected at Tue Dec  7 07:49:25 2021
+Server connected by('127.0.0.1', 43742) at Tue Dec  7 07:51:56 2021
+Server connected by('127.0.0.1', 43744) at Tue Dec  7 07:52:07 2021
+Client ('127.0.0.1', 43744) has disconnected at Tue Dec  7 07:52:28 2021
+Server connected by('127.0.0.1', 43746) at Tue Dec  7 07:54:26 2021
+Client ('127.0.0.1', 43746) has disconnected at Tue Dec  7 07:54:52 2021
+Server connected by('127.0.0.1', 43748) at Tue Dec  7 07:57:11 2021
+Server connected by('127.0.0.1', 43750) at Tue Dec  7 07:57:47 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 07:58:37 2021
+Accept function was inturrupted at Tue Dec  7 07:58:39 2021
+Server has stoppped at Tue Dec  7 07:58:39 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 07:58:42 2021
+Server connected by('127.0.0.1', 43754) at Tue Dec  7 07:58:44 2021
+Client ('127.0.0.1', 43754) has disconnected at Tue Dec  7 07:59:05 2021
+Server connected by('127.0.0.1', 43756) at Tue Dec  7 08:01:42 2021
+Client ('127.0.0.1', 43756) has disconnected at Tue Dec  7 08:02:13 2021
+Server connected by('127.0.0.1', 43758) at Tue Dec  7 08:02:36 2021
+Client ('127.0.0.1', 43758) has disconnected at Tue Dec  7 08:02:54 2021
+Server connected by('127.0.0.1', 43760) at Tue Dec  7 08:03:35 2021
+Client ('127.0.0.1', 43760) has disconnected at Tue Dec  7 08:03:47 2021
+Server connected by('127.0.0.1', 43762) at Tue Dec  7 08:04:19 2021
+Server connected by('127.0.0.1', 43764) at Tue Dec  7 08:04:23 2021
+Client ('127.0.0.1', 43764) has disconnected at Tue Dec  7 08:04:33 2021
+Server connected by('127.0.0.1', 43766) at Tue Dec  7 08:11:23 2021
+Client ('127.0.0.1', 43766) has disconnected at Tue Dec  7 08:11:53 2021
+Server connected by('127.0.0.1', 43768) at Tue Dec  7 08:12:16 2021
+Client ('127.0.0.1', 43768) has disconnected at Tue Dec  7 08:12:27 2021
+Server connected by('127.0.0.1', 43770) at Tue Dec  7 08:12:27 2021
+Client ('127.0.0.1', 43770) has disconnected at Tue Dec  7 08:13:26 2021
+Server has been listening at address: localhost, port: 6606 at Tue Dec  7 08:35:23 2021
+Server connected by('127.0.0.1', 43774) at Tue Dec  7 08:35:24 2021
+Client ('127.0.0.1', 43774) has disconnected at Tue Dec  7 08:35:37 2021
+Server connected by('127.0.0.1', 43776) at Tue Dec  7 08:35:52 2021
+Client ('127.0.0.1', 43776) has disconnected at Tue Dec  7 08:36:22 2021
+Server connected by('127.0.0.1', 43778) at Tue Dec  7 08:37:05 2021
+Client ('127.0.0.1', 43778) has disconnected at Tue Dec  7 08:37:17 2021
+Server connected by('127.0.0.1', 43780) at Tue Dec  7 08:37:17 2021
+Client ('127.0.0.1', 43780) has disconnected at Tue Dec  7 08:37:28 2021
+Server connected by('127.0.0.1', 43782) at Tue Dec  7 08:38:39 2021
+Client ('127.0.0.1', 43782) has disconnected at Tue Dec  7 08:39:07 2021
+Server connected by('127.0.0.1', 43784) at Tue Dec  7 08:39:07 2021
+Server connected by('127.0.0.1', 43786) at Tue Dec  7 08:39:30 2021
+Server connected by('127.0.0.1', 43788) at Tue Dec  7 08:39:51 2021
+Client ('127.0.0.1', 43788) has disconnected at Tue Dec  7 08:39:58 2021
+Server connected by('127.0.0.1', 43790) at Tue Dec  7 08:39:59 2021

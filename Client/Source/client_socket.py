@@ -13,6 +13,5 @@ class ClientSocket:
     def getRespond(self):
         return self.sock.recv(4096).decode()
 
-
     def close(self):
         self.sock.close()

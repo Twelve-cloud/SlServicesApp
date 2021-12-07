@@ -37,22 +37,29 @@ class AccountInfoWidget(QWidget):
         self.dialog.show()
 
     def slotDeleteConfirmClicked(self):
-        currentDir = QDir(QDir.currentPath() + '/' + self.loginLineEdit.text())
-        currentDir.removeRecursively()
-        self.passw = self.dialog.target
+        self.passw_ = self.dialog.target
         self.deleteAccountButtonClicked.emit()
 
     def slotUploadPhotoClicked(self):
         filename = QFileDialog.getOpenFileName(self, "Выберите файл", QDir.homePath())
-        currentDir = QDir(QDir.currentPath())
-        currentDir.mkdir(self.loginLineEdit.text())
-        QFile.remove(QDir.currentPath() + '/' + self.loginLineEdit.text() + '/profile_photo.jpg')
-        QFile.copy(filename[0], QDir.currentPath() + '/' + self.loginLineEdit.text() + '/profile_photo.jpg')
-        self.photoLabel.setPixmap(QPixmap(self.loginLineEdit.text() + '/profile_photo.jpg').scaled(240, 240))
+        login = self.loginLineEdit.text()
+        profilesPath = QDir.currentPath() + '/Profiles/'
+
+        profilesDir = QDir(profilesPath)
+        if not QDir(profilesPath + login).exists():
+            profilesDir.mkdir(login)
+
+        if QFile(profilesPath + login + '/profile_photo.jpg').exists():
+            QFile.remove(profilesPath + login + '/profile_photo.jpg')
+        QFile.copy(filename[0], profilesPath + login + '/profile_photo.jpg')
+        self.photoLabel.setPixmap(QPixmap(profilesPath + login + '/profile_photo.jpg').scaled(240, 240))
 
     def slotDeletePhotoClicked(self):
-        if QFile.exists(self.loginLineEdit.text() + '/profile_photo.jpg'):
-            QFile.remove(QDir.currentPath() + '/' + self.loginLineEdit.text() + '/profile_photo.jpg')
+        profilesPath = QDir.currentPath() + '/Profiles/'
+        login = self.loginLineEdit.text()
+
+        if QFile(profilesPath + login + '/profile_photo.jpg').exists():
+            QFile.remove(profilesPath + login + '/profile_photo.jpg')
             self.photoLabel.clear()
 
     def slotUploadThemeClicked(self):
@@ -70,10 +77,11 @@ class AccountInfoWidget(QWidget):
         self.errorLabel.setStyleSheet('font-weight: 100; color: black; background: rgba(255, 0, 0, 0);')
 
     def setInfo(self, data):
+        profilesPath = QDir.currentPath() + '/Profiles/'
         login, passw, mobnum, email = data.split('~!#$~')
         self.loginLineEdit.setText(login)
         self.passwLineEdit.setText(passw)
         self.mobnumLineEdit.setText(mobnum)
         self.emailLineEdit.setText(email)
-        if QFile.exists(self.loginLineEdit.text() + '/profile_photo.jpg'):
-            self.photoLabel.setPixmap(QPixmap(self.loginLineEdit.text() + '/profile_photo.jpg').scaled(240, 240))
+        if QFile(profilesPath + login + '/profile_photo.jpg').exists():
+            self.photoLabel.setPixmap(QPixmap(profilesPath + login + '/profile_photo.jpg').scaled(240, 240))

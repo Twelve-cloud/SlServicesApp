@@ -48,3 +48,5 @@ class AuthentificationWidget(QWidget):
             self.passwLineEdit.setFocus()
         elif event.key() == Qt.Key_Up and self.passwLineEdit == QApplication.focusWidget():
             self.loginLineEdit.setFocus()
+        elif event.key() == Qt.Key_Enter:
+            self.slotAuthentificationButtonClicked()

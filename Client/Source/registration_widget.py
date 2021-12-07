@@ -57,5 +57,7 @@ class RegistrationWidget(QWidget):
             self.againPasswLineEdit.setFocus()
         elif event.key() == Qt.Key_Up and self.againPasswLineEdit == QApplication.focusWidget():
             self.passwLineEdit.setFocus()
+        elif event.key() == Qt.Key_Enter:
+            self.slotCreateButtonClicked()
 
 
