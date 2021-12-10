@@ -12,6 +12,7 @@ class AccountInfoWidget(QWidget):
     deleteAccountButtonClicked = pyqtSignal()
     uploadThemeButtonClicked = pyqtSignal()
     deleteThemeButtonClicked = pyqtSignal()
+    close = pyqtSignal()
 
     def __init__(self):
         super(AccountInfoWidget, self).__init__()
@@ -76,12 +77,14 @@ class AccountInfoWidget(QWidget):
         self.errorLabel.setText('')
         self.errorLabel.setStyleSheet('font-weight: 100; color: black; background: rgba(255, 0, 0, 0);')
 
-    def setInfo(self, data):
+    def setInfo(self, login, passw, mobnum, email):
         profilesPath = QDir.currentPath() + '/Profiles/'
-        login, passw, mobnum, email = data.split('~!#$~')
         self.loginLineEdit.setText(login)
         self.passwLineEdit.setText(passw)
         self.mobnumLineEdit.setText(mobnum)
         self.emailLineEdit.setText(email)
         if QFile(profilesPath + login + '/profile_photo.jpg').exists():
             self.photoLabel.setPixmap(QPixmap(profilesPath + login + '/profile_photo.jpg').scaled(240, 240))
+
+    def closeEvent(self, event):
+        self.close.emit()

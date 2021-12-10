@@ -1,5 +1,6 @@
 # This Python file uses the following encoding: utf-8
 import sys
+import time
 
 from PyQt5 import QtCore, uic
 from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, \
@@ -14,6 +15,9 @@ from initial_widget import InitialWidget
 from authentification_widget import AuthentificationWidget
 from registration_widget import RegistrationWidget
 from account_info_widget import AccountInfoWidget
+from user_menu import UserMenu
+from consultant_menu import ConsultationMenu
+from consultation_chat import ConsultationChat
 
 class MainWindow(QMainWindow):
     def __init__(self, client_socket):
@@ -22,6 +26,9 @@ class MainWindow(QMainWindow):
 
         self.client_socket = client_socket
         self.stack_of_widgets = StackOfWidgets()
+
+        self.client_socket.onReadyRead.connect(self.handleRespond)
+        self.chat = None
 
     #---------------CREATION WIDGETS BELOW------------------------------------------
         self.init_wdg = InitialWidget()
@@ -32,17 +39,26 @@ class MainWindow(QMainWindow):
         self.init_wdg.startButtonClicked.connect(
             self.slotInitStartButtonClicked
         )
+        self.init_wdg.close.connect(
+            self.childClosed
+        )
         self.auth_wdg.authentificationButtonClicked.connect(
             self.slotAuthentificationButtonClicked
         )
         self.auth_wdg.registrationButtonClicked.connect(
             self.slotRegistrationButtonClicked
         )
+        self.auth_wdg.close.connect(
+            self.childClosed
+        )
         self.regi_wdg.createButtonClicked.connect(
             self.slotCreateAccountButtonClicked
         )
         self.regi_wdg.backButtonClicked.connect(
             self.slotBackFromRegistrationButtonClicked
+        )
+        self.regi_wdg.close.connect(
+            self.childClosed
         )
     #------------SIGNAL-SLOT MAINWINDOW MENUBAR CONNECTIONS BELOW-------------------
         self.accInfo.triggered.connect(self.slotAccInfoButtonClicked)
@@ -64,8 +80,6 @@ class MainWindow(QMainWindow):
         self.client_socket.sendToServer('SIGN IN ACCOUNT~!#$~login:' + \
             self.auth_wdg.login + '~!#$~password:' + self.auth_wdg.passw
         )
-        respond = self.client_socket.getRespond()
-        self.handleRespond(respond)
 
     def slotRegistrationButtonClicked(self):
         self.stack_of_widgets.pop()
@@ -75,8 +89,6 @@ class MainWindow(QMainWindow):
         self.client_socket.sendToServer('REGISTRATION ACCOUNT~!#$~login:' + \
             self.regi_wdg.login + '~!#$~password:' + self.regi_wdg.passw
         )
-        respond = self.client_socket.getRespond()
-        self.handleRespond(respond)
 
     def slotBackFromRegistrationButtonClicked(self):
         self.stack_of_widgets.pop()
@@ -96,11 +108,12 @@ class MainWindow(QMainWindow):
         self.info_wdg.deleteThemeButtonClicked.connect(
             self.slotDeleteThemeButtonClicked
         )
+        self.info_wdg.close.connect(
+            self.childClosed
+        )
         self.client_socket.sendToServer('GET ACCOUNT INFO~!#$~login:' + \
             self.auth_wdg.login
         )
-        respond = self.client_socket.getRespond()
-        self.info_wdg.setInfo(respond)
 
         wnd = self.mdiArea.addSubWindow(self.info_wdg)
         wnd.setWindowTitle('Личная информация')
@@ -108,9 +121,16 @@ class MainWindow(QMainWindow):
         wnd.showMaximized()
 
     def slotQuitAccountClicked(self):
+        if self.mdiArea.activeSubWindow() == self.chat:
+            self.client_socket.sendToServer("FINISH CHAT~!#$~" + \
+                self.chat_wnd.login + "~!#$~" + self.chat_wnd.companion
+            )
         self.auth_wdg.clearLines()
         self.stack_of_widgets.pop()
         self.stack_of_widgets.push(self.auth_wdg)
+        self.mdiArea = QMdiArea()
+        self.setCentralWidget(self.mdiArea)
+
     #--------------INFO WINDGET SLOTS BELOW--------------------------------------------
     def slotUploadThemeButtonClicked(self):
         login = self.auth_wdg.loginLineEdit.text()
@@ -129,6 +149,7 @@ class MainWindow(QMainWindow):
             QFile.remove(profilesPath + login + '/background.jpg')
         QFile.copy(filename[0], profilesPath + login + '/background.jpg')
 
+        self.setStyleSheet("");
         originalImage = QImage(profilesPath + login + '/background.jpg')
         scaledImage = originalImage.scaled(
             QSize(self.frameGeometry().width(), self.frameGeometry().height())
@@ -142,15 +163,13 @@ class MainWindow(QMainWindow):
         profilesPath = QDir.currentPath() + '/Profiles/'
         if QFile(profilesPath + login + '/background.jpg').exists():
             QFile.remove(profilesPath + login + '/background.jpg')
-            self.setPalette(self.sourcePalette)
+            self.setStyleSheet("background-color: rgb(153, 193, 241);");
 
     def slotSaveAccountInfoButtonClicked(self):
         self.client_socket.sendToServer('REDO ACCOUNT INFO~!#$~login:' + \
             self.info_wdg.login + '~!#$~password:' + self.info_wdg.passw + \
             '~!#$~mob_num:' + self.info_wdg.mobnum + '~!#$~email:' + self.info_wdg.email
         )
-        respond = self.client_socket.getRespond()
-        self.handleRespond(respond)
 
     def slotDeleteAccountButtonClicked(self):
         if self.info_wdg.passw == self.info_wdg.passw_:
@@ -160,14 +179,20 @@ class MainWindow(QMainWindow):
             self.client_socket.sendToServer('DELETE ACCOUNT~!#$~login:' + \
                 self.auth_wdg.login
             )
-            respond = self.client_socket.getRespond()
-            self.handleRespond(respond)
         else:
             QMessageBox.about(self, "Уведомление", "Неверный пароль")
 
 
     #----------------------------------------MAINWINDOW SLOTS----------------------------------
     def closeEvent(self, event):
+        if self.chat:
+            self.client_socket.sendToServer("FINISH CHAT~!#$~" + \
+                self.chat_wnd.login + "~!#$~" + self.chat_wnd.companion
+            )
+        elif self.auth_wdg.rolename == 'USER':
+                self.client_socket.sendToServer("DELETE BASKET~!#$~login:" + \
+                self.auth_wdg.login + "~!#$~name:" + \
+                self.auth_wdg.login)
         self.client_socket.sendToServer('EXIT')
 
     def resizeEvent(self, event):
@@ -183,11 +208,49 @@ class MainWindow(QMainWindow):
             self.setPalette(palette)
 
     #-----------------MAINWINDOW FUNCTION BELOW------------------------------------------------
+    def childClosed(self):
+        if self.chat:
+            self.client_socket.sendToServer("FINISH CHAT~!#$~" + \
+                self.chat_wnd.login + "~!#$~" + self.chat_wnd.companion
+            )
+        elif self.auth_wdg.rolename == 'USER':
+                self.client_socket.sendToServer("DELETE BASKET~!#$~login:" + \
+                self.auth_wdg.login + "~!#$~name:" + \
+                self.auth_wdg.login)
+        self.client_socket.sendToServer('EXIT')
+
+
+    def slotCreateConsultationClicked(self):
+        self.chat_wnd = ConsultationChat()
+        self.chat_wnd.sendMessage.connect(lambda: self.client_socket.sendToServer("MESSAGE~!#$~" + \
+                self.chat_wnd.login + "~!#$~" + self.chat_wnd.companion + "~!#$~" + self.chat_wnd.message
+            )
+        )
+        self.chat_wnd.finishChat.connect(
+            self.slotFinishChatClicked
+        )
+        self.chat_wnd.setParticipants(self.auth_wdg.login, self.cons_wdg.currentUser)
+        self.client_socket.sendToServer("START CHAT~!#$~" + self.auth_wdg.login + "~!#$~" + self.cons_wdg.currentUser)
+        self.client_socket.sendToServer("DELETE BASKET~!#$~login:" + \
+            self.chat_wnd.companion + "~!#$~name:" + \
+            self.chat_wnd.companion
+        )
+        self.chat = self.mdiArea.addSubWindow(self.chat_wnd)
+        self.chat.setWindowTitle('Чат')
+        self.chat.setWindowFlags(QtCore.Qt.FramelessWindowHint);
+        self.chat.showMaximized()
+
+    def slotFinishChatClicked(self):
+        self.chat.close()
+        self.client_socket.sendToServer("FINISH CHAT~!#$~" + \
+            self.chat_wnd.login + "~!#$~" + self.chat_wnd.companion
+        )
 
     def uploadTheme(self):
         login = self.auth_wdg.loginLineEdit.text()
         profilesPath = QDir.currentPath() + '/Profiles/'
         if QFile(profilesPath + login + '/background.jpg').exists():
+            self.setStyleSheet("");
             originalImage = QImage(profilesPath + login + '/background.jpg')
             scaledImage = originalImage.scaled(
                 QSize(self.frameGeometry().width(), self.frameGeometry().height())
@@ -195,38 +258,78 @@ class MainWindow(QMainWindow):
             palette = QPalette()
             palette.setBrush(QPalette.Window, QBrush(scaledImage))
             self.setPalette(palette)
+        else:
+            self.setStyleSheet("background-color: rgb(153, 193, 241);");
 
-    def handleRespond(self, respond):
+    def handleRespond(self):
+        respond = self.client_socket.get_data()
+        print(respond)
         respond_list = respond.split('~!#$~')
+        command, args = "", []
 
-        if len(respond_list) == 1:
-            command = respond_list[0]
-        elif len(respond_list) == 2:
-            command, args = respond_list
 
-        if command == 'REGISTRATION FAILED':
-            self.regi_wdg.setError('Ошибка регистрации')
-        elif command == 'REGISTRATION SUCCESSFUL':
+        match len(respond_list):
+            case 1: command = respond_list[0]
+            case _: command, *args = respond_list
+
+        if command == 'REGISTRATION SUCCESSFUL':
             self.regi_wdg.clearLines()
             self.stack_of_widgets.pop()
             self.stack_of_widgets.push(self.auth_wdg)
             QMessageBox.about(self, "Уведомление", "Регистрация успешна")
+        elif command == 'REGISTRATION FAILED':
+            self.regi_wdg.setError('Ошибка регистрации')
+        elif command == 'AUTHENTIFICATION SUCCESSFUL' and args[0] == 'USER':
+            self.auth_wdg.rolename = args[0]
+            self.stack_of_widgets.pop()
+            self.stack_of_widgets.push(self)
+            self.user_wdg = UserMenu()
+            self.user_wdg.close.connect(
+                self.childClosed
+            )
+            self.user_wdg.consultationButtonClicked.connect(
+                lambda: self.client_socket.sendToServer("ADD BASKET~!#$~login:" + \
+                    self.auth_wdg.login + "~!#$~name:" + \
+                    self.auth_wdg.login + "~!#$~type:CONSULTATION"
+                )
+            )
+            wnd = self.mdiArea.addSubWindow(self.user_wdg)
+            wnd.setWindowTitle('Меню')
+            wnd.setWindowFlags(QtCore.Qt.FramelessWindowHint);
+            wnd.showMaximized()
+            self.uploadTheme()
+        elif command == 'AUTHENTIFICATION SUCCESSFUL' and args[0] == 'CONSULTANT':
+            self.auth_wdg.rolename = args[0]
+            self.stack_of_widgets.pop()
+            self.stack_of_widgets.push(self)
+            self.cons_wdg = ConsultationMenu()
+            self.cons_wdg.close.connect(
+                self.childClosed
+            )
+            self.cons_wdg.cancelConsultation.connect(
+                lambda: self.client_socket.sendToServer("DELETE BASKET~!#$~login:" + \
+                    self.cons_wdg.currentUser + "~!#$~name:" + \
+                    self.cons_wdg.currentUser
+                )
+            )
+            self.cons_wdg.createConsultation.connect(
+                self.slotCreateConsultationClicked
+            )
+            self.client_socket.sendToServer("GET BASKET~!#$~type:CONSULTATION")
+            self.cons_wdg.showRequests.setEnabled(False)
+            wnd = self.mdiArea.addSubWindow(self.cons_wdg)
+            wnd.setWindowTitle('Меню')
+            wnd.setWindowFlags(QtCore.Qt.FramelessWindowHint);
+            wnd.showMaximized()
+            self.uploadTheme()
+        elif command == 'AUTHENTIFICATION SUCCESSFUL' and args[0] == 'BROKER':
+            self.auth_wdg.rolename = args[0]
+            self.stack_of_widgets.pop()
+            self.stack_of_widgets.push(self)
+            self.uploadTheme()
         elif command == 'AUTHENTIFICATION FAILED':
-            self.auth_wdg.setError(args)
-        elif command == 'AUTHENTIFICATION SUCCESSFUL' and args == 'USER':
-            self.stack_of_widgets.pop()
-            self.stack_of_widgets.push(self)
-            self.uploadTheme()
-        elif command == 'AUTHENTIFICATION SUCCESSFUL' and args == 'CONSULTANT':
-            self.stack_of_widgets.pop()
-            self.stack_of_widgets.push(self)
-            self.uploadTheme()
-        elif command == 'AUTHENTIFICATION SUCCESSFUL' and args == 'BROKER':
-            self.stack_of_widgets.pop()
-            self.stack_of_widgets.push(self)
-            self.uploadTheme()
+            self.auth_wdg.setError(args[0])
         elif command == 'REDO ACC INFO SUCCESS':
-            self.auth_wdg.passw = self.info_wdg.passw
             QMessageBox.about(self, "Уведомление", "Данные изменены успешно")
             self.info_wdg.setError('')
         elif command == 'REDO ACC INFO FAILED':
@@ -238,6 +341,54 @@ class MainWindow(QMainWindow):
             self.stack_of_widgets.push(self.auth_wdg)
         elif command == 'DELETING FAILED':
             QMessageBox.about(self, "Уведомление", "Ошибка удаления аккаунта")
+        elif command == "GET INFORMATION SUCCESS":
+            self.info_wdg.setInfo(*args)
+        elif command == "GETDATA FAILED":
+            self.info_wdg.setError("Ошибка при соединении с сервером")
+        elif command == "GET BASKET SUCCESS" and self.auth_wdg.rolename == 'CONSULTANT':
+            if args:
+                self.cons_wdg.setConsultation(args)
+            else:
+                self.cons_wdg.clearList()
+        elif command == "GET BASKET SUCCES" and self.auth_wdg.rolename == 'BROKER':
+            pass
+        elif command == "GET BASKET FAILED" and self.auth_wdg.rolename == 'CONSULTANT':
+            self.cons_wdg.setError('Ошибка при соединении с сервером')
+        elif command == "GET BASKET FAILED" and self.auth_wdg.rolename == 'BROKER':
+            pass
+        elif command == 'REQUEST AGAIN' and self.auth_wdg.rolename == 'CONSULTANT':
+            self.client_socket.sendToServer("GET BASKET~!#$~type:CONSULTATION")
+        elif command == "REQUEST AGAIN" and self.auth_wdg.rolename == 'BROKER':
+            pass
+        elif command == "DELETE BASKET FAILED":
+            QMessageBox.about(self, "Уведомление", "Неопознанная ошибка")
+        elif command == "START CHAT" and self.auth_wdg.login == args[1]:
+            companion, login = args
+            self.chat_wnd = ConsultationChat()
+            print(self.chat_wnd)
+            self.chat_wnd.sendMessage.connect(lambda: self.client_socket.sendToServer("MESSAGE~!#$~" + \
+                    self.chat_wnd.login + "~!#$~" + self.chat_wnd.companion + "~!#$~" + self.chat_wnd.message
+                )
+            )
+            self.chat_wnd.finishChat.connect(
+                self.slotFinishChatClicked
+            )
+            self.chat_wnd.setParticipants(login, companion)
+            self.chat = self.mdiArea.addSubWindow(self.chat_wnd)
+            self.chat.setWindowTitle('Чат')
+            self.chat.setWindowFlags(QtCore.Qt.FramelessWindowHint);
+            self.chat.showMaximized()
+        elif command == "MESSAGE" and self.auth_wdg.login == args[1]:
+            if self.auth_wdg.rolename == 'USER':
+                companion = 'Консультант'
+            else:
+                companion = 'Клиент'
+            self.chat_wnd.setMessage(companion, args[2])
+        elif command == "FINISH CHAT" and self.auth_wdg.login == args[1]:
+            if self.chat_wnd:
+                self.chat.close()
+                self.chat_wnd = None
+
 
 
 if __name__ == "__main__":

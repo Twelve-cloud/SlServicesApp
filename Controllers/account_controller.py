@@ -1,7 +1,7 @@
 import time
 from Models.account_model import AccountModel
-from Logger.logger import Logger
 from Models.banlist_model import BanListModel
+from Logger.logger import Logger
 
 logger = Logger('logs', 'account_controller_logs.txt')
 
@@ -70,7 +70,7 @@ class AccountController:
                 account.login,
                 account.password
             )
-            return f'{account.login}~!#$~{decrypted_password.decode()}~!#$~' \
+            return f'GET INFORMATION SUCCESS~!#$~{account.login}~!#$~{decrypted_password.decode()}~!#$~' \
                    f'{account.mob_num}~!#$~{account.email}'
         except Exception as error:
             logger.write(f'Cannot select account from database, error: {error}')
@@ -123,6 +123,7 @@ class AccountController:
         try:
             accs = self.model.read()
             for acc in accs:
+                print(acc.login, self.kwargs['login'])
                 if acc.login == self.kwargs['login']:
                     return acc.id
             return 'ACCOUNT NOT EXIST'

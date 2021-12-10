@@ -7,6 +7,7 @@ from PyQt5.QtCore import pyqtSignal, Qt
 class AuthentificationWidget(QWidget):
     authentificationButtonClicked = pyqtSignal()
     registrationButtonClicked = pyqtSignal()
+    close = pyqtSignal()
 
     def __init__(self):
         super(AuthentificationWidget, self).__init__()
@@ -14,6 +15,7 @@ class AuthentificationWidget(QWidget):
         self.authentificationButton.clicked.connect(self.slotAuthentificationButtonClicked)
         self.registrationButton.clicked.connect(self.slotRegistrationButtonClicked)
         self.passwLineEdit.setEchoMode(QLineEdit.Password)
+        self.rolename = None
 
     def slotAuthentificationButtonClicked(self):
         self.login = self.loginLineEdit.text()
@@ -50,3 +52,6 @@ class AuthentificationWidget(QWidget):
             self.loginLineEdit.setFocus()
         elif event.key() == Qt.Key_Enter:
             self.slotAuthentificationButtonClicked()
+
+    def closeEvent(self, event):
+        self.close.emit()

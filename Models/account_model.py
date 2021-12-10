@@ -4,10 +4,8 @@ from cryptography.fernet import Fernet, InvalidToken
 from Database.Entities.entities import Account
 
 class AccountModel:
-    def __init__(self):
-        self.session = DbAccessor().create_session()
-
     def create(self, login, password, rolename):
+        self.session = DbAccessor().create_session()
         encrypted_password = self.encrypt_password(
             login,
             password
@@ -24,8 +22,11 @@ class AccountModel:
         except Exception as error:
             self.session.rollback()
             raise error
+        finally:
+            self.session.close()
 
     def delete(self, login):
+        self.session = DbAccessor().create_session()
         try:
             account = self.session.query(Account).filter(
                 Account.login == login
@@ -35,8 +36,11 @@ class AccountModel:
         except Exception as error:
             self.session.rollback()
             raise error
+        finally:
+            self.session.close()
 
     def update(self, login, password, mob_num, email):
+        self.session = DbAccessor().create_session()
         encrypted_password = self.encrypt_password(
             login,
             password
@@ -56,9 +60,12 @@ class AccountModel:
         except Exception as error:
             self.session.rollback()
             raise error
+        finally:
+            self.session.close()
 
     def read(self):
-        return self.session.query(
+        self.session = DbAccessor().create_session()
+        accounts = self.session.query(
             Account.id,
             Account.login, 
             Account.password,
@@ -66,6 +73,8 @@ class AccountModel:
             Account.email,
             Account.rolename
         ).all()
+        self.session.close()
+        return accounts
 
     def dump_key(self, filename):
         key = Fernet.generate_key()

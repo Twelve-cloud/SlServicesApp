@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLineEdit
 from PyQt5.QtCore import pyqtSignal, Qt
 
 class RegistrationWidget(QWidget):
+    close = pyqtSignal()
     createButtonClicked = pyqtSignal()
     backButtonClicked = pyqtSignal()
 
@@ -60,4 +61,5 @@ class RegistrationWidget(QWidget):
         elif event.key() == Qt.Key_Enter:
             self.slotCreateButtonClicked()
 
-
+    def closeEvent(self, event):
+        self.close.emit()

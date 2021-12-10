@@ -128,8 +128,19 @@ class Service(Base):
 class Basket(Base):
     __tablename__ = 'Basket'
 
-    id = Column('AccountID', Integer)
-    service_name = Column('ServiceName', String(50))
+    acc_id = Column('AccountID', Integer)
+    name = Column('Name', String(50))
+    type = Column('Type', String(50),
+        CheckConstraint(
+            sqltext = "Type IN ('SERVICE', 'CONSULTATION')",
+            name = 'ch_type'
+        ),
+        nullable = False
+    )
+    time = Column('Time', DateTime,
+        nullable = False,
+        server_default = func.now()
+    )
 
     __table_args__ = (
         ForeignKeyConstraint(
@@ -141,7 +152,7 @@ class Basket(Base):
         ),
         PrimaryKeyConstraint(
             'AccountID',
-            'ServiceName',
+            'Name',
             name = 'pkey_basket'
         )
     )

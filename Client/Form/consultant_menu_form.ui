@@ -17,8 +17,8 @@
    <string notr="true">background-color: rgb(153, 193, 241)</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="1">
-    <spacer name="verticalSpacer">
+   <item row="2" column="1">
+    <spacer name="verticalSpacer_2">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
@@ -32,22 +32,29 @@
    </item>
    <item row="1" column="1">
     <layout class="QGridLayout" name="gridLayout_4">
-     <item row="0" column="0">
+     <item row="3" column="0">
+      <widget class="QPushButton" name="createConsultationButton">
+       <property name="text">
+        <string>Принять</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
       <widget class="QPushButton" name="showRequests">
        <property name="text">
         <string>Показать заявки</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
+     <item row="1" column="1">
       <widget class="QPushButton" name="hideRequests">
        <property name="text">
         <string>Скрыть заявки</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="0" colspan="2">
-      <widget class="QListView" name="listView">
+     <item row="2" column="0" colspan="2">
+      <widget class="QListWidget" name="listWidget">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -68,17 +75,23 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="QPushButton" name="createConsultation">
+     <item row="3" column="1">
+      <widget class="QPushButton" name="cancelConsultationButton">
        <property name="text">
-        <string>Принять</string>
+        <string>Отменить</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QPushButton" name="cancelConsultation">
+     <item row="0" column="0" colspan="2">
+      <widget class="QLabel" name="label">
+       <property name="styleSheet">
+        <string notr="true">background: rgba(255, 0, 0, 0);</string>
+       </property>
        <property name="text">
-        <string>Отменить</string>
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
@@ -110,8 +123,8 @@
      </property>
     </spacer>
    </item>
-   <item row="2" column="1">
-    <spacer name="verticalSpacer_2">
+   <item row="0" column="1">
+    <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>

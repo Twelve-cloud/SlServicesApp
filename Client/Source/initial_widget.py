@@ -5,9 +5,13 @@ from PyQt5.QtWidgets import QWidget
 from PyQt5.QtCore import pyqtSignal
 
 class InitialWidget(QWidget):
+    close = pyqtSignal()
     startButtonClicked = pyqtSignal()
 
     def __init__(self):
         super(InitialWidget, self).__init__()
         uic.loadUi('Form/initial_widget.ui', self)
         self.startButton.clicked.connect(lambda: self.startButtonClicked.emit())
+
+    def closeEvent(self, event):
+        self.close.emit()

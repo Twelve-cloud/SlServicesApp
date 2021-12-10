@@ -100,3 +100,7 @@ Error with clearing tables: (pymysql.err.IntegrityError) (1451, 'Cannot delete o
 Error with clearing tables: (pymysql.err.IntegrityError) (1451, 'Cannot delete or update a parent row: a foreign key constraint fails (`BrokerBase`.`BanList`, CONSTRAINT `fkey_account` FOREIGN KEY (`Account_ID`) REFERENCES `Account` (`ID`) ON DELETE RESTRICT ON UPDATE CASCADE)')
 [SQL: DELETE FROM `Account`]
 (Background on this error at: https://sqlalche.me/e/14/gkpj) at Tue Dec  7 05:43:25 2021
+Error with initializing tables: (pymysql.err.IntegrityError) (1062, "Duplicate entry '1000' for key 'Account.PRIMARY'")
+[SQL: INSERT INTO `Account` (`ID`, `AccountLogin`, `AccountPassword`, `MobileNumber`, `Email`, `Rolename`) VALUES (%(ID)s, %(AccountLogin)s, %(AccountPassword)s, %(MobileNumber)s, %(Email)s, %(Rolename)s)]
+[parameters: {'ID': 1000, 'AccountLogin': 'ur_god', 'AccountPassword': b'gAAAAABhsE1GhHyvz78SDlumalHyZKKMCL5ewKpB0HA6t4M7K9rsrkKO2lXuqZZrfTxwM-21SeY-07I1mKJPfzC--C5WzhV4Dg==', 'MobileNumber': '+375(99)999-99-99', 'Email': 'godemail@god.ru', 'Rolename': 'BROKER'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Wed Dec  8 09:14:30 2021
