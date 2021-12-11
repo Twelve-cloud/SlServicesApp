@@ -282,3 +282,7 @@ Cannot select account from database, error: QueuePool limit of size 5 overflow 1
 Cannot get id account by login from database, error: QueuePool limit of size 5 overflow 10 reached, connection timed out, timeout 30.00 (Background on this error at: https://sqlalche.me/e/14/3o7r) at Fri Dec 10 06:42:57 2021
 Cannot select account from database, error: QueuePool limit of size 5 overflow 10 reached, connection timed out, timeout 30.00 (Background on this error at: https://sqlalche.me/e/14/3o7r) at Fri Dec 10 06:43:35 2021
 Cannot get id account by login from database, error: QueuePool limit of size 5 overflow 10 reached, connection timed out, timeout 30.00 (Background on this error at: https://sqlalche.me/e/14/3o7r) at Fri Dec 10 06:43:57 2021
+Cannot create account, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'gorde', 'AccountPassword': b'gAAAAABhtDg2wbP4wsMF9SS8fuNk-2GkQhE7k_N1M91vspUQBssdZmto_wALIv5_OzqtHQVOE3UBU2OKRLeyfsIRDe8ZIK4RAA==', 'Rolename': ''}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sat Dec 11 08:33:42 2021

@@ -71,6 +71,3 @@ class BanListController:
             logger.write(f'Cannot select ban from database, error: {error}')
             print('CANNOT READ DATA FROM DATABASE')
 
-    def get_bans(self):
-        return self.model.read()
-    

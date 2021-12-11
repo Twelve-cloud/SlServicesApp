@@ -207,3 +207,6 @@ Cannot add basket, error: BASKET EXISTS at Fri Dec 10 06:46:41 2021
 Cannot add basket, error: BASKET EXISTS at Fri Dec 10 06:46:44 2021
 Cannot delete basket, error: BASKET NOT EXIST at Fri Dec 10 06:50:16 2021
 Cannot add basket, error: BASKET EXISTS at Fri Dec 10 06:51:29 2021
+Cannot delete basket, error: BASKET NOT EXIST at Sat Dec 11 11:44:50 2021
+Cannot delete basket, error: BASKET NOT EXIST at Sat Dec 11 11:45:03 2021
+Cannot delete basket, error: BASKET NOT EXIST at Sat Dec 11 11:56:04 2021

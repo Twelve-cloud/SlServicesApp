@@ -9,6 +9,12 @@
     "Source/request_str_dialog.py",         "Form/request_str_form.ui",
     "Source/user_menu.py",                  "Form/user_menu_form.ui",
     "Source/consultant_menu.py",            "Form/consultant_menu_form.ui",
-    "Source/consultation_chat.py",          "Form/consultation_chat_form.ui"
+    "Source/consultation_chat.py",          "Form/consultation_chat_form.ui",
+    "Source/broker_menu.py",                "Form/broker_menu_form.ui",
+    "Source/company_widget.py",             "Form/company_form.ui",
+    "Source/service_widget.py",             "Form/service_form.ui",
+    "Source/linear_plot.py",                "Form/linear_plot.ui",
+    "Source/histogram.py",                  "Form/histogram.ui",
+    "Source/plot_choice.py",                   "Form/plot_choice.ui"
     ]
 }

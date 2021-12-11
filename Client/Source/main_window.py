@@ -18,6 +18,12 @@ from account_info_widget import AccountInfoWidget
 from user_menu import UserMenu
 from consultant_menu import ConsultationMenu
 from consultation_chat import ConsultationChat
+from broker_menu import BrokerMenu
+from company_widget import CompanyWidget
+from service_widget import ServiceWidget
+from plot_choice import PlotChoice
+from histogram import Histogram
+from linear_plot import LinearPlot
 
 class MainWindow(QMainWindow):
     def __init__(self, client_socket):
@@ -28,6 +34,7 @@ class MainWindow(QMainWindow):
         self.stack_of_widgets = StackOfWidgets()
 
         self.client_socket.onReadyRead.connect(self.handleRespond)
+        self.chat_wnd = None
         self.chat = None
 
     #---------------CREATION WIDGETS BELOW------------------------------------------
@@ -108,9 +115,6 @@ class MainWindow(QMainWindow):
         self.info_wdg.deleteThemeButtonClicked.connect(
             self.slotDeleteThemeButtonClicked
         )
-        self.info_wdg.close.connect(
-            self.childClosed
-        )
         self.client_socket.sendToServer('GET ACCOUNT INFO~!#$~login:' + \
             self.auth_wdg.login
         )
@@ -185,7 +189,7 @@ class MainWindow(QMainWindow):
 
     #----------------------------------------MAINWINDOW SLOTS----------------------------------
     def closeEvent(self, event):
-        if self.chat:
+        if self.chat_wnd:
             self.client_socket.sendToServer("FINISH CHAT~!#$~" + \
                 self.chat_wnd.login + "~!#$~" + self.chat_wnd.companion
             )
@@ -209,7 +213,7 @@ class MainWindow(QMainWindow):
 
     #-----------------MAINWINDOW FUNCTION BELOW------------------------------------------------
     def childClosed(self):
-        if self.chat:
+        if self.chat_wnd:
             self.client_socket.sendToServer("FINISH CHAT~!#$~" + \
                 self.chat_wnd.login + "~!#$~" + self.chat_wnd.companion
             )
@@ -246,6 +250,50 @@ class MainWindow(QMainWindow):
             self.chat_wnd.login + "~!#$~" + self.chat_wnd.companion
         )
 
+    def slotCompanyClicked(self):
+        self.comp_wdg = CompanyWidget()
+        self.comp_wdg.addButtonClicked.connect(lambda: self.client_socket.sendToServer('ADD COMPANY~!#$~company_name:' + \
+                self.comp_wdg.selected_company
+            )
+        )
+        self.comp_wdg.changeButtonClicked.connect(lambda: self.client_socket.sendToServer('CHANGE COMPANY~!#$~old_name:' + \
+                self.comp_wdg.selected_company + '~!#$~company_name:' + \
+                self.comp_wdg.new_name
+            )
+        )
+        self.comp_wdg.deleteButtonClicked.connect(lambda: self.client_socket.sendToServer('DELETE COMPANY~!#$~company_name:' + \
+                self.comp_wdg.selected_company
+            )
+        )
+        self.comp_wdg.itemDoubleClicked.connect(
+            self.slotItemDoubleClicked
+        )
+        self.client_socket.sendToServer('GET COMPANY')
+        wnd = self.mdiArea.addSubWindow(self.comp_wdg)
+        wnd.setWindowTitle('Работа с компаниями')
+        wnd.setWindowFlags(QtCore.Qt.Dialog);
+        wnd.showMaximized()
+
+    def slotItemDoubleClicked(self):
+        self.serv_wdg = ServiceWidget()
+        self.serv_wdg.addButtonClicked.connect(lambda: self.client_socket.sendToServer('ADD SERVICE~!#$~service_name:' + \
+            self.serv_wdg.service + '~!#$~price:' + self.serv_wdg.price + '~!#$~company_name:' + self.comp_wdg.selected_company
+            )
+        )
+        self.serv_wdg.changeButtonClicked.connect(lambda: self.client_socket.sendToServer('CHANGE SERVICE~!#$~service_name:' + \
+            self.serv_wdg.service + '~!#$~price:' + self.serv_wdg.price + '~!#$~company_name:' + self.comp_wdg.selected_company
+            )
+        )
+        self.serv_wdg.deleteButtonClicked.connect(lambda: self.client_socket.sendToServer('DELETE SERVICE~!#$~service_name:' + \
+            self.serv_wdg.service + '~!#$~company_name:' + self.comp_wdg.selected_company
+            )
+        )
+        self.client_socket.sendToServer('GET SERVICE~!#$~company_name:' + self.comp_wdg.selected_company)
+        wnd = self.mdiArea.addSubWindow(self.serv_wdg)
+        wnd.setWindowTitle('Работа с услугами')
+        wnd.setWindowFlags(QtCore.Qt.Dialog);
+        wnd.showMaximized()
+
     def uploadTheme(self):
         login = self.auth_wdg.loginLineEdit.text()
         profilesPath = QDir.currentPath() + '/Profiles/'
@@ -260,6 +308,28 @@ class MainWindow(QMainWindow):
             self.setPalette(palette)
         else:
             self.setStyleSheet("background-color: rgb(153, 193, 241);");
+
+    def slotPlotClicked(self):
+        self.plot_choice = PlotChoice()
+        self.plot_choice.histogramClicked.connect(self.slotHistogramClicked)
+        self.plot_choice.linearClicked.connect(self.slotLinearClicked)
+        wnd = self.mdiArea.addSubWindow(self.plot_choice)
+        wnd.setWindowTitle('Графики')
+        wnd.setWindowFlags(QtCore.Qt.Dialog);
+        wnd.showMaximized()
+
+    def slotHistogramClicked(self):
+        self.hist = Histogram()
+        self.hist.createHistogram()
+        wnd = self.mdiArea.addSubWindow(self.hist)
+        wnd.setWindowTitle('Работа с компаниями')
+        wnd.setWindowFlags(QtCore.Qt.Dialog);
+        wnd.showMaximized()
+        #self.client_socket.sendToServer('GET DATA FOR HISTOGRAM')
+
+    def slotLinearClicked(self):
+        self.client_socket.sendToServer('GET SERVICES ONLY')
+
 
     def handleRespond(self):
         respond = self.client_socket.get_data()
@@ -326,6 +396,20 @@ class MainWindow(QMainWindow):
             self.auth_wdg.rolename = args[0]
             self.stack_of_widgets.pop()
             self.stack_of_widgets.push(self)
+            self.brok_wdg = BrokerMenu()
+            self.brok_wdg.close.connect(
+                self.childClosed
+            )
+            self.brok_wdg.companyClicked.connect(
+                self.slotCompanyClicked
+            )
+            self.brok_wdg.plotClicked.connect(
+                self.slotPlotClicked
+            )
+            wnd = self.mdiArea.addSubWindow(self.brok_wdg)
+            wnd.setWindowTitle('Меню')
+            wnd.setWindowFlags(QtCore.Qt.FramelessWindowHint);
+            wnd.showMaximized()
             self.uploadTheme()
         elif command == 'AUTHENTIFICATION FAILED':
             self.auth_wdg.setError(args[0])
@@ -360,8 +444,8 @@ class MainWindow(QMainWindow):
             self.client_socket.sendToServer("GET BASKET~!#$~type:CONSULTATION")
         elif command == "REQUEST AGAIN" and self.auth_wdg.rolename == 'BROKER':
             pass
-        elif command == "DELETE BASKET FAILED":
-            QMessageBox.about(self, "Уведомление", "Неопознанная ошибка")
+        elif command == "DELETE BASKET FAILED" and self.auth_wdg.rolename == "CONSULTANT":
+            pass
         elif command == "START CHAT" and self.auth_wdg.login == args[1]:
             companion, login = args
             self.chat_wnd = ConsultationChat()
@@ -388,6 +472,51 @@ class MainWindow(QMainWindow):
             if self.chat_wnd:
                 self.chat.close()
                 self.chat_wnd = None
+        elif command == "GET COMPANY SUCCESS" and self.auth_wdg.rolename == 'BROKER':
+            self.comp_wdg.clearError()
+            self.comp_wdg.setCompanies(args)
+        elif command == "GET COMPANY FAILED" and self.auth_wdg.rolename == 'BROKER':
+            self.comp_wdg.setError('Ошибка при соединении с сервером')
+        elif command == 'DELETE COMPANY FAILED' and self.auth_wdg.rolename == 'BROKER':
+            self.comp_wdg.setError('Ошибка при соединении с сервером')
+        elif command == 'ADD COMPANY FAILED' and self.auth_wdg.rolename == 'BROKER':
+            self.comp_wdg.setError('Ошибка! Такая компания уже существует')
+        elif command == 'CHANGE COMPANY FAILED' and self.auth_wdg.rolename == 'BROKER':
+            self.comp_wdg.setError('Ошибка! Новое имя компании уже существует')
+        elif command == 'REQUEST COMPANIES' and self.auth_wdg.rolename == 'BROKER':
+            self.client_socket.sendToServer('GET COMPANY')
+        elif command == "GET SERVICE SUCCESS" and self.auth_wdg.rolename == 'BROKER':
+            self.serv_wdg.clearError()
+            self.serv_wdg.setServices(args)
+        elif command == "GET SERVICE FAILED" and self.auth_wdg.rolename == 'BROKER':
+            self.serv_wdg.setError('Ошибка при соединении с сервером')
+        elif command == 'DELETE SERVICE FAILED' and self.auth_wdg.rolename == 'BROKER':
+            self.serv_wdg.setError('Ошибка при соединении с сервером')
+        elif command == 'ADD SERVICE FAILED' and self.auth_wdg.rolename == 'BROKER':
+            self.serv_wdg.setError('Ошибка! Такая услуга уже существует')
+        elif command == 'CHANGE SERVICE FAILED' and self.auth_wdg.rolename == 'BROKER':
+            self.serv_wdg.setError('Ошибка! Новое имя услуги уже существует')
+        elif command == 'REQUEST SERVICES' and self.auth_wdg.rolename == 'BROKER':
+            self.client_socket.sendToServer('GET SERVICE~!#$~company_name:' + self.comp_wdg.selected_company)
+        elif command == "CREATE LINEAR" and self.auth_wdg.rolename == 'BROKER':
+            companies, prices = [], []
+            for x in args:
+                com, pr = x.split(':')
+                companies.append(com)
+                prices.append(float(pr))
+            self.linear.createLinearPlot(companies, prices)
+        elif command == 'GET SERVICES ONLY SUCCESS' and self.auth_wdg.rolename == 'BROKER':
+            self.linear = LinearPlot()
+            self.linear.selOption.connect(lambda: self.client_socket.sendToServer('CREATE LINEAR~!#$~service_name:' + self.linear.currName()))
+            self.linear.setServices(args)
+            wnd = self.mdiArea.addSubWindow(self.linear)
+            wnd.setWindowTitle('Линейный график')
+            wnd.setWindowFlags(QtCore.Qt.Dialog);
+            wnd.showMaximized()
+            self.client_socket.sendToServer('CREATE LINEAR~!#$~service_name:' + self.linear.currName())
+
+
+
 
 
 

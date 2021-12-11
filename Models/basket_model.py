@@ -26,7 +26,7 @@ class BasketModel:
         try:
             if self.session.query(Basket).get((acc_id, name)):
                 basket = self.session.query(Basket).filter(
-                    Basket.acc_id == acc_id and
+                    Basket.acc_id == acc_id,
                     Basket.name == name
                 ).one()
                 self.session.delete(basket)

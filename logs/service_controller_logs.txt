@@ -1,0 +1,9 @@
+Cannot add service, error: could not convert string to float: 'фыв' at Sat Dec 11 10:55:41 2021
+Cannot change service, error: account not found at Sat Dec 11 11:24:26 2021
+Cannot change service, error: account not found at Sat Dec 11 11:25:03 2021
+Cannot change service, error: account not found at Sat Dec 11 11:27:37 2021
+Cannot change service, error: account not found at Sat Dec 11 11:28:23 2021
+Cannot delete service, error: Multiple rows were found when exactly one was required at Sat Dec 11 11:38:55 2021
+Cannot delete service, error: Multiple rows were found when exactly one was required at Sat Dec 11 11:39:38 2021
+Cannot read services, error: 'ServiceController' object has no attribute 'kwargs' at Sat Dec 11 14:04:11 2021
+Cannot read services, error: 'ServiceModel' object has no attribute 'read_all' at Sat Dec 11 14:06:01 2021

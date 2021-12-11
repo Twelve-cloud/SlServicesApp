@@ -20,10 +20,11 @@ class ClientSocket(QWidget):
         return self.data.decode()
 
     def sendToServer(self, msg):
+        msg = msg.encode()
         size = len(msg)
-        size_bytes = size.to_bytes(4, 'little', signed = False)
+        size_bytes = size.to_bytes(16, 'little', signed = False)
         self.sock.write(size_bytes)
-        self.sock.write(msg.encode())
+        self.sock.write(msg)
 
     def close(self):
         self.sock.close()

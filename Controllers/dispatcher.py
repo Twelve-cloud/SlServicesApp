@@ -1,5 +1,7 @@
 from .account_controller import AccountController
 from .basket_controller import BasketController
+from .company_controller import CompanyController
+from .service_controller import ServiceController
 
 class ControllersDispatcher:
     controllers = {
@@ -15,11 +17,25 @@ class ControllersDispatcher:
             'ADD BASKET': 'add_basket',
             'DELETE BASKET': 'delete_basket',
         },
+        CompanyController: {
+            'ADD COMPANY': 'add_company',
+            'DELETE COMPANY': 'delete_company',
+            'CHANGE COMPANY': 'change_company',
+            'GET COMPANY': 'get_companies'
+        },
+        ServiceController: {
+            'ADD SERVICE': 'add_service',
+            'DELETE SERVICE': 'delete_service',
+            'CHANGE SERVICE': 'change_service',
+            'GET SERVICE': 'get_services',
+            'CREATE LINEAR': 'create_linear',
+            'GET SERVICES ONLY': 'get_services_only'
+        }
     }
 
     def perform(self, connection, server):
         while True:
-            size_bytes = connection.recv(4)
+            size_bytes = connection.recv(16)
             size = int.from_bytes(size_bytes, 'little', signed = False)
             print(size)
             message_encoded = connection.recv(size)
@@ -57,7 +73,9 @@ class ControllersDispatcher:
                     ControllersDispatcher.controllers[targetController][command] + 
                     '()'
                 )
-                if command == 'ADD BASKET' or command == 'DELETE BASKET':
+                if command == 'ADD BASKET' or command == 'DELETE BASKET' or command == 'ADD COMPANY' \
+                    or command == 'DELETE COMPANY' or command == 'CHANGE COMPANY' or command == 'ADD SERVICE' \
+                    or command == 'DELETE SERVICE' or command == 'CHANGE SERVICE':
                     clients = server.get_clients()
                     for client in clients:
                         client.send(result.encode())
@@ -65,4 +83,5 @@ class ControllersDispatcher:
                     connection.send(result.encode())
             else:
                 connection.send('UNKNOWN ERROR'.encode())
+
 

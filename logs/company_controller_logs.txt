@@ -1,0 +1,21 @@
+Cannot add company, error: 'CompanyController' object has no attribute 'args' at Sat Dec 11 08:13:15 2021
+Cannot add company, error: 'CompanyController' object has no attribute 'args' at Sat Dec 11 08:14:34 2021
+Cannot add company, error: 'CompanyController' object has no attribute 'args' at Sat Dec 11 08:15:27 2021
+Cannot delete company, error: No row was found when one was required at Sat Dec 11 08:40:24 2021
+Cannot change company, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'Компания Ильи' for key 'Company.CompanyName'")
+[SQL: UPDATE `Company` SET `CompanyName`=%(CompanyName)s WHERE `Company`.`ID` = %(Company_ID)s]
+[parameters: {'CompanyName': 'Компания Ильи', 'Company_ID': 5}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Sat Dec 11 08:44:39 2021
+Cannot delete company, error: No row was found when one was required at Sat Dec 11 08:45:14 2021
+Cannot add company, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_cname' is violated.")
+[SQL: INSERT INTO `Company` (`CompanyName`) VALUES (%(CompanyName)s)]
+[parameters: {'CompanyName': 'Александра компания'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sat Dec 11 09:10:08 2021
+Cannot add company, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_cname' is violated.")
+[SQL: INSERT INTO `Company` (`CompanyName`) VALUES (%(CompanyName)s)]
+[parameters: {'CompanyName': 'Алекс'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Sat Dec 11 09:10:22 2021
+Cannot add company, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'Газпром' for key 'Company.CompanyName'")
+[SQL: INSERT INTO `Company` (`CompanyName`) VALUES (%(CompanyName)s)]
+[parameters: {'CompanyName': 'Газпром'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Sat Dec 11 09:21:06 2021
