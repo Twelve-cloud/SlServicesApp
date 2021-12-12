@@ -24,6 +24,12 @@ from service_widget import ServiceWidget
 from plot_choice import PlotChoice
 from histogram import Histogram
 from linear_plot import LinearPlot
+from report_widget import ReportWidget
+from reportlab.pdfgen import canvas
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfbase import pdfmetrics
+from reportlab.lib import colors
+from broker_client import BrokerClient
 
 class MainWindow(QMainWindow):
     def __init__(self, client_socket):
@@ -319,17 +325,35 @@ class MainWindow(QMainWindow):
         wnd.showMaximized()
 
     def slotHistogramClicked(self):
-        self.hist = Histogram()
-        self.hist.createHistogram()
-        wnd = self.mdiArea.addSubWindow(self.hist)
-        wnd.setWindowTitle('Работа с компаниями')
-        wnd.setWindowFlags(QtCore.Qt.Dialog);
-        wnd.showMaximized()
-        #self.client_socket.sendToServer('GET DATA FOR HISTOGRAM')
+        self.client_socket.sendToServer('GET DATA FOR HISTOGRAM')
 
     def slotLinearClicked(self):
         self.client_socket.sendToServer('GET SERVICES ONLY')
 
+
+    def slotReportClicked(self):
+        self.report_wid = ReportWidget()
+        self.report_wid.txtButtonClicked.connect(lambda: self.client_socket.sendToServer('GET PRICE HISTORY'))
+        self.report_wid.pdfButtonClicked.connect(lambda: self.client_socket.sendToServer('GET PRICE HISTORY'))
+        wnd = self.mdiArea.addSubWindow(self.report_wid)
+        wnd.setWindowTitle('Графики')
+        wnd.setWindowFlags(QtCore.Qt.Dialog);
+        wnd.showMaximized()
+
+    def slotOrderClicked(self):
+        self.brcl_wgd = BrokerClient()
+        self.brcl_wgd.orderClicked.connect(self.slotBrokerClientOrderClicked)
+        self.client_socket.sendToServer("GET ORDERS~!#$~type:SERVICE")
+        wnd = self.mdiArea.addSubWindow(self.brcl_wgd)
+        wnd.setWindowTitle('Заказы')
+        wnd.setWindowFlags(QtCore.Qt.Dialog);
+        wnd.showMaximized()
+
+    def slotBrokerClientOrderClicked(self):
+        self.client_socket.sendToServer("DELETE BASKET~!#$~login:" + \
+            self.brcl_wgd.login + "~!#$~name:" + \
+            self.brcl_wgd.order
+        )
 
     def handleRespond(self):
         respond = self.client_socket.get_data()
@@ -363,6 +387,11 @@ class MainWindow(QMainWindow):
                     self.auth_wdg.login + "~!#$~type:CONSULTATION"
                 )
             )
+            self.user_wdg.orderButtonClicked.connect(lambda: self.client_socket.sendToServer("ADD BASKET~!#$~login:" + \
+                self.auth_wdg.login + "~!#$~name:" + self.user_wdg.currentService + "~!#$~type:SERVICE"
+                )
+            )
+            self.client_socket.sendToServer("GET AVG PRICE AND SERVICE")
             wnd = self.mdiArea.addSubWindow(self.user_wdg)
             wnd.setWindowTitle('Меню')
             wnd.setWindowFlags(QtCore.Qt.FramelessWindowHint);
@@ -406,6 +435,12 @@ class MainWindow(QMainWindow):
             self.brok_wdg.plotClicked.connect(
                 self.slotPlotClicked
             )
+            self.brok_wdg.reportClicked.connect(
+                self.slotReportClicked
+            )
+            self.brok_wdg.orderClicked.connect(
+                self.slotOrderClicked
+            )
             wnd = self.mdiArea.addSubWindow(self.brok_wdg)
             wnd.setWindowTitle('Меню')
             wnd.setWindowFlags(QtCore.Qt.FramelessWindowHint);
@@ -443,13 +478,12 @@ class MainWindow(QMainWindow):
         elif command == 'REQUEST AGAIN' and self.auth_wdg.rolename == 'CONSULTANT':
             self.client_socket.sendToServer("GET BASKET~!#$~type:CONSULTATION")
         elif command == "REQUEST AGAIN" and self.auth_wdg.rolename == 'BROKER':
-            pass
+            self.client_socket.sendToServer("GET ORDERS~!#$~type:SERVICE")
         elif command == "DELETE BASKET FAILED" and self.auth_wdg.rolename == "CONSULTANT":
             pass
         elif command == "START CHAT" and self.auth_wdg.login == args[1]:
             companion, login = args
             self.chat_wnd = ConsultationChat()
-            print(self.chat_wnd)
             self.chat_wnd.sendMessage.connect(lambda: self.client_socket.sendToServer("MESSAGE~!#$~" + \
                     self.chat_wnd.login + "~!#$~" + self.chat_wnd.companion + "~!#$~" + self.chat_wnd.message
                 )
@@ -505,18 +539,60 @@ class MainWindow(QMainWindow):
                 companies.append(com)
                 prices.append(float(pr))
             self.linear.createLinearPlot(companies, prices)
-        elif command == 'GET SERVICES ONLY SUCCESS' and self.auth_wdg.rolename == 'BROKER':
+        elif command == 'GET SERVICE ONLY SUCCESS' and self.auth_wdg.rolename == 'BROKER':
             self.linear = LinearPlot()
-            self.linear.selOption.connect(lambda: self.client_socket.sendToServer('CREATE LINEAR~!#$~service_name:' + self.linear.currName()))
             self.linear.setServices(args)
+            self.linear.selOption.connect(lambda: self.client_socket.sendToServer('CREATE LINEAR~!#$~service_name:' + self.linear.currName()))
             wnd = self.mdiArea.addSubWindow(self.linear)
             wnd.setWindowTitle('Линейный график')
             wnd.setWindowFlags(QtCore.Qt.Dialog);
             wnd.showMaximized()
             self.client_socket.sendToServer('CREATE LINEAR~!#$~service_name:' + self.linear.currName())
-
-
-
+        elif command == 'CREATE HISTOGRAM' and self.auth_wdg.rolename == 'BROKER':
+            companies_prices, std_list = [], []
+            for x in args:
+                std, com_pr = x.split(':')
+                companies_prices.append(com_pr)
+                std_list.append(std)
+            self.hist.createHistogram(companies_prices, std_list)
+        elif command == 'GET DATA FOR HISTOGRAM SUCCESS' and self.auth_wdg.rolename == 'BROKER':
+            self.hist = Histogram()
+            self.hist.setServices(args)
+            self.hist.selOption.connect(lambda: self.client_socket.sendToServer('CREATE HISTOGRAM~!#$~service_name:' + self.hist.currName()))
+            wnd = self.mdiArea.addSubWindow(self.hist)
+            wnd.setWindowTitle('Работа с компаниями')
+            wnd.setWindowFlags(QtCore.Qt.Dialog);
+            wnd.showMaximized()
+        elif command == 'GET PRICE HISTORY SUCCESS' and self.auth_wdg.rolename == 'BROKER':
+            if self.report_wid.format:
+                file = open(self.report_wid.filename + '.txt', 'w')
+                for x in args:
+                    file.write(x + '\n')
+                file.close()
+            else:
+                pdf = canvas.Canvas(self.report_wid.filename + '.pdf')
+                pdf.setTitle("История цен")
+                canvas.setFont('FreeSans', 32)
+                pdf.drawCentredString(300, 770, "PriceHistory")
+                pdf.setFillColorRGB(0, 0, 255)
+                pdf.line(30, 710, 550, 710)
+                text = pdf.beginText(40, 680)
+                text.setFont('FreeSans', 18)
+                text.setFillColor(colors.red)
+                for x in args:
+                    text.textLine(x)
+                pdf.drawText(text)
+                pdf.save()
+        elif command == "GET AVG PRICE AND SERVICE SUCCESS" and self.auth_wdg.rolename == "USER":
+            avgs, services = [], []
+            for x in args:
+                price, service = x.split(':')
+                avgs.append(price)
+                services.append(service)
+            data = dict(zip(services, avgs))
+            self.user_wdg.setServices(data)
+        elif command == "GET ORDERS SUCCESS" and self.auth_wdg.rolename == "BROKER":
+            self.brcl_wgd.setData(args)
 
 
 

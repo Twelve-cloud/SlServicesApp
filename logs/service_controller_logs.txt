@@ -7,3 +7,5 @@ Cannot delete service, error: Multiple rows were found when exactly one was requ
 Cannot delete service, error: Multiple rows were found when exactly one was required at Sat Dec 11 11:39:38 2021
 Cannot read services, error: 'ServiceController' object has no attribute 'kwargs' at Sat Dec 11 14:04:11 2021
 Cannot read services, error: 'ServiceModel' object has no attribute 'read_all' at Sat Dec 11 14:06:01 2021
+Cannot read services, error: PriceHistoryModel.read() missing 1 required positional argument: 'service_name' at Sat Dec 11 17:25:23 2021
+Cannot read services and average prices, error: name 'func' is not defined at Sun Dec 12 15:07:58 2021

@@ -62,7 +62,7 @@ class ServiceController:
 
     def get_services_only(self):
         try:
-            result = "GET SERVICES ONLY SUCCESS"
+            result = "GET SERVICE ONLY SUCCESS"
             services = self.model.read_all()
             for service in services:
                 result += f'~!#$~{service.service_name}'
@@ -70,3 +70,26 @@ class ServiceController:
         except Exception as error:
             logger.write(f'Cannot read services, error: {error}')
             return 'GET SERVICE ONLY FAILED'  
+
+
+    def get_data_for_histogram(self):
+        try:
+            result = "GET DATA FOR HISTOGRAM SUCCESS"
+            services = self.model.read_all()
+            for service in services:
+                result += f'~!#$~{service.service_name}'
+            return result
+        except Exception as error:
+            logger.write(f'Cannot read services, error: {error}')
+            return 'GET DATA FOR HISTOGRAM FAILED'  
+    
+    def get_avg_price_and_service(self):
+        try:
+            result = "GET AVG PRICE AND SERVICE SUCCESS"
+            data = self.model.read_avg()
+            for x in data:
+                result += f'~!#$~{x[0]}:{x[1]}'
+            return result
+        except Exception as error:
+            logger.write(f'Cannot read services and average prices, error: {error}')
+            return 'GET AVG PRICE AND SERVICE FAILED'   

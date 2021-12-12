@@ -1,5 +1,6 @@
 from Database.accessor import DbAccessor
 from Database.Entities.entities import Service
+from sqlalchemy import func
 
 class ServiceModel:
     def create(self, service_name, price, company_name):
@@ -74,6 +75,16 @@ class ServiceModel:
         ).all()
         self.session.close()
         return services 
+
+    def read_avg(self):
+        self.session = DbAccessor().create_session()
+        result = self.session.query(func.avg(Service.price).label('average'), 
+                Service.service_name).group_by(Service.service_name
+        ).all()
+        self.session.close()
+        return result
+
+
 
 
 

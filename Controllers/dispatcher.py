@@ -2,6 +2,7 @@ from .account_controller import AccountController
 from .basket_controller import BasketController
 from .company_controller import CompanyController
 from .service_controller import ServiceController
+from .price_history_conroller import PriceHistoryController
 
 class ControllersDispatcher:
     controllers = {
@@ -16,6 +17,7 @@ class ControllersDispatcher:
             'GET BASKET': 'get_basket',
             'ADD BASKET': 'add_basket',
             'DELETE BASKET': 'delete_basket',
+            'GET ORDERS': 'get_orders'
         },
         CompanyController: {
             'ADD COMPANY': 'add_company',
@@ -29,7 +31,13 @@ class ControllersDispatcher:
             'CHANGE SERVICE': 'change_service',
             'GET SERVICE': 'get_services',
             'CREATE LINEAR': 'create_linear',
-            'GET SERVICES ONLY': 'get_services_only'
+            'GET SERVICES ONLY': 'get_services_only',
+            'GET DATA FOR HISTOGRAM': 'get_data_for_histogram',
+            'GET AVG PRICE AND SERVICE': 'get_avg_price_and_service'
+        },
+        PriceHistoryController: {
+            'CREATE HISTOGRAM': 'create_histogram',
+            'GET PRICE HISTORY': 'get_price_history'
         }
     }
 

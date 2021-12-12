@@ -3,50 +3,45 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QWidget, QMessageBox, QListWidgetItem, QInputDialog, QLineEdit
 from PyQt5.QtCore import pyqtSignal, QSize
-from PyQt5.QtChart import QChart, QChartView, QHorizontalBarSeries, QBarSet, QBarCategoryAxis, QValueAxis
+from PyQt5.QtChart import QChart, QChartView, QBarSeries, QBarSet, QBarCategoryAxis, QValueAxis
 from PyQt5.Qt import Qt
 from PyQt5.QtGui import QPainter
 
 
 class Histogram(QWidget):
+    selOption = pyqtSignal()
+
     def __init__(self):
         super(Histogram, self).__init__()
         uic.loadUi('Form/histogram.ui', self)
+        self.comboBox.activated[str].connect(self.slotSelectOption)
 
-    def createHistogram(self):
-        set0 = QBarSet('X0')
-        set1 = QBarSet('X1')
-        set2 = QBarSet('X2')
-        set3 = QBarSet('X3')
-        set4 = QBarSet('X4')
-
-        set0.append([1, 2, 3, 4, 5, 6])
-
-
-        series = QHorizontalBarSeries()
-        series.append(set0)
-        series.append(set1)
-        series.append(set2)
-        series.append(set3)
-        series.append(set4)
-
+    def createHistogram(self, std, companies_prices):
+        print(companies_prices, std)
         chart = QChart()
         chart.resize(700, 400)
-        chart.addSeries(series)
         chart.setTitle('График средних цен и дисперсии цен')
-
         chart.setAnimationOptions(QChart.SeriesAnimations)
+        series = QBarSeries()
+
+        for x in range(len(companies_prices)):
+            set = QBarSet(companies_prices[x])
+            set.append(float(std[x]))
+            series.append(set)
+
+        chart.addSeries(series)
 
         axisY = QValueAxis()
-        axisY.setRange(0, 1000)
+        axisY.setRange(0, 10000)
         chart.addAxis(axisY, Qt.AlignLeft)
         series.attachAxis(axisY)
 
         chart.legend().setVisible(True)
-        chart.legend().setAlignment(Qt.AlignBottom)
-
+        chart.legend().setAlignment(Qt.AlignRight)
         chartView = QChartView(chart)
         chartView.setRenderHint(QPainter.Antialiasing)
+        if self.gridLayout.count() == 2:
+            self.gridLayout.itemAt(self.gridLayout.count() - 1).widget().setParent(None)
         self.gridLayout.addWidget(chartView)
 
     def setServices(self, args):

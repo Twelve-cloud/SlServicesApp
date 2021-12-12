@@ -27,6 +27,21 @@ class BasketController:
             logger.write(f'Cannot read basket, error: {error}')
             return 'GET BASKET FAILED' 
 
+    def get_orders(self):
+        try:
+            result = "GET ORDERS SUCCESS"
+            type = self.kwargs['type']
+            baskets = self.model.read()
+            for basket in baskets:
+                if basket.type == type:
+                    self.account_controller.set_kwargs(id = basket.acc_id)
+                    login = self.account_controller.get_login_by_id()
+                    result += f'~!#$~{login}: {basket.name} [{basket.time}]'
+            return result
+        except Exception as error:
+            logger.write(f'Cannot read basket, error: {error}')
+            return 'GET ORDERS FAILED'  
+
     def add_basket(self):
         try:   
             login = self.kwargs.pop('login')
