@@ -25,11 +25,8 @@ from plot_choice import PlotChoice
 from histogram import Histogram
 from linear_plot import LinearPlot
 from report_widget import ReportWidget
-from reportlab.pdfgen import canvas
-from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.pdfbase import pdfmetrics
-from reportlab.lib import colors
 from broker_client import BrokerClient
+from fpdf import FPDF
 
 class MainWindow(QMainWindow):
     def __init__(self, client_socket):
@@ -570,19 +567,13 @@ class MainWindow(QMainWindow):
                     file.write(x + '\n')
                 file.close()
             else:
-                pdf = canvas.Canvas(self.report_wid.filename + '.pdf')
-                pdf.setTitle("История цен")
-                canvas.setFont('FreeSans', 32)
-                pdf.drawCentredString(300, 770, "PriceHistory")
-                pdf.setFillColorRGB(0, 0, 255)
-                pdf.line(30, 710, 550, 710)
-                text = pdf.beginText(40, 680)
-                text.setFont('FreeSans', 18)
-                text.setFillColor(colors.red)
+                pdf = FPDF()
+                pdf.add_page()
+                pdf.add_font('DejaVu', '', 'font/DejaVuSansCondensed.ttf', uni=True)
+                pdf.set_font('DejaVu', '', 14)
                 for x in args:
-                    text.textLine(x)
-                pdf.drawText(text)
-                pdf.save()
+                    pdf.cell(200, 10, txt=x, ln=1, align="C")
+                pdf.output(self.report_wid.filename + '.pdf')
         elif command == "GET AVG PRICE AND SERVICE SUCCESS" and self.auth_wdg.rolename == "USER":
             avgs, services = [], []
             for x in args:

@@ -2292,3 +2292,17 @@ Server connected by('127.0.0.1', 34288) at Sun Dec 12 17:04:49 2021
 Client ('127.0.0.1', 34282) has disconnected at Sun Dec 12 17:05:42 2021
 Client ('127.0.0.1', 34280) has disconnected at Sun Dec 12 17:05:43 2021
 Client ('127.0.0.1', 34288) has disconnected at Sun Dec 12 17:05:44 2021
+Server has been listening at address: localhost, port: 6606 at Sun Dec 12 17:16:52 2021
+Server has been listening at address: localhost, port: 6606 at Sun Dec 12 17:17:56 2021
+Server connected by('127.0.0.1', 34294) at Sun Dec 12 17:17:58 2021
+Client ('127.0.0.1', 34294) has disconnected at Sun Dec 12 17:18:13 2021
+Server connected by('127.0.0.1', 34296) at Sun Dec 12 17:18:25 2021
+Client ('127.0.0.1', 34296) has disconnected at Sun Dec 12 17:18:53 2021
+Server connected by('127.0.0.1', 34298) at Sun Dec 12 17:19:03 2021
+Client ('127.0.0.1', 34298) has disconnected at Sun Dec 12 17:19:16 2021
+Server connected by('127.0.0.1', 34300) at Sun Dec 12 17:20:28 2021
+Client ('127.0.0.1', 34300) has disconnected at Sun Dec 12 17:20:39 2021
+Server connected by('127.0.0.1', 34302) at Sun Dec 12 17:21:58 2021
+Client ('127.0.0.1', 34302) has disconnected at Sun Dec 12 17:22:11 2021
+Server connected by('127.0.0.1', 34304) at Sun Dec 12 17:22:41 2021
+Client ('127.0.0.1', 34304) has disconnected at Sun Dec 12 17:22:53 2021
