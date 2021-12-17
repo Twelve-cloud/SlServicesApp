@@ -45,11 +45,8 @@ class ControllersDispatcher:
         while True:
             size_bytes = connection.recv(16)
             size = int.from_bytes(size_bytes, 'little', signed = False)
-            print(size)
             message_encoded = connection.recv(size)
             message = message_encoded.decode()
-
-            print(message)
 
             if not message:
                 break

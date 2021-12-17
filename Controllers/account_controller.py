@@ -123,7 +123,6 @@ class AccountController:
         try:
             accs = self.model.read()
             for acc in accs:
-                print(acc.login, self.kwargs['login'])
                 if acc.login == self.kwargs['login']:
                     return acc.id
             return 'ACCOUNT NOT EXIST'

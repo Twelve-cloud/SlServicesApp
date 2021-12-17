@@ -1,6 +1,6 @@
 {
     "files": [
-    "Source/main_window.py",                "Form/main_window_form.ui",
+    "main_window.py",                "Form/main_window_form.ui",
     "Source/initial_widget.py",             "Form/initial_widget.ui",
     "Source/authentification_widget.py",    "Form/authentification_widget.ui",
     "Source/registration_widget.py",        "Form/registration_widget.ui",

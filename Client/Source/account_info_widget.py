@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLineEdit, QFileDialog
 from PyQt5.QtCore import pyqtSignal, Qt, QFile, QDir, QSize
 from PyQt5.QtGui import QPixmap, QPalette, QImage, QBrush
 
-from request_str_dialog import RequestStrDialog
+from .request_str_dialog import RequestStrDialog
 
 class AccountInfoWidget(QWidget):
     saveButtonClicked = pyqtSignal()

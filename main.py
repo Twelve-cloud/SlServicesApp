@@ -1,3 +1,4 @@
+#!/usr/bin/env python3.10
 import Database.Config.config
 import subprocess as sp, sys
 from threading import Thread

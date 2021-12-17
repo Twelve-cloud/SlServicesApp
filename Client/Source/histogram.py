@@ -32,7 +32,7 @@ class Histogram(QWidget):
         chart.addSeries(series)
 
         axisY = QValueAxis()
-        axisY.setRange(0, 10000)
+        axisY.setRange(0, 2000)
         chart.addAxis(axisY, Qt.AlignLeft)
         series.attachAxis(axisY)
 

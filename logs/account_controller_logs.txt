@@ -286,3 +286,24 @@ Cannot create account, error: (pymysql.err.OperationalError) (3819, "Check const
 [SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
 [parameters: {'AccountLogin': 'gorde', 'AccountPassword': b'gAAAAABhtDg2wbP4wsMF9SS8fuNk-2GkQhE7k_N1M91vspUQBssdZmto_wALIv5_OzqtHQVOE3UBU2OKRLeyfsIRDe8ZIK4RAA==', 'Rolename': ''}]
 (Background on this error at: https://sqlalche.me/e/14/e3q8) at Sat Dec 11 08:33:42 2021
+Cannot create account, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'marina' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'marina', 'AccountPassword': b'gAAAAABhus7cwDv0IDNyDIPj_Qdi9gKTEc7Prhj0mpAY3yQgU9-GE_h99YKcryCj5poa8fNr_A6x7kdxoUfCdywhIqXZXULuxA==', 'Rolename': 'BROKER'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Thu Dec 16 08:30:04 2021
+Cannot create account, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'marina' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'marina', 'AccountPassword': b'gAAAAABhus7zK_cjOb_igGQYGwmZgnAcqpJOq0uKHdUiSXX_nnROjm6g_he-oxIbXcyzTsExejj0o7qVpMzGuj8d8dSL8nM_xw==', 'Rolename': 'BROKER'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Thu Dec 16 08:30:27 2021
+Cannot redo account info, error: account not found at Thu Dec 16 08:30:55 2021
+Cannot create account, error: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'gordey' for key 'Account.AccountLogin'")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'gordey', 'AccountPassword': b'gAAAAABhvCyVcZmf3neIrg_yl71V2IUJeunuC54yTOIyh16ZdMKzwW29oayMqhykuWtrak-sRbrf1LcijCgEfEg_HRzmsX5Z4Q==', 'Rolename': 'BROKER'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) at Fri Dec 17 09:22:13 2021
+Cannot create account, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_login' is violated.")
+[SQL: INSERT INTO `Account` (`AccountLogin`, `AccountPassword`, `Rolename`) VALUES (%(AccountLogin)s, %(AccountPassword)s, %(Rolename)s)]
+[parameters: {'AccountLogin': 'lol', 'AccountPassword': b'gAAAAABhvCzD3UcmGH9ahO9gXCq4cO1kiFnwdL2ZHkWkoE1BGDtT_FrgxAHLcGP9_EWZfhx8dj4ZM6PDDDhVRnwJzPSzuTM6hg==', 'Rolename': 'BROKER'}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Fri Dec 17 09:22:59 2021
+Cannot redo account info, error: (pymysql.err.OperationalError) (3819, "Check constraint 'ch_email' is violated.")
+[SQL: UPDATE `Account` SET `AccountPassword`=%(AccountPassword)s, `MobileNumber`=%(MobileNumber)s, `Email`=%(Email)s WHERE `Account`.`ID` = %(Account_ID)s]
+[parameters: {'AccountPassword': b'gAAAAABhvCzmWA8Bp3u_yFpTwkquH5GuB2UeJbUehP2uT8JQMnItjmjsydnm8hRSjyya57UFI6V-RDqWKrUSprFw9MR0La4pug==', 'MobileNumber': '1', 'Email': '1', 'Account_ID': 1003}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) at Fri Dec 17 09:23:34 2021
